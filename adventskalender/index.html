@@ -1,11 +1,85 @@
-<html>
-    <head></head>
-    <body>
-        <h1>Adventskalender</h1>
-        <ul>
-            <li>
-                <a href="https://fetrixb.github.io">Zur&uuml;ck</a>
-            </li>
-        </ul>
-    </body>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felix Weihnachtskalender 2024</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        .day {
+            background-color: #d32f2f;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .day.disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+        .day:hover:not(.disabled) {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>🎄 Felix Weihnachtskalender 2024 🎄</h1>
+    <div class="calendar" id="calendar">
+        <!-- Türen werden durch JS erstellt -->
+    </div>
+
+    <script>
+        // Heutiges Datum ermitteln
+        const today = new Date();
+        const currentDay = today.getDate();
+        const currentMonth = today.getMonth();
+
+        // Verschlüsselte Links
+        const encryptedLinks = [
+            // Beispiel: Links verschlüsselt mit Base64 (nur für Demo-Zwecke)
+            "aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL3lvdXJfbm90ZWJvb2sx",
+            "aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL3lvdXJfbm90ZWJvb2sy",
+            // ... bis Tag 24
+        ];
+
+        function decrypt(a) {
+            return atob(a);
+        }
+
+        // Kalender erstellen
+        const calendar = document.getElementById('calendar');
+        for (let i = 1; i <= 24; i++) {
+            const day = document.createElement('div');
+            day.className = 'day';
+            day.textContent = i;
+
+            // Vergangene/freigegebene Tage anklickbar machen
+            if (currentMonth === 11 && i <= currentDay) {
+                day.addEventListener('click', () => {
+                    const decryptedLink = decrypt(encryptedLinks[i - 1]);
+                    window.open(decryptedLink, '_blank');
+                });
+            } else {
+                // Zukünftige Tage deaktivieren
+                day.classList.add('disabled');
+            }
+
+            calendar.appendChild(day);
+        }
+    </script>
+</body>
 </html>
