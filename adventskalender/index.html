@@ -92,7 +92,7 @@
             day.textContent = i;
 
             // Vergangene/freigegebene Tage anklickbar machen
-            if (currentMonth === 10 && i <= currentDay) {
+            if (currentMonth === 11 && i <= currentDay) {
                 day.addEventListener('click', () => {
                     const decryptedLink = decrypt(encryptedLinks[i - 1]);
                     window.open(decryptedLink, '_blank');
