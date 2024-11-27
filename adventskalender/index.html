@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
             background-color: #f9f9f9;
             text-align: center;
         }
+
         .calendar {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -17,6 +19,7 @@
             max-width: 600px;
             margin: 50px auto;
         }
+
         .day {
             background-color: #d32f2f;
             color: white;
@@ -27,15 +30,18 @@
             cursor: pointer;
             transition: transform 0.2s;
         }
+
         .day.disabled {
             background-color: #aaa;
             cursor: not-allowed;
         }
+
         .day:hover:not(.disabled) {
             transform: scale(1.1);
         }
     </style>
 </head>
+
 <body>
     <h1>🎄 Felix Weihnachtskalender 2024 🎄</h1>
     <div class="calendar" id="calendar">
@@ -49,12 +55,30 @@
         const currentMonth = today.getMonth();
 
         // Verschlüsselte Links
-        const encryptedLinks = [
-            // Beispiel: Links verschlüsselt mit Base64 (nur für Demo-Zwecke)
-            "aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL3lvdXJfbm90ZWJvb2sx",
-            "aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL3lvdXJfbm90ZWJvb2sy",
-            // ... bis Tag 24
-        ];
+        const encryptedLinks = ['aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzFfZnF6MTV0NGxXNnFfZzhXWFppNTZKMmNqZDl5XzhnRSNzY3JvbGxUbz1uMTFXQ0hTOEpLM04=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzFWRnlkM0U2NmxYd2s1Z0lBTm5NRENXdVl3QUN3VXFDcCNzY3JvbGxUbz1MTWplVUpCaExmSmw=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzFSaVJrNUNNYWtnaUJ6enBUSkJSdEZOZlNCMTFDU0xMeiNzY3JvbGxUbz1sTTg4NFhFOE1QejI=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzFIUnVCRWNyR0JqT3FuZHkxdklFWWtnZjA2ekMtb0Q2TCNzY3JvbGxUbz1DVVhhMHpXNE1fek4=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzFKRHA5VWM3QjVGSUwtNTlleE95SUtvblRYVmJMV1dHVSNzY3JvbGxUbz1qbjhuNTB5Z1Z1ODM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzE5MmZqTXlqYVR2Y09SNl95TEhweEJqZkU2dmxkUzdlbCNzY3JvbGxUbz1tWmxHWjMtc1huM3M=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzFFTUZpVTQtdExrMWRzb25WNWtUY0VRMnNXMHE3RldjbSNzY3JvbGxUbz1MWEpJWkViNWMwd1g=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=',
+            'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM='];
 
         function decrypt(a) {
             return atob(a);
@@ -68,7 +92,7 @@
             day.textContent = i;
 
             // Vergangene/freigegebene Tage anklickbar machen
-            if (currentMonth === 11 && i <= currentDay) {
+            if (currentMonth === 10 && i <= currentDay) {
                 day.addEventListener('click', () => {
                     const decryptedLink = decrypt(encryptedLinks[i - 1]);
                     window.open(decryptedLink, '_blank');
@@ -82,4 +106,5 @@
         }
     </script>
 </body>
+
 </html>
