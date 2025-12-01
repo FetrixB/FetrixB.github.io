@@ -55,7 +55,7 @@
         const currentMonth = today.getMonth();
 
         // Verschlüsselte Links
-        const encryptedLinks = ['aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzFfZnF6MTV0NGxXNnFfZzhXWFppNTZKMmNqZDl5XzhnRSNzY3JvbGxUbz1uMTFXQ0hTOEpLM04=', //01
+        const encryptedLinks = ['http://192.168.0.20:8888/lab?', //01
             'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzEyaDJ2cGRZaTdGYS1nSUFQX18yOUpmb3JVeXlCeG5HeSNzY3JvbGxUbz0xd3dfYWFFMEtZazM=', // 02
             'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzFWRnlkM0U2NmxYd2s1Z0lBTm5NRENXdVl3QUN3VXFDcCNzY3JvbGxUbz1MTWplVUpCaExmSmw=', // 03
             'aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL2RyaXZlLzFSaVJrNUNNYWtnaUJ6enBUSkJSdEZOZlNCMTFDU0xMeiNzY3JvbGxUbz1sTTg4NFhFOE1QejI=', // 04
@@ -94,7 +94,7 @@
             // Vergangene/freigegebene Tage anklickbar machen
             if (currentMonth >= 11 && i <= currentDay) {
                 day.addEventListener('click', () => {
-                    const decryptedLink = decrypt(encryptedLinks[i - 1]);
+                    const decryptedLink = encryptedLinks[i - 1];
                     window.open(decryptedLink, '_blank');
                 });
             } else {
