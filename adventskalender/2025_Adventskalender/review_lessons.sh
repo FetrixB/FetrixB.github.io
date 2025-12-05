@@ -1,0 +1,5 @@
+#!/bin/sh
+opencode run "Prüfe 'Tag_03/Lesson.ipynb' auf pädagogische Verständlichkeit und Kindgerechtheit und passe nur dort behutsam an, wo dies nötig ist, um Inhalte klarer, anschaulicher und leichter begreifbar zu machen. Validiere das JSON danach und korrigiere bei Bedarf."
+opencode run "Prüfe 'Tag_04/Lesson.ipynb' auf pädagogische Verständlichkeit und Kindgerechtheit und passe nur dort behutsam an, wo dies nötig ist, um Inhalte klarer, anschaulicher und leichter begreifbar zu machen. Validiere das JSON danach und korrigiere bei Bedarf."
+opencode run "Prüfe 'Tag_05/Lesson.ipynb' auf pädagogische Verständlichkeit und Kindgerechtheit und passe nur dort behutsam an, wo dies nötig ist, um Inhalte klarer, anschaulicher und leichter begreifbar zu machen. Validiere das JSON danach und korrigiere bei Bedarf."
+opencode run "Prüfe 'Tag_06/Lesson.ipynb' auf pädagogische Verständlichkeit und Kindgerechtheit und passe nur dort behutsam an, wo dies nötig ist, um Inhalte klarer, anschaulicher und leichter begreifbar zu machen. Validiere das JSON danach und korrigiere bei Bedarf."

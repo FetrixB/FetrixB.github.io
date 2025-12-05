@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 07 – Scroll-Zauber Training</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-slate-950 text-slate-50 font-inter">
+    <div class="constellation constellation-left" aria-hidden="true"></div>
+    <div class="constellation constellation-right" aria-hidden="true"></div>
+
+    <header class="relative z-10 max-w-5xl mx-auto px-6 pt-16 pb-12 text-center">
+      <p class="tracking-[0.35em] text-xs text-emerald-200 uppercase mb-4">Tag 07 · Scrollmagie</p>
+      <h1 class="font-orbitron text-3xl md:text-5xl leading-tight text-emerald-100">
+        Übe die Runen, um den Schlitten zu starten
+      </h1>
+      <p class="mt-6 text-base md:text-lg text-slate-200 max-w-3xl mx-auto">
+        Du baust eine vertikale Story, bei der jedes Scrollen eine neue Szene öffnet. AOS liefert die
+        Animationen, während der Intersection Observer genau meldet, welche Karte sichtbar ist.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <button id="scroll-hint" class="btn-primary">✨ Starte die Scroll-Zeremonie</button>
+        <button id="spark-toggle" class="btn-ghost">❄️ Sternenfunken umschalten</button>
+      </div>
+    </header>
+
+    <main id="story-scroll" class="relative z-10 max-w-5xl mx-auto px-6 pb-20 space-y-16">
+      <section class="grid md:grid-cols-[1fr_1.2fr] gap-8 items-center" data-aos="fade-up" data-aos-duration="1200">
+        <div>
+          <p class="text-sm text-emerald-200 uppercase tracking-[0.3em]">Scroll-Runen</p>
+          <h2 class="font-orbitron text-2xl md:text-3xl text-white mt-2">Fortschritt sichtbar machen</h2>
+          <p class="text-slate-300 mt-4">
+            Rechts siehst du die Rune, die zeigt, wie viele Story-Panels schon gesichtet wurden. Ergänze die fehlenden
+            Teile, damit Felix sofort erkennt, welche Schlittenteile aufgeladen sind.
+          </p>
+        </div>
+        <div class="rune-panel">
+          <div class="rune-progress-track" aria-hidden="true">
+            <div class="rune-progress-fill" style="width: 0%"></div>
+          </div>
+          <p id="rune-label" class="mt-3 text-sm text-emerald-200">0% Magie</p>
+          <!-- TODO 1: Füge hier die vier Rune-Icons (Rahmen, Triebwerk, Laderaum, Testflug) wie in der Lösung hinzu. -->
+        </div>
+      </section>
+
+      <section class="space-y-10">
+        <article
+          class="story-card"
+          data-aos="fade-up"
+          data-aos-delay="0"
+          data-aos-duration="900"
+          data-index="0"
+        >
+          <p class="story-label">01 · Gestell</p>
+          <h3>Der Netherite-Rahmen erwacht</h3>
+          <p>
+            Die Grundstruktur gleitet von unten nach oben in die Ansicht. Ein ruhiger Einstieg hilft, die Scrollrichtung
+            zu verstehen und setzt sofort die Minecraft-Stimmung.
+          </p>
+          <ul>
+            <li>Animation: <span>data-aos="fade-up"</span></li>
+            <li>Timing: <span>0ms Delay</span></li>
+            <li>Easing: <span>ease-out-quart</span></li>
+          </ul>
+        </article>
+
+        <article
+          class="story-card"
+          data-aos="zoom-in"
+          data-aos-delay="150"
+          data-aos-duration="900"
+          data-index="1"
+        >
+          <p class="story-label">02 · Turbinen</p>
+          <h3>Der Sternen-Antrieb lädt sich auf</h3>
+          <p>
+            Dieser Abschnitt springt leicht nach vorne, damit der Blick automatisch zum funkelnden Antrieb wandert.
+          </p>
+          <ul>
+            <li>Animation: <span>data-aos="zoom-in"</span></li>
+            <li>Delay: <span>150ms</span></li>
+            <li>Fokus: <span>Kontraststarker Rahmen</span></li>
+          </ul>
+        </article>
+
+        <article
+          class="story-card"
+          data-aos="fade-left"
+          data-aos-delay="250"
+          data-aos-duration="900"
+          data-index="2"
+        >
+          <p class="story-label">03 · Geschenkkammer</p>
+          <h3>Geschenke schweben in Position</h3>
+          <p>
+            Mit einem seitlichen Eintritt füllt sich der Schlitten sichtbar. Der Observer markiert die Karte, sobald sie
+            weit genug sichtbar ist.
+          </p>
+          <ul>
+            <li>Animation: <span>data-aos="fade-left"</span></li>
+            <li>Delay: <span>250ms</span></li>
+            <li>Bonus: <span>Weicher Gradient</span></li>
+          </ul>
+        </article>
+
+        <article
+          class="story-card"
+          data-aos="flip-up"
+          data-aos-delay="350"
+          data-aos-duration="900"
+          data-index="3"
+        >
+          <p class="story-label">04 · Probeflug</p>
+          <h3>Die Runen bestätigen den Start</h3>
+          <p>
+            Der finale Abschnitt soll im Code besonders deutlich anzeigen, dass alle Teile geladen sind – kümmere dich um
+            die Logik im Skript.
+          </p>
+          <ul>
+            <li>Animation: <span>data-aos="flip-up"</span></li>
+            <li>Delay: <span>350ms</span></li>
+            <li>Mobile: <span>Extra Padding</span></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="grid md:grid-cols-2 gap-8" data-aos="fade-up" data-aos-duration="900">
+        <div class="tip-panel">
+          <h3 class="font-orbitron text-xl text-white mb-4">Mobile-First Gedanken</h3>
+          <p>
+            Großzügige Tap-Ziele und viel Luft sorgen dafür, dass die Story auch mit Daumen-Scrollen Spaß macht.
+          </p>
+          <ul class="tip-list">
+            <li>Min. Höhe 80vh pro Karte</li>
+            <li>Weiche Übergänge</li>
+            <li>Kontrastreiche Buttons</li>
+          </ul>
+        </div>
+        <div class="tip-panel">
+          <h3 class="font-orbitron text-xl text-white mb-4">Timing & Easing Merkhilfe</h3>
+          <div class="grid grid-cols-2 gap-3 text-sm">
+            <div class="timing-token">data-aos-duration="900"</div>
+            <div class="timing-token">data-aos-delay="150"</div>
+            <div class="timing-token">data-aos-easing="ease-out-back"</div>
+            <div class="timing-token">data-aos-anchor-placement="center-bottom"</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-panel" data-aos="fade-up" data-aos-duration="900">
+        <h3 class="font-orbitron text-2xl mb-4">Teste deine Runen</h3>
+        <p>
+          Wenn der Fortschrittsbalken reagiert und die Karten glühen, weißt du, dass der Observer funktioniert.
+        </p>
+        <a href="#story-scroll" class="btn-primary inline-flex justify-center mt-6">🔁 Noch einmal fliegen</a>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="script.js" defer></script>
+  </body>
+</html>

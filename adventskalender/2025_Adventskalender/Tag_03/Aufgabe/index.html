@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tag 03 - Elf-Inventar System | Minecraft Weihnachts-Adventskalender</title>
+    <!-- TailwindCSS für moderne Utility-Klassen -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS für sanfte Scroll-Animationen -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts - Orbitron für Minecraft-Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Weihnachts-Himmel Hintergrund -->
+    <div class="winter-background"></div>
+    
+    <!-- Haupt-Container -->
+    <div class="min-h-screen flex flex-col items-center justify-center p-4 relative z-10">
+        <!-- Titel-Bereich -->
+        <header class="text-center mb-8" data-aos="fade-down">
+            <h1 class="minecraft-title text-4xl md:text-6xl font-bold text-white mb-4">
+                🎄 ELF-INVENTAR SYSTEM 🎄
+            </h1>
+            <p class="text-green-300 text-lg md:text-xl font-medium">
+                ⭐ Magische Weihnachts-Items verwalten ⭐
+            </p>
+        </header>
+
+        <!-- Inventar-Container -->
+        <main class="inventory-container" data-aos="zoom-in" data-aos-delay="300">
+            <div class="inventory-header">
+                <h2 class="text-white text-xl font-bold mb-4">
+                    📦 Pixel-Schatzkiste - 64 Slots 📦
+                </h2>
+                <p class="text-gray-300 text-sm mb-6">
+                    Schwebe über die Items um sie zu inspizieren! 🔍
+                </p>
+            </div>
+
+            <!-- 8x8 Inventar-Grid mit Listen-Struktur -->
+            <ul class="inventory-grid">
+                <!-- Reihe 1 -->
+                <li class="inventory-slot" data-item="diamond-sword" data-count="1">
+                    <div class="item-icon">⚔️</div>
+                    <span class="item-count">1</span>
+                    <div class="tooltip">Diamant-Schwert<br><span class="rarity legendary">Legendär</span></div>
+                </li>
+                <li class="inventory-slot" data-item="christmas-tree" data-count="12">
+                    <div class="item-icon">🎄</div>
+                    <span class="item-count">12</span>
+                    <div class="tooltip">Weihnachtsbaum<br><span class="rarity common">Gewöhnlich</span></div>
+                </li>
+                <li class="inventory-slot" data-item="candy-cane" data-count="64">
+                    <div class="item-icon">🍭</div>
+                    <span class="item-count">64</span>
+                    <div class="tooltip">Zuckerstange<br><span class="rarity common">Gewöhnlich</span></div>
+                </li>
+                <li class="inventory-slot" data-item="snowball" data-count="32">
+                    <div class="item-icon">⛄</div>
+                    <span class="item-count">32</span>
+                    <div class="tooltip">Schneeball<br><span class="rarity common">Gewöhnlich</span></div>
+                </li>
+                <li class="inventory-slot" data-item="gift-box" data-count="5">
+                    <div class="item-icon">🎁</div>
+                    <span class="item-count">5</span>
+                    <div class="tooltip">Geschenkbox<br><span class="rarity rare">Selten</span></div>
+                </li>
+                <li class="inventory-slot" data-item="magic-star" data-count="1">
+                    <div class="item-icon">⭐</div>
+                    <span class="item-count">1</span>
+                    <div class="tooltip">Magischer Stern<br><span class="rarity epic">Episch</span></div>
+                </li>
+                <li class="inventory-slot" data-item="bell" data-count="8">
+                    <div class="item-icon">🔔</div>
+                    <span class="item-count">8</span>
+                    <div class="tooltip">Weihnachtsglocke<br><span class="rarity common">Gewöhnlich</span></div>
+                </li>
+                <li class="inventory-slot" data-item="cookie" data-count="24">
+                    <div class="item-icon">🍪</div>
+                    <span class="item-count">24</span>
+                    <div class="tooltip">Lebkuchen<br><span class="rarity common">Gewöhnlich</span></div>
+                </li>
+
+                <!-- Reihe 2 -->
+                <li class="inventory-slot" data-item="ice-crystal" data-count="16">
+                    <div class="item-icon">❄️</div>
+                    <span class="item-count">16</span>
+                    <div class="tooltip">Eiskristall<br><span class="rarity rare">Selten</span></div>
+                </li>
+                <li class="inventory-slot" data-item="golden-apple" data-count="3">
+                    <div class="item-icon">🍎</div>
+                    <span class="item-count">3</span>
+                    <div class="tooltip">Goldener Apfel<br><span class="rarity epic">Episch</span></div>
+                </li>
+                <li class="inventory-slot" data-item="reindeer-horn" data-count="2">
+                    <div class="item-icon">🦌</div>
+                    <span class="item-count">2</span>
+                    <div class="tooltip">Rentier-Horn<br><span class="rarity rare">Selten</span></div>
+                </li>
+                <li class="inventory-slot" data-item="wreath" data-count="6">
+                    <div class="item-icon">🎀</div>
+                    <span class="item-count">6</span>
+                    <div class="tooltip">Adventskranz<br><span class="rarity common">Gewöhnlich</span></div>
+                </li>
+                <li class="inventory-slot" data-item="holly" data-count="18">
+                    <div class="item-icon">🌿</div>
+                    <span class="item-count">18</span>
+                    <div class="tooltip">Stechpalme<br><span class="rarity common">Gewöhnlich</span></div>
+                </li>
+                <li class="inventory-slot" data-item="christmas-light" data-count="48">
+                    <div class="item-icon">💡</div>
+                    <span class="item-count">48</span>
+                    <div class="tooltip">Weihnachtslicht<br><span class="rarity common">Gewöhnlich</span></div>
+                </li>
+                <li class="inventory-slot" data-item="mittens" data-count="1">
+                    <div class="item-icon">🧤</div>
+                    <span class="item-count">1</span>
+                    <div class="tooltip">Warme Handschuhe<br><span class="rarity common">Gewöhnlich</span></div>
+                </li>
+                <li class="inventory-slot" data-item="hot-chocolate" data-count="7">
+                    <div class="item-icon">☕</div>
+                    <span class="item-count">7</span>
+                    <div class="tooltip">Heiße Schokolade<br><span class="rarity common">Gewöhnlich</span></div>
+                </li>
+
+                <!-- Reihe 3-8: Weitere Items und leere Slots -->
+                <li class="inventory-slot" data-item="magic-wand" data-count="1">
+                    <div class="item-icon">🪄</div>
+                    <span class="item-count">1</span>
+                    <div class="tooltip">Zauberstab<br><span class="rarity legendary">Legendär</span></div>
+                </li>
+                <li class="inventory-slot" data-item="snow-globe" data-count="4">
+                    <div class="item-icon">🔮</div>
+                    <span class="item-count">4</span>
+                    <div class="tooltip">Schneekugel<br><span class="rarity epic">Episch</span></div>
+                </li>
+                <li class="inventory-slot" data-item="ornament" data-count="25">
+                    <div class="item-icon">🎈</div>
+                    <span class="item-count">25</span>
+                    <div class="tooltip">Christbaumkugel<br><span class="rarity common">Gewöhnlich</span></div>
+                </li>
+                <li class="inventory-slot" data-item="garland" data-count="10">
+                    <div class="item-icon">🎊</div>
+                    <span class="item-count">10</span>
+                    <div class="tooltip">Girlande<br><span class="rarity common">Gewöhnlich</span></div>
+                </li>
+                <li class="inventory-slot" data-item="angel" data-count="1">
+                    <div class="item-icon">👼</div>
+                    <span class="item-count">1</span>
+                    <div class="tooltip">Weihnachtsengel<br><span class="rarity epic">Episch</span></div>
+                </li>
+                <li class="inventory-slot" data-item="mistletoe" data-count="3">
+                    <div class="item-icon">💚</div>
+                    <span class="item-count">3</span>
+                    <div class="tooltip">Mistelzweig<br><span class="rarity rare">Selten</span></div>
+                </li>
+                <li class="inventory-slot" data-item="fireplace" data-count="1">
+                    <div class="item-icon">🔥</div>
+                    <span class="item-count">1</span>
+                    <div class="tooltip">Kamin<br><span class="rarity rare">Selten</span></div>
+                </li>
+                <li class="inventory-slot" data-item="stockings" data-count="6">
+                    <div class="item-icon">🧦</div>
+                    <span class="item-count">6</span>
+                    <div class="tooltip">Weihnachtsstrümpfe<br><span class="rarity common">Gewöhnlich</span></div>
+                </li>
+
+                <!-- Leere Slots für den Rest des 8x8 Grids (48 weitere Slots) -->
+                <!-- Generiere Leere Slots mit JavaScript -->
+            </ul>
+
+            <!-- Statistiken -->
+            <div class="inventory-stats" data-aos="fade-up" data-aos-delay="600">
+                <div class="stat-item">
+                    <span class="stat-label">Belegte Slots:</span>
+                    <span class="stat-value" id="filled-slots">24</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Freie Slots:</span>
+                    <span class="stat-value" id="empty-slots">40</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Gesamtwert:</span>
+                    <span class="stat-value" id="total-value">⭐ 1,247</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Zusätzliche Weihnachts-Elemente -->
+        <div class="floating-snowflakes">
+            <div class="snowflake">❄️</div>
+            <div class="snowflake">⭐</div>
+            <div class="snowflake">❄️</div>
+            <div class="snowflake">✨</div>
+            <div class="snowflake">❄️</div>
+        </div>
+    </div>
+
+    <!-- JavaScript-Bibliotheken -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

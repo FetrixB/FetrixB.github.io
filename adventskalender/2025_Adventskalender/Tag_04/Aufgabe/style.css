@@ -1,0 +1,312 @@
+:root {
+    font-family: 'Orbitron', 'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.minecraft-title {
+    letter-spacing: 0.1em;
+    text-shadow: 0 8px 32px rgba(20, 255, 173, 0.35);
+}
+
+.winter-background {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(120, 245, 255, 0.2), transparent 50%),
+                radial-gradient(circle at 80% 0%, rgba(255, 88, 88, 0.15), transparent 40%),
+                linear-gradient(135deg, #030712, #07111f 60%, #0f172a);
+    opacity: 0.9;
+    z-index: 0;
+}
+
+.snow-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    animation: snow-drift 18s linear infinite;
+    z-index: 1;
+}
+
+.snow-layer span {
+    opacity: 0.5;
+    animation: snow-fall 8s linear infinite;
+}
+
+.snow-layer span:nth-child(odd) {
+    animation-duration: 10s;
+    opacity: 0.8;
+}
+
+@keyframes snow-drift {
+    from { transform: translateY(-5vh); }
+    to { transform: translateY(5vh); }
+}
+
+@keyframes snow-fall {
+    0% { transform: translateY(-10vh) scale(0.8); }
+    100% { transform: translateY(110vh) scale(1.2); }
+}
+
+.anchor-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+}
+
+.anchor-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(125, 211, 252, 0.4);
+    border-radius: 999px;
+    background: rgba(15, 118, 110, 0.2);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: all 0.3s ease;
+}
+
+.anchor-link:hover,
+.anchor-link:focus-visible {
+    border-color: #facc15;
+    color: #facc15;
+    box-shadow: 0 0 25px rgba(250, 204, 21, 0.3);
+}
+
+.anchor-link.active {
+    background: linear-gradient(120deg, #10b981, #14b8a6);
+    color: #020617;
+}
+
+.map-section {
+    position: relative;
+}
+
+.map-card {
+    background: rgba(2, 6, 23, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 24px 60px rgba(15, 118, 110, 0.35);
+    position: relative;
+}
+
+.map-card__header h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.map-card__header p {
+    color: #cbd5f5;
+    margin-top: 0.35rem;
+}
+
+.map-figure {
+    margin-top: 1.5rem;
+    position: relative;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #06101d;
+}
+
+.map-image {
+    width: 100%;
+    display: block;
+}
+
+.map-hotspot {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    top: var(--y);
+    left: var(--x);
+    transform: translate(-50%, -50%);
+    background: rgba(34, 197, 94, 0.25);
+    cursor: pointer;
+    animation: pulse 2s infinite;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* TODO 2: Baue hier die sichtbare Tooltip-Blase mit content, Hintergrundfarbe, Schrift und Übergangseffekten nach. */
+.map-hotspot::after {
+    /* Nutze attr(data-tooltip) für den Text und gib der Blase einen kontraststarken Hintergrund. */
+}
+
+.map-hotspot:hover::after,
+.map-hotspot:focus-visible::after,
+.map-hotspot.active::after {
+    /* TODO 2: Sorge dafür, dass sich die Tooltip-Blase beim Hover/Focus einblendet. */
+}
+
+.map-hotspot:hover,
+.map-hotspot:focus-visible,
+.map-hotspot.active {
+    background: rgba(250, 204, 21, 0.35);
+    border-color: #facc15;
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.map-note {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #cbd5f5;
+    opacity: 0.85;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+    70% { box-shadow: 0 0 0 18px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.info-panel {
+    background: linear-gradient(160deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.15));
+    border-radius: 1.5rem;
+    padding: 2rem;
+    border: 1px solid rgba(94, 234, 212, 0.4);
+    box-shadow: 0 24px 60px rgba(13, 148, 136, 0.35);
+}
+
+.info-panel__badge {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.75rem;
+    color: #a7f3d0;
+}
+
+.info-panel h2 {
+    font-size: 2rem;
+    margin: 0.75rem 0;
+    font-weight: 800;
+}
+
+.info-panel__tip {
+    margin: 1rem 0;
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 1rem;
+    padding: 1rem;
+    border: 1px dashed rgba(248, 250, 252, 0.4);
+}
+
+.info-panel__list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.info-panel__list li {
+    background: rgba(15, 23, 42, 0.5);
+    padding: 0.8rem 1rem;
+    border-radius: 0.85rem;
+    border: 1px solid rgba(226, 232, 240, 0.1);
+}
+
+.location-card {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 1.25rem;
+    padding: 1.75rem;
+    box-shadow: 0 20px 50px rgba(7, 89, 133, 0.35);
+    backdrop-filter: blur(8px);
+}
+
+.location-card__title {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    color: #fcd34d;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.85rem;
+}
+
+.location-card ul {
+    margin-top: 1rem;
+    padding-left: 1.25rem;
+    color: #bfdbfe;
+}
+
+.location-card li {
+    margin-bottom: 0.35rem;
+}
+
+.tips-panel {
+    background: linear-gradient(120deg, rgba(59, 130, 246, 0.2), rgba(16, 185, 129, 0.2));
+    border-radius: 1.5rem;
+    padding: 2rem;
+    border: 1px solid rgba(96, 165, 250, 0.35);
+}
+
+.tips-grid {
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.tips-grid article {
+    background: rgba(2, 6, 23, 0.7);
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tips-grid h4 {
+    color: #f9fafb;
+    margin-bottom: 0.35rem;
+}
+
+code {
+    font-family: 'Fira Code', 'Source Code Pro', monospace;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 0.15rem 0.35rem;
+    border-radius: 0.4rem;
+}
+
+.focus-glow {
+    outline: 3px solid rgba(250, 204, 21, 0.8);
+    box-shadow: 0 0 25px rgba(250, 204, 21, 0.5);
+    border-radius: 1rem;
+}
+
+@media (max-width: 768px) {
+    .map-card,
+    .info-panel,
+    .location-card,
+    .tips-panel {
+        padding: 1.25rem;
+    }
+
+    .map-hotspot {
+        width: 36px;
+        height: 36px;
+    }
+
+    .info-panel h2 {
+        font-size: 1.5rem;
+    }
+}

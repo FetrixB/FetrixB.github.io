@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="winter">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tag 09 · Banner-Werkstatt der Weihnachts-Elfen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/themes.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              orbitron: ["'Orbitron'", 'sans-serif'],
+              body: ["'Nunito'", 'sans-serif'],
+            },
+            colors: {
+              candy: '#ff6699',
+              frost: '#7dd3fc',
+              ember: '#f97316',
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="bg-base-200 text-base-content min-h-screen font-body relative overflow-hidden">
+    <div class="pixel-grid" aria-hidden="true"></div>
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="max-w-6xl mx-auto px-4 py-10 space-y-10 relative">
+      <header class="card bg-base-100/90 shadow-2xl border border-white/10 backdrop-blur">
+        <div class="card-body gap-6">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div class="space-y-3">
+              <p class="badge badge-secondary w-fit">Tag 09 · Komponenten-Tag</p>
+              <h1 class="text-3xl md:text-4xl font-orbitron text-primary drop-shadow">
+                Banner-Schmiede der Weihnachts-Elfen
+              </h1>
+              <p class="text-base md:text-lg text-base-content/80">
+                Die Elfen brauchen 3D-wirkende Banner-Karten mit super klarer Struktur.
+                Du baust heute ein eigenes Mini-Designsystem mit DaisyUI-Komponenten,
+                in dem jede Karte wie ein wiederverwendbarer Minecraft-Baustein funktioniert.
+              </p>
+            </div>
+            <div class="stats stats-vertical lg:stats-horizontal shadow">
+              <div class="stat">
+                <div class="stat-title">Komponenten-Layer</div>
+                <div class="stat-value text-primary">3</div>
+                <div class="stat-desc">Atome · Moleküle · Organismen</div>
+              </div>
+              <div class="stat">
+                <div class="stat-title">Banner-Slots</div>
+                <div class="stat-value">9</div>
+                <div class="stat-desc">Jedes mit Hover-Magie</div>
+              </div>
+              <div class="stat">
+                <div class="stat-title">Themen</div>
+                <div class="stat-value text-secondary">4</div>
+                <div class="stat-desc">Winter · Frost · Candy · Ember</div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-3 items-center">
+            <p class="text-sm font-semibold text-base-content/70">Thema wählen:</p>
+            <!-- TODO 1: Füge hier eine btn-group mit Buttons ein, die data-theme-choice="winter|forest|candy|ember" verwenden, damit Felix zwischen den DaisyUI-Themen wechseln kann. -->
+          </div>
+        </div>
+      </header>
+
+      <section class="card bg-base-100/80 border border-white/10">
+        <div class="card-body grid gap-6 lg:grid-cols-3">
+          <article class="design-pill">
+            <h3>Atome 🔹</h3>
+            <p class="text-sm text-base-content/80">
+              Farben, Icons, Abstände und leuchtende Ränder sind unsere kleinsten Teile. Wir speichern sie als CSS-Variablen,
+              damit jede Karte automatisch gleichmäßig aussieht.
+            </p>
+          </article>
+          <article class="design-pill">
+            <h3>Moleküle 🔷</h3>
+            <p class="text-sm text-base-content/80">
+              Titel, Badges und Hover-Zonen werden als DaisyUI-Komponenten kombiniert. Dadurch kannst du Teile austauschen
+              wie Minecraft-Blöcke.
+            </p>
+          </article>
+          <article class="design-pill">
+            <h3>Organismen 💎</h3>
+            <p class="text-sm text-base-content/80">
+              Die fertige Karte ist ein Organismus: Header, Body, Footer und Actions. Du kannst sie klonen, ohne jedes Mal
+              bei Null zu starten.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="space-y-6">
+        <div class="card bg-base-100/90 border border-white/10">
+          <div class="card-body gap-6">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+              <div>
+                <h2 class="text-2xl font-orbitron text-primary">Banner-Kontrollpult</h2>
+                <p class="text-base text-base-content/70">
+                  Filtere die Banner nach Stimmung, wechsle zwischen Listen- und Kartenansicht und stelle ein,
+                  wie stark die Hover-Schwebe sein soll.
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <button id="layoutToggle" class="btn btn-outline btn-primary" aria-pressed="false">
+                  📐 Listenmodus aktivieren
+                </button>
+                <label class="form-control w-full max-w-xs">
+                  <div class="label">
+                    <span class="label-text">Hover-Schwebe</span>
+                    <span class="label-text-alt" id="floatHint">12px</span>
+                  </div>
+                  <input
+                    id="floatRange"
+                    type="range"
+                    min="4"
+                    max="20"
+                    value="12"
+                    class="range range-primary"
+                  />
+                </label>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-3" id="filterBar">
+              <button class="chip" data-filter="alle">Alle Banner</button>
+              <button class="chip" data-filter="festlich">Festlich</button>
+              <button class="chip" data-filter="mystisch">Mystisch</button>
+              <button class="chip" data-filter="feurig">Feurig</button>
+              <button class="chip" data-filter="frostig">Frostig</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[2fr,1fr] items-start">
+          <div class="space-y-6">
+            <div id="card-grid" class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3"></div>
+            <p class="text-sm text-base-content/60">
+              Tipp: DaisyUI liefert dir Komponentenklassen wie <code class="code-chip">card</code>,
+              <code class="code-chip">badge</code> und <code class="code-chip">btn</code>. Du kombinierst sie mit Tailwind-Utilities,
+              um super schnell neue Looks zu gestalten.
+            </p>
+          </div>
+          <aside id="bannerDetail" class="card bg-base-100/90 border border-primary/20 sticky top-6">
+            <div class="card-body space-y-4">
+              <p class="badge badge-primary w-fit">Live-Vorschau</p>
+              <h3 class="text-xl font-orbitron">Wähle ein Banner</h3>
+              <p class="text-sm text-base-content/70">
+                Tipp: Klick auf <em>"Zum Dorf schicken"</em>, um die Karte in der Vorschau zu sehen.
+                Du erfährst sofort, welche Farben, Biomes und Rewards dazu gehören.
+              </p>
+              <ul class="text-sm space-y-2" id="detailList">
+                <li>⬅️ Noch kein Banner ausgewählt.</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <footer class="text-center text-sm text-base-content/60">
+        <p>
+          Jede Karte nutzt dasselbe Grundgerüst – nur Farben, Icons und Texte ändern sich. So fühlt sich das
+          Dorf einheitlich an, obwohl jede Banner-Geschichte einzigartig bleibt.
+        </p>
+      </footer>
+    </div>
+    <script src="./script.js" defer></script>
+  </body>
+</html>

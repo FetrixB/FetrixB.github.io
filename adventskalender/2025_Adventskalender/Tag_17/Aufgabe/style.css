@@ -1,0 +1,329 @@
+:root {
+  --px-green: #4ade80;
+  --px-red: #f87171;
+  --px-gold: #facc15;
+  --px-blue: #38bdf8;
+  --px-dark: #0f172a;
+  --glass: rgba(15, 23, 42, 0.65);
+
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1e3a8a, #020617 45%);
+  color: #f8fafc;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.minecraft-grid {
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(transparent 95%, rgba(248, 250, 252, 0.05) 95%),
+    linear-gradient(90deg, transparent 95%, rgba(248, 250, 252, 0.05) 95%);
+  background-size: 40px 40px;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.snow-layer::before,
+.snow-layer::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='white'/%3E%3C/svg%3E");
+  animation: snow 20s linear infinite;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.snow-layer::after {
+  animation-duration: 35s;
+  opacity: 0.08;
+}
+
+@keyframes snow {
+  from {
+    transform: translateY(-10%);
+  }
+  to {
+    transform: translateY(10%);
+  }
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 4rem clamp(1rem, 5vw, 5rem) 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__content {
+  background: var(--glass);
+  border: 1px solid rgba(248, 250, 252, 0.2);
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(12px);
+}
+
+.hero__badge {
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--px-gold);
+}
+
+.hero__title {
+  font-family: "Orbitron", monospace;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 0.5rem;
+}
+
+.hero__text {
+  line-height: 1.7;
+  color: #cbd5f5;
+}
+
+.hero__orb {
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.hero__orb-core {
+  width: 150px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--px-gold), var(--px-red));
+  filter: blur(0.5px);
+  animation: pulse 6s infinite alternate;
+}
+
+.hero__orb-ring {
+  position: absolute;
+  width: 220px;
+  aspect-ratio: 1;
+  border: 2px dashed rgba(250, 204, 21, 0.6);
+  border-radius: 50%;
+  animation: rotate 14s linear infinite;
+}
+
+@keyframes pulse {
+  to {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(74, 222, 128, 0.3);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  padding: 0 clamp(1rem, 4vw, 5rem) 4rem;
+}
+
+.control-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.panel-card {
+  background: var(--glass);
+  border-radius: 18px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.6);
+}
+
+.panel-card--glass {
+  backdrop-filter: blur(10px);
+}
+
+.controls {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+}
+
+.control select,
+.control input[type="number"],
+.control input[type="range"] {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+  color: #f8fafc;
+  font-size: 1rem;
+}
+
+.control small {
+  color: var(--px-blue);
+  font-weight: 700;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.btn-generate {
+  border: none;
+  padding: 0.85rem 1.25rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  background: linear-gradient(120deg, var(--px-green), var(--px-blue));
+  color: #0b1121;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-generate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(56, 189, 248, 0.4);
+}
+
+.status-list {
+  list-style: none;
+  padding-left: 1rem;
+  margin: 1rem 0 1.5rem;
+  color: #cbd5f5;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.gift-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.gift-card {
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 18px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  /* TODO 2: Füge hier wieder die Pop-Animation hinzu, damit neue Karten lebendig aufpoppen. */
+}
+
+.gift-card__emoji {
+  font-size: 2.5rem;
+  display: inline-block;
+  margin-bottom: 0.4rem;
+}
+
+.gift-card__name {
+  font-family: "Orbitron", monospace;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.gift-card__rarity {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #cbd5f5;
+}
+
+.gift-card__desc {
+  margin: 0.75rem 0;
+  color: #bfdbfe;
+}
+
+.badge {
+  position: absolute;
+  top: 1.25rem;
+  right: 1rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.badge--common {
+  background: rgba(248, 250, 252, 0.12);
+}
+
+.badge--rare {
+  background: rgba(56, 189, 248, 0.25);
+}
+
+.badge--epic {
+  background: rgba(147, 51, 234, 0.35);
+}
+
+.badge--legendary {
+  background: rgba(250, 204, 21, 0.4);
+}
+
+.badge--mystery {
+  bottom: 1rem;
+  top: initial;
+  background: rgba(248, 113, 113, 0.25);
+}
+
+.insights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.insights article {
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 16px;
+  padding: 1.25rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.footer {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 640px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,256 @@
+:root {
+  --frost-blue: #7bdff2;
+  --frost-green: #5bfade;
+  --deep-night: #020617;
+  --snow-white: #f8fbff;
+  --soft-violet: #8b5cf6;
+  --card-bg: rgba(2, 6, 23, 0.65);
+  --border-glow: rgba(91, 250, 222, 0.35);
+  --shadow-strong: 0 20px 45px rgba(2, 10, 40, 0.8);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(circle at top, rgba(13, 110, 253, 0.2), transparent 55%),
+    radial-gradient(circle at 20% 20%, rgba(91, 250, 222, 0.35), transparent 45%),
+    var(--deep-night);
+  color: var(--snow-white);
+  line-height: 1.6;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='rgba(255,255,255,0.14)'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.font-inter {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.aurora {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 10% 20%, rgba(91, 250, 222, 0.25), transparent 30%),
+    radial-gradient(circle at 80% 0%, rgba(139, 92, 246, 0.3), transparent 35%);
+  filter: blur(40px);
+  opacity: 0.7;
+  z-index: -2;
+}
+
+.content-shell {
+  width: min(1200px, 92vw);
+  margin-inline: auto;
+  padding: clamp(1.5rem, 1.5vw, 2.5rem);
+}
+
+.frost-card {
+  background: linear-gradient(135deg, rgba(2, 6, 23, 0.9), rgba(8, 47, 73, 0.6));
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border-glow);
+  box-shadow: var(--shadow-strong);
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+}
+
+header h1 {
+  font-family: "Orbitron", "Inter", sans-serif;
+  font-size: clamp(2rem, 3vw, 3.15rem);
+  margin-bottom: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+nav a {
+  color: var(--snow-white);
+  text-decoration: none;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, color 0.3s ease;
+  font-weight: 600;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  border-color: var(--frost-blue);
+  color: var(--frost-blue);
+}
+
+.eyebrow {
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(248, 251, 255, 0.6);
+  font-size: 0.75rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero__text h2 {
+  font-family: "Orbitron", sans-serif;
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 2vw, 2.5rem);
+}
+
+.hero__card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glow);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.frost-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.95rem 1.75rem;
+  border-radius: 999px;
+  font-weight: 700;
+  color: var(--deep-night);
+  background: var(--frost-green);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  /* TODO 2: Gib dem Button wieder den frostigen Verlauf + 3D-Schatten, damit Hover- und Active-Stati sichtbar werden. */
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1.25rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 251, 255, 0.2);
+  background: rgba(248, 251, 255, 0.05);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.status-indicator.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  border: 1px solid rgba(248, 251, 255, 0.4);
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+}
+
+.blueprint-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.frost-panel {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(91, 250, 222, 0.25);
+}
+
+.timeline {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.timeline-step {
+  border: 1px dashed rgba(248, 251, 255, 0.4);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.button-lab {
+  margin-top: 3rem;
+}
+
+.lab-wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.lab-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.blueprint-output {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(248, 251, 255, 0.15);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  min-height: 220px;
+}
+
+.footer {
+  border-top: 1px solid rgba(248, 251, 255, 0.2);
+  text-align: center;
+  margin-top: 4rem;
+  padding-bottom: 3rem;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .header-flex {
+    flex-direction: column;
+  }
+
+  nav ul {
+    flex-flow: row wrap;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}

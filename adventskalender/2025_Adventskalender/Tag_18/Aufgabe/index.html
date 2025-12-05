@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eiskristall-Vorhang – Tag 18</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body class="bg-slate-950 text-white font-['Orbitron']">
+    <div class="relative min-h-screen overflow-hidden">
+      <div class="absolute inset-0 opacity-80" id="sparkleGrid" aria-hidden="true"></div>
+      <div class="absolute inset-0 floating-lights" aria-hidden="true"></div>
+      <div class="relative z-10 px-6 py-10 lg:px-14 max-w-6xl mx-auto">
+        <header class="text-center space-y-6">
+          <p class="text-sm tracking-[0.4em] text-emerald-200 uppercase">Tag 18 · Array-Symphonie</p>
+          <h1 class="text-4xl lg:text-6xl font-extrabold text-cyan-100 drop-shadow-lg">
+            Der atmende Vorhang aus kristallinen Eiszapfen
+          </h1>
+          <p class="text-base leading-relaxed text-slate-200 max-w-3xl mx-auto">
+            Die festliche Halle ist vom Schneesturm umhüllt und vor dir hängt eine Wand aus Eiszapfen.
+            Mit JavaScript-Arrays steuerst du jeden Kristall wie einen Notenblock: du erzeugst neue,
+            sortierst sie nach Länge, filterst sie wie magische Frequenzen und lässt den Wind durch sie singen.
+          </p>
+        </header>
+
+        <main class="mt-12 grid gap-10">
+          <section class="frost-panel">
+            <div class="flex flex-wrap gap-6 items-center justify-between">
+              <div>
+                <h2 class="text-xl text-cyan-100 font-semibold">Array-Status</h2>
+                <p class="text-slate-200 text-sm">
+                  Aktuelle Eiszapfen in deinem Speicher: <span id="lengthBadge" class="text-emerald-300 font-bold">0</span>
+                </p>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="text-center">
+                  <p class="text-xs text-slate-300">Durchschnitt</p>
+                  <p id="avgLength" class="text-3xl font-bold text-sky-200">0 cm</p>
+                </div>
+                <div class="w-40">
+                  <div class="text-xs text-slate-300 mb-1">Melodie-Level</div>
+                  <div class="h-2 bg-white/10 rounded-full">
+                    <div id="melodyMeter" class="h-2 bg-gradient-to-r from-cyan-400 to-sky-600 rounded-full transition-all duration-500"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 text-sm text-slate-200" id="arrayInspector"></div>
+          </section>
+
+          <section class="grid gap-6 lg:grid-cols-2">
+            <article class="frost-panel space-y-4">
+              <h3 class="text-lg font-semibold text-cyan-100 flex items-center gap-2">
+                <span class="text-2xl">🧊</span> Kristallkontrolle
+              </h3>
+              <p class="text-sm text-slate-300">
+                Nutze Array-Methoden wie <span class="font-bold text-white">push</span>,
+                <span class="font-bold text-white">pop</span>, <span class="font-bold text-white">sort</span> und
+                <span class="font-bold text-white">filter</span>, um die Sammlung zu dirigieren.
+              </p>
+              <div class="grid grid-cols-2 gap-3">
+                <button class="control-btn" id="addCluster">Neue Kristallreihe einfrieren</button>
+                <button class="control-btn" id="removeLast">Letzten Eiszapfen abschmelzen</button>
+                <button class="control-btn" id="sortIcicles">Sortiere nach Länge</button>
+                <button class="control-btn" id="shuffleIcicles">Melodie neu mischen</button>
+                <button class="control-btn col-span-2" id="filterToggle">Filter: Nur extra lange anzeigen</button>
+                <button class="control-btn col-span-2" id="resetWall">Zurück zum Urmuster</button>
+              </div>
+            </article>
+
+            <!-- TODO 1: Baue hier einen zweiten Artikel mit einer "Loop-Narrator"-Überschrift und einem
+                 div.loop-console mit der ID "loopNarration", damit die Log-Meldungen sichtbar werden. -->
+          </section>
+
+          <section class="frost-panel overflow-hidden">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-semibold text-cyan-100">Visueller Vorhang</h3>
+              <p class="text-sm text-slate-300">Hover über einen Zapfen für Details</p>
+            </div>
+            <div class="icicle-stage" id="icicleWall" aria-live="polite"></div>
+          </section>
+
+          <section class="frost-panel grid gap-4 lg:grid-cols-2">
+            <div>
+              <h4 class="text-base font-semibold text-cyan-100">📚 Lernpunkte heute</h4>
+              <ul class="list-disc list-inside text-sm text-slate-300 space-y-1">
+                <li>Arrays speichern strukturierte Daten – Länge, Klangfarbe und Glitzer-Level</li>
+                <li>Loops übernehmen Wiederholungen, damit du nicht jeden Kristall einzeln setzen musst</li>
+                <li>Array-Methoden reagieren sofort: Sortier-Taktik, Filter-Zauber und spontane Push/Pop-Aktionen</li>
+                <li>Visuelles Feedback zeigt dir, wie Code und Design zusammen spielen</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-base font-semibold text-cyan-100">🎵 Aktives Pattern</h4>
+              <div class="grid grid-cols-2 gap-3 text-sm text-slate-300" id="patternDigest"></div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

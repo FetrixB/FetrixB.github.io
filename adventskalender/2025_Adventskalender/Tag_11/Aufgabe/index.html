@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 11 · Portalwald mit Parallax</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              night: '#03071e',
+              twilight: '#0f233d',
+              aurora: '#5efce8',
+              frost: '#c0e9ff',
+              ember: '#ff8f5e'
+            },
+            fontFamily: {
+              orbitron: ['Orbitron', 'sans-serif'],
+              space: ['\"Space Grotesk\"', 'system-ui']
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-night text-white font-space">
+    <div class="star-noise" aria-hidden="true"></div>
+    <div class="page-shell">
+      <header class="page-header">
+        <div>
+          <p class="sup">Tag 11 · Mehrdimensionale Waldbrücke</p>
+          <h1>Portalwald Parallax-Labor</h1>
+          <p>
+            Der Waldwächter vertraut dir den Scroll-Schlüssel an. Mit Ebenen, Z-Index und
+            Transform3D lässt du Bäume unterschiedlich schnell reagieren – genau wie Portale auf
+            verschiedenen Y-Koordinaten in Minecraft.
+          </p>
+        </div>
+        <div class="header-badges">
+          <div>
+            <span>Ebenen</span>
+            <strong>5</strong>
+          </div>
+          <div>
+            <span>Scroll-Ziel</span>
+            <strong>60 fps</strong>
+          </div>
+          <button class="header-cta" type="button" id="dimension-toggle" aria-pressed="false">
+            Dimension wechseln
+          </button>
+        </div>
+      </header>
+
+      <main class="main-grid">
+        <section class="parallax-stage" id="parallax-stage" aria-label="Parallax-Wald">
+          <div class="layer layer--sky" data-depth="0.05"></div>
+          <div class="layer layer--stars" data-depth="0.08"></div>
+          <div class="layer layer--aurora" data-depth="0.12"></div>
+          <div class="layer layer--mountains" data-depth="0.3"></div>
+          <div class="layer layer--backtrees" data-depth="0.45"></div>
+          <!-- TODO 1: Füge hier die Mittelwald-Ebene mit class "layer--midtrees" und data-depth="0.7" ein, damit Felix den räumlichen Übergang komplettiert. -->
+          <div class="layer layer--foreground" data-depth="1">
+            <div class="campfire">
+              <span>🔥</span>
+              <p>Portalenergie geladen</p>
+            </div>
+            <div class="scroll-indicator" role="status" aria-live="polite">
+              <span>Schnapp dir die Scroll-Magie ↓</span>
+            </div>
+          </div>
+          <div class="layer layer--mist" data-depth="0.9"></div>
+          <button class="scroll-hint" type="button">Zieh nach unten, um die Tiefenwirkung zu fühlen</button>
+        </section>
+
+        <section class="control-grid">
+          <article class="control-card">
+            <div class="card-label">Scroll-Sensor</div>
+            <p>
+              Dieses HUD verrät dir, wie weit der Besucher bereits gescrollt hat und welche Ebene
+              gerade aktiv nachzieht.
+            </p>
+            <div class="scroll-meter" data-scroll-meter>
+              <div class="scroll-meter__track">
+                <div class="scroll-meter__fill"></div>
+              </div>
+              <strong>0%</strong>
+            </div>
+            <p id="depth-report" class="depth-report">Starte einen Scroll, um den Wald zu bewegen.</p>
+          </article>
+
+          <article class="control-card">
+            <div class="card-label">Layer-Register</div>
+            <ul class="layer-list">
+              <li data-layer-badge="5">
+                <span>🌌 Hintergrund</span>
+                <small>z-index: -40</small>
+              </li>
+              <li data-layer-badge="25">
+                <span>⛰️ Berge</span>
+                <small>z-index: -20</small>
+              </li>
+              <li data-layer-badge="55">
+                <span>🌲 Mittelwald</span>
+                <small>z-index: -5</small>
+              </li>
+              <li data-layer-badge="75">
+                <span>🔥 Vordergrund</span>
+                <small>z-index: 5</small>
+              </li>
+            </ul>
+          </article>
+
+          <article class="control-card">
+            <div class="card-label">Geschwindigkeits-Magie</div>
+            <label for="speed-control">Wie stark sollen alle Layer reagieren?</label>
+            <input type="range" id="speed-control" min="30" max="120" value="70" />
+            <div class="slider-value"><span id="speed-value">70%</span> Bewegungskraft</div>
+            <p class="hint">
+              Tipp: Niedrige Werte = ruhiger Hintergrund, hohe Werte = dramatischer Tiefeneffekt.
+            </p>
+          </article>
+        </section>
+
+        <section class="dimension-panel">
+          <div>
+            <h2>Dimensionen &amp; Transform-Origin</h2>
+            <p>
+              Jeder Layer bekommt einen eigenen Ursprungspunkt, damit Drehungen aussehen, als
+              stammten sie aus einer anderen Ebene. Der Schalter verriegelt zusätzlich das Farbset.
+            </p>
+            <p class="dimension-state">Status: <span id="dimension-label">Frost-Ebene aktiv</span></p>
+          </div>
+          <div class="badge-grid">
+            <div class="depth-badge" data-layer-badge="20">
+              <span>origin: top center</span>
+              <strong>Himmel</strong>
+            </div>
+            <div class="depth-badge" data-layer-badge="40">
+              <span>origin: center</span>
+              <strong>Berge</strong>
+            </div>
+            <div class="depth-badge" data-layer-badge="60">
+              <span>origin: bottom center</span>
+              <strong>Wald</strong>
+            </div>
+            <div class="depth-badge" data-layer-badge="85">
+              <span>origin: bottom</span>
+              <strong>Pfad</strong>
+            </div>
+          </div>
+          <div class="tree-controller">
+            <label for="tree-range">Baumdichte justieren</label>
+            <input type="range" id="tree-range" min="3" max="12" value="7" />
+            <p id="tree-output">Hintergrund-Bäume multipliziert: 7x</p>
+          </div>
+        </section>
+
+        <section class="spirit-gallery" aria-label="Portalpartikel">
+          <img
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80"
+            alt="Magische Polarlichter"
+            class="dimension-token"
+            loading="lazy"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80"
+            alt="Verschneite Baumspitzen"
+            class="dimension-token"
+            loading="lazy"
+          />
+          <img
+            src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
+            alt="Nebeliger Winterpfad"
+            class="dimension-token"
+            loading="lazy"
+          />
+          <div class="gallery-note">
+            <h3>simpleParallax.js in Aktion</h3>
+            <p>
+              Diese schwebenden Portalkacheln bekommen eine zusätzliche Tiefenebene, um zu zeigen,
+              wie eine Library mehrere Elemente gleichzeitig bewegen kann.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="page-footer">
+        <p>
+          📍 Teste die Aufgabe unter http://192.168.0.20:8000/2025_Adventskalender/Tag_11/ — achte
+          auf fixierte Positionen und Layer.
+        </p>
+        <p>Baue eigene Ebenen, ändere Scroll-Geschwindigkeiten und sammle Daten mit dem HUD.</p>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.2/dist/simpleParallax.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

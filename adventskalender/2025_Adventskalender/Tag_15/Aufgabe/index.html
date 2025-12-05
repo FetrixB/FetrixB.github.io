@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 15 – Redstone Logic Control</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              orbitron: ['\"Orbitron\"', 'sans-serif'],
+              roboto: ['\"Roboto\"', 'sans-serif'],
+            },
+            colors: {
+              emeraldPixel: '#3af5a8',
+              redstone: '#f87171',
+              obsidian: '#080915',
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-slate-950 text-white">
+    <div class="pixel-overlay" aria-hidden="true"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+      <header class="text-center space-y-4">
+        <p class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-emerald-500/20 text-emeraldPixel text-sm font-semibold tracking-wide">
+          ⚡ Tag 15 · Redstone trifft JavaScript
+        </p>
+        <h1 class="text-3xl sm:text-4xl font-orbitron font-semibold text-emeraldPixel">
+          Webstone-Lampenlabor
+        </h1>
+        <p class="text-lg text-slate-200 max-w-3xl mx-auto">
+          Der Dorf-Ingenieur braucht dich! Mit Variablen, Datentypen und Logik baust du ein Redstone-Dashboard,
+          das Hebel, Signalstärke und Lampen wie in Minecraft steuert – nur viel präziser.
+        </p>
+      </header>
+
+      <section class="minecraft-card flex flex-col gap-6">
+        <div class="grid gap-4 sm:grid-cols-3">
+          <article class="info-card">
+            <h2>🔁 Variablen = Hebel</h2>
+            <p>Mit <code>let</code> und <code>const</code> speicherst du Zustände wie "Hebel an" oder "Stärke 8".</p>
+          </article>
+          <article class="info-card">
+            <h2>🧱 Datentypen = Blockarten</h2>
+            <p><strong>Boolean</strong> schaltet wie ein Hebel, <strong>Number</strong> speichert Stärke 0-15 und <strong>String</strong> erklärt dem Spieler, was passiert.</p>
+          </article>
+          <article class="info-card">
+            <h2>💡 Console.log = Lampe</h2>
+            <p>Die Browser-Konsole leuchtet auf wie eine Redstone-Lampe und zeigt dir den aktuellen Zustand deines Codes.</p>
+          </article>
+        </div>
+        <p class="text-slate-300 text-sm">Tipp: Öffne das DevTools-Console-Fenster, um zusätzliche Debug-Lampen zu sehen!</p>
+      </section>
+
+      <section class="grid gap-6 lg:grid-cols-3">
+        <div class="minecraft-card flex flex-col gap-4">
+          <div>
+            <h2 class="text-2xl font-orbitron text-emeraldPixel">⚙️ Hebel & Werte</h2>
+            <p class="text-slate-300">Klicke auf die Hebel oder ändere die Signal-Stärke, um die Lampen-Logik zu beeinflussen.</p>
+          </div>
+          <div class="flex flex-col gap-3" id="leverPanel">
+            <button class="lever-button" data-lever="power">
+              <span class="label">Strom-Hebel</span>
+              <span class="state">AUS</span>
+            </button>
+            <button class="lever-button" data-lever="signal">
+              <span class="label">Logik-Schalter</span>
+              <span class="state">AUS</span>
+            </button>
+            <!-- TODO 1: Füge hier den Override-Hebel als dritten Button ein, damit der NOT-Zauber funktioniert. -->
+          </div>
+          <div class="space-y-2">
+            <label for="strength" class="text-sm uppercase tracking-wider text-slate-300">Redstone-Stärke <span id="strengthValue" class="text-emeraldPixel font-bold">7</span></label>
+            <input id="strength" type="range" min="0" max="15" value="7" class="w-full">
+            <p class="text-xs text-slate-400">Ab Stärke 8 ist das Signal stark genug, um selbst schwere Dorf-Tore zu bewegen.</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold">🪄 Console-Log</h3>
+            <ul id="logList" class="console-list"></ul>
+          </div>
+        </div>
+
+        <div class="minecraft-card lg:col-span-2">
+          <div class="flex flex-wrap gap-3 mb-5" id="logicOverview">
+            <div class="logic-chip" data-logic="and">
+              <span class="title">AND</span>
+              <p>Alle Hebel müssen an sein</p>
+              <code>power && signal && strength >= 8</code>
+            </div>
+            <div class="logic-chip" data-logic="or">
+              <span class="title">OR</span>
+              <p>Mindestens ein Hebel</p>
+              <code>power || override</code>
+            </div>
+            <div class="logic-chip" data-logic="not">
+              <span class="title">NOT</span>
+              <p>Gegenteil nutzen</p>
+              <code>!override</code>
+            </div>
+          </div>
+          <div class="grid gap-4 md:grid-cols-2" id="lampGrid">
+            <article class="lamp-card" data-lamp="gate">
+              <div class="lamp-core" aria-hidden="true"></div>
+              <div>
+                <h3 class="text-xl font-bold">Dorf-Tor</h3>
+                <p class="text-sm text-slate-300">
+                  Öffnet nur, wenn Strom & Signal aktiv sind und die Stärke mindestens 8 beträgt (AND-Check!).
+                </p>
+                <p class="status-text">Status: wartet...</p>
+              </div>
+            </article>
+            <article class="lamp-card" data-lamp="alarm">
+              <div class="lamp-core" aria-hidden="true"></div>
+              <div>
+                <h3 class="text-xl font-bold">Schneegolem-Alarm</h3>
+                <p class="text-sm text-slate-300">
+                  Meldet Eindringlinge, sobald einer der Hebel Strom liefert oder Override aktiv ist (OR-Check).
+                </p>
+                <p class="status-text">Status: wartet...</p>
+              </div>
+            </article>
+            <article class="lamp-card" data-lamp="secret">
+              <div class="lamp-core" aria-hidden="true"></div>
+              <div>
+                <h3 class="text-xl font-bold">Geheimtür</h3>
+                <p class="text-sm text-slate-300">
+                  Bleibt versteckt, solange der Override aus ist und Strom ankommt (NOT + AND).
+                </p>
+                <p class="status-text">Status: wartet...</p>
+              </div>
+            </article>
+            <article class="lamp-card" data-lamp="mood">
+              <div class="lamp-core" aria-hidden="true"></div>
+              <div>
+                <h3 class="text-xl font-bold">Festliche Stimmung</h3>
+                <p class="text-sm text-slate-300">
+                  Wird wärmer, je höher du die Redstone-Stärke drehst (Number & Styling).
+                </p>
+                <p class="status-text">Status: wartet...</p>
+              </div>
+            </article>
+          </div>
+          <p id="logicNarration" class="mt-4 text-lg text-slate-100 font-roboto"></p>
+        </div>
+      </section>
+
+      <section class="minecraft-card">
+        <h2 class="text-2xl font-orbitron text-emeraldPixel mb-3">🧠 Warum das wichtig ist</h2>
+        <p class="text-slate-200 mb-4">
+          Jede Interaktion hier benutzt <strong>Variablen</strong> (<code>let strength</code>), <strong>Datentypen</strong> (Boolean für Hebel),
+          und <strong>Operatoren</strong> (<code>&&</code>, <code>||</code>, <code>!</code>). Das ist genau das Werkzeug-Set, das du später für Mini-Games und große Webprojekte brauchst.
+        </p>
+        <div class="grid gap-4 md:grid-cols-2">
+          <article class="info-card">
+            <h3 class="font-semibold">📥 DOM-Zauber</h3>
+            <p>Mit <code>document.getElementById</code> und <code>querySelector</code> suchst du gezielt Elemente – wie wenn du einen bestimmten Block im Inventar suchst.</p>
+          </article>
+          <article class="info-card">
+            <h3 class="font-semibold">🎛️ Style-Feedback</h3>
+            <p><code>element.style</code> und <code>classList</code> verändern Farben im Moment des Klicks. Du spürst sofort, was die Logik macht.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

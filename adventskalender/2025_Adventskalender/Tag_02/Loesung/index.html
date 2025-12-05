@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 02 – Das Dorfportal wiederbeleben</title>
+    <meta
+      name="description"
+      content="Lerne Block- und Inline-Elemente, CSS-Klassen und Glow-Animationen kennen, um das Minecraft-Weihnachtsportal zu aktivieren."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-night text-snow min-h-screen">
+    <header class="hero">
+      <div>
+        <p class="hero-label">Minecraft Weihnachtswelt · Tag 02</p>
+        <h1 class="hero-title">Baue das violette Dorfportal wieder auf ✨</h1>
+        <p class="hero-text">
+          Der Portalbauer braucht deine HTML- und CSS-Magie! Setze Block-Elemente als stabilen Rahmen,
+          ordne die schwebenden Inline-Kristalle und hauche dem Nether-Licht mit Glow-Animationen neues Leben ein.
+        </p>
+      </div>
+      <div class="hero-chip">Fokus: Block vs Inline · Klassen · Glow</div>
+    </header>
+
+    <main class="main-content">
+      <section class="portal-section">
+        <h2 class="section-title">1. Portal-Rahmen (Block) + Kristalle (Inline)</h2>
+        <p class="section-text">
+          Das gesamte Portal ist ein Block-Element (<code>&lt;div id="portalFrame"&gt;</code>). Darin leben viele kleine
+          Inline-Kristalle (<code>&lt;span class="portal-crystal"&gt;</code>), die nebeneinander schweben können.
+        </p>
+
+        <div id="portalFrame" class="portal-frame animate__animated animate__fadeIn">
+          <div id="portalEnergy" class="portal-energy animate__animated animate__pulse animate__infinite">
+            <div class="crystal-row">
+              <span class="portal-crystal" data-message="Nord-Kristall meldet stabile Energie">◈</span>
+              <span class="portal-crystal" data-message="Ost-Kristall verstärkt den Glow">◈</span>
+              <span class="portal-crystal" data-message="Süd-Kristall sendet Funken">◈</span>
+              <span class="portal-crystal" data-message="West-Kristall summt zufrieden">◈</span>
+            </div>
+            <div class="crystal-row">
+              <span class="portal-crystal" data-message="Mini-Schimmer aktiviert">◈</span>
+              <span class="portal-crystal" data-message="Kristall-Brücke stabil">◈</span>
+              <span class="portal-crystal" data-message="Portalkern glüht">◈</span>
+              <span class="portal-crystal" data-message="Lichtfunken tanzen">◈</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="portal-controls">
+          <button id="portalButton" class="portal-button">Portal starten ✨</button>
+          <p id="portalStatus" class="portal-status">Das Portal schläft noch. Tappe auf einen Kristall für Infos!</p>
+        </div>
+      </section>
+
+      <section class="concept-grid">
+        <article class="card">
+          <h3>Block-Element</h3>
+          <p>
+            Block-Elemente wie <code>&lt;div&gt;</code> nehmen eine komplette Zeile ein – perfekt für Rahmen, Container oder
+            Abschnitte. Stell dir riesige Minecraft-Blöcke vor, die man nicht stapeln kann, ohne sie untereinander zu setzen.
+          </p>
+          <div class="block-demo">Ich bin ein Block und fülle die ganze Breite!</div>
+        </article>
+        <article class="card">
+          <h3>Inline-Element</h3>
+          <p>
+            Inline-Elemente wie <code>&lt;span&gt;</code> nutzen nur den Platz, den ihr Inhalt braucht. Wie leuchtende Items,
+            die frei schweben können – deshalb nutzen wir sie für Kristalle.
+          </p>
+          <div class="inline-demo">
+            <span class="inline-crystal">◈ Kristall A</span>
+            <span class="inline-crystal">◈ Kristall B</span>
+            <span class="inline-crystal">◈ Kristall C</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="class-id-section">
+        <h2 class="section-title">2. Klassen vs. IDs</h2>
+        <div class="legend">
+          <div>
+            <h4>#portalFrame</h4>
+            <p>Nur einmal vergeben – er hält alles zusammen und bekommt einen stabilen Obsidian-Rahmen.</p>
+          </div>
+          <div>
+            <h4>.portal-crystal</h4>
+            <p>Eine Klasse für alle Kristalle. Wir stylen sie einmal und sie sehen überall gleich magisch aus.</p>
+          </div>
+        </div>
+        <div class="tag-playground">
+          <span class="info-tag" data-type="block">Block</span>
+          <span class="info-tag" data-type="inline">Inline</span>
+          <span class="info-tag" data-type="glow">Glow</span>
+          <span class="info-tag" data-type="animate">Animate.css</span>
+          <span class="info-tag" data-type="tailwind">Tailwind Utility</span>
+        </div>
+      </section>
+
+      <section class="instructions">
+        <h2 class="section-title">3. Deine Zauberformeln</h2>
+        <div class="steps">
+          <div>
+            <h4>HTML</h4>
+            <p>Baue strukturierte Abschnitte, nutze IDs für einzigartige Bereiche und Klassen für wiederkehrende Kristalle.</p>
+          </div>
+          <div>
+            <h4>CSS</h4>
+            <p>
+              Kombiniere Glow-Shadow, Farbverläufe und Animationen. Die Kristalle bekommen einen pulsierenden Rahmen wie in
+              einem echten Nether-Portal.
+            </p>
+          </div>
+          <div>
+            <h4>JavaScript</h4>
+            <p>
+              Überwache Klicks und Hover-Events, aktualisiere Statusmeldungen und lasse Funken fliegen, sobald das Portal
+              aktiv ist.
+            </p>
+          </div>
+        </div>
+        <p class="section-text">
+          Bonus-Interaktion: Wenn du das Portal startest, erzeugt die <code>createSparkle()</code>-Funktion kleine glühende
+          Partikel, die nach oben schweben.
+        </p>
+        <a class="cta" href="../Aufgabe/index.html">Zu Felix' Aufgaben-Version wechseln →</a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Verwendete Bibliotheken: TailwindCSS CDN · Animate.css · Eigene Styles in <code>style.css</code></p>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

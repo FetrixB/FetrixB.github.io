@@ -1,0 +1,485 @@
+:root {
+  --night: #020615;
+  --twilight: #07142d;
+  --aurora: #68ffd0;
+  --aurora-alt: #ff70d0;
+  --spruce-deep: #0d2b2c;
+  --spruce-mid: #0e3e3d;
+  --spruce-light: #1f5c5b;
+  --frost: #dff6ff;
+  --ember: #ffab76;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(104, 255, 208, 0.15), transparent),
+    radial-gradient(circle at 80% 0%, rgba(255, 112, 208, 0.12), transparent),
+    linear-gradient(180deg, var(--night) 0%, #01030b 55%, #08132a 100%);
+  color: #f4f8ff;
+  font-family: "Space Grotesk", "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+}
+
+.page-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.star-noise {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+  background-size: 180px 180px;
+  opacity: 0.3;
+  pointer-events: none;
+  animation: pan-stars 45s linear infinite;
+  z-index: 0;
+}
+
+@keyframes pan-stars {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-200px);
+  }
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding-bottom: 2rem;
+}
+
+.page-header h1 {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-transform: uppercase;
+}
+
+.page-header .sup {
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.header-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.header-badges > div {
+  padding: 1rem 1.1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  min-width: 120px;
+  text-align: center;
+}
+
+.header-cta {
+  border: 1px solid rgba(104, 255, 208, 0.7);
+  padding: 0.9rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(104, 255, 208, 0.18);
+  color: #03121c;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.header-cta:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 112, 208, 0.22);
+}
+
+.main-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.parallax-stage {
+  --tree-density: 7;
+
+  position: relative;
+  height: 70vh;
+  border-radius: 1.75rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  perspective: 1200px;
+  background: radial-gradient(circle at 50% 20%, rgba(104, 255, 208, 0.1), transparent),
+    linear-gradient(180deg, #040d21 10%, #07162c 100%);
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  transform-origin: center;
+  will-change: transform;
+  transition: filter 0.6s ease;
+  pointer-events: none;
+}
+
+.layer--sky {
+  background: linear-gradient(180deg, #03102c 0%, #061536 60%, #020611 100%);
+  z-index: -40;
+}
+
+.layer--stars {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px);
+  background-size: 120px 120px;
+  opacity: 0.4;
+  animation: twinkle 14s linear infinite;
+  z-index: -35;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.layer--aurora {
+  background: radial-gradient(circle at 20% 20%, rgba(104, 255, 208, 0.35), transparent 55%),
+    radial-gradient(circle at 70% 10%, rgba(255, 112, 208, 0.35), transparent 50%);
+  filter: blur(30px);
+  z-index: -30;
+}
+
+.layer--mountains::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #0b203f 0%, #11335c 100%);
+  clip-path: polygon(0% 80%, 15% 55%, 30% 80%, 45% 50%, 65% 85%, 80% 60%, 100% 90%, 100% 100%, 0% 100%);
+}
+
+.layer--mountains {
+  z-index: -20;
+  transform-origin: center;
+}
+
+.layer--backtrees::before,
+.layer--midtrees::before,
+.layer--foreground::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.layer--backtrees::before {
+  background-image: repeating-linear-gradient(
+      -75deg,
+      rgba(22, 90, 101, 0.5) 0%,
+      rgba(22, 90, 101, 0.5) 8%,
+      transparent 8%,
+      transparent calc(8% + calc(var(--tree-density) * 1px))
+    ),
+    linear-gradient(180deg, rgba(18, 71, 76, 0.85) 0%, rgba(5, 20, 22, 0.95) 100%);
+  background-size: calc(160px - var(--tree-density) * 6px) 250px;
+  background-position: 0 20px;
+  opacity: 0.9;
+  filter: blur(2px);
+  z-index: -10;
+}
+
+.layer--midtrees::before {
+  background-image: repeating-linear-gradient(
+      -90deg,
+      rgba(33, 122, 133, 0.65) 0%,
+      rgba(33, 122, 133, 0.65) 12%,
+      transparent 12%,
+      transparent calc(12% + calc(var(--tree-density) * 0.5px))
+    ),
+    linear-gradient(180deg, rgba(17, 58, 62, 0.9) 0%, rgba(6, 26, 28, 0.95) 75%);
+  background-size: calc(120px - var(--tree-density) * 3px) 220px;
+  background-position: 0 40px;
+  z-index: -5;
+}
+
+.layer--foreground {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 2rem;
+  z-index: 5;
+}
+
+.layer--foreground::before {
+  background: linear-gradient(180deg, rgba(12, 38, 40, 0.2) 0%, rgba(3, 10, 12, 0.95) 70%);
+}
+
+.layer--mist::before {
+  content: "";
+  position: absolute;
+  inset: 30% 0 0 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 80%);
+  filter: blur(40px);
+}
+
+.campfire {
+  background: radial-gradient(circle at 30% 20%, rgba(255, 175, 110, 0.6), rgba(52, 16, 0, 0.3));
+  border: 1px solid rgba(255, 175, 110, 0.5);
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  max-width: 220px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+}
+
+.campfire span {
+  font-size: 2rem;
+}
+
+.scroll-indicator {
+  background: rgba(255, 255, 255, 0.07);
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.65rem 1.25rem;
+  border-radius: 999px;
+  color: #f5f5f5;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.scroll-hint:hover {
+  background: rgba(104, 255, 208, 0.15);
+}
+
+.control-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.control-card,
+.dimension-panel,
+.spirit-gallery,
+.page-footer {
+  background: rgba(6, 17, 33, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.card-label {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.75rem;
+}
+
+.scroll-meter {
+  margin-top: 1rem;
+}
+
+.scroll-meter__track {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.scroll-meter__fill {
+  width: var(--scroll-progress, 0%);
+  height: 100%;
+  background: linear-gradient(90deg, var(--aurora), var(--aurora-alt));
+  border-radius: inherit;
+  transition: width 0.4s ease;
+}
+
+.scroll-meter strong {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  font-family: "Orbitron", sans-serif;
+}
+
+.depth-report {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.layer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.layer-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: border 0.3s ease, transform 0.3s ease;
+}
+
+.layer-list li.is-active {
+  border-color: rgba(104, 255, 208, 0.6);
+  transform: translateX(4px);
+}
+
+.control-card input[type="range"],
+.dimension-panel input[type="range"] {
+  width: 100%;
+  margin: 0.5rem 0;
+  accent-color: var(--aurora);
+}
+
+.slider-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dimension-panel {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.depth-badge {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.dimension-state {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.tree-controller label {
+  font-weight: 600;
+}
+
+.spirit-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  align-items: center;
+}
+
+.dimension-token {
+  width: 100%;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.45);
+}
+
+.gallery-note {
+  grid-column: span 3;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.page-footer {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body.dimension-shift .layer--aurora {
+  background: radial-gradient(circle at 30% 20%, rgba(255, 191, 105, 0.35), transparent 55%),
+    radial-gradient(circle at 60% 15%, rgba(78, 248, 255, 0.35), transparent 50%);
+}
+
+body.dimension-shift .campfire {
+  border-color: rgba(104, 255, 208, 0.7);
+}
+
+body.dimension-shift .scroll-hint,
+body.dimension-shift .control-card,
+body.dimension-shift .dimension-panel,
+body.dimension-shift .spirit-gallery,
+body.dimension-shift .page-footer {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .parallax-stage {
+    height: 60vh;
+  }
+
+  .layer--foreground {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .scroll-indicator {
+    align-self: flex-start;
+  }
+
+  .gallery-note {
+    grid-column: span 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer,
+  .scroll-meter__fill,
+  .header-cta,
+  .layer-list li {
+    transition: none;
+    animation: none;
+  }
+}

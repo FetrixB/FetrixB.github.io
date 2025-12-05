@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 02 – Portaltraining</title>
+    <meta
+      name="description"
+      content="Übe Block- und Inline-Elemente, CSS-Klassen und Glow-Animationen, um das Minecraft-Weihnachtsportal zu stärken."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-night text-snow min-h-screen">
+    <header class="hero">
+      <div>
+        <p class="hero-label">Minecraft Weihnachtswelt · Tag 02</p>
+        <h1 class="hero-title">Hilf den Portal-Elfen beim Training</h1>
+        <p class="hero-text">
+          Du übst heute, wie Block-Elemente Bereiche strukturieren und Inline-Elemente wie Kristalle frei schweben. Außerdem
+          polierst du Glow-Styles mit Klassen und IDs.
+        </p>
+      </div>
+      <div class="hero-chip">3 TODOs · ca. 15 Minuten</div>
+    </header>
+
+    <main class="main-content">
+      <section class="portal-section">
+        <h2 class="section-title">1. Portal-Rahmen (Block) + Kristalle (Inline)</h2>
+        <p class="section-text">
+          Der Rahmen ist wieder ein Block-Element mit einer einzigartigen ID. Die Kristalle sind Inline-Elemente mit einer
+          gemeinsamen Klasse – damit kannst du sie in einem Rutsch stylen.
+        </p>
+
+        <div id="portalFrame" class="portal-frame animate__animated animate__fadeIn">
+          <div id="portalEnergy" class="portal-energy animate__animated animate__pulse animate__infinite">
+            <div class="crystal-row">
+              <span class="portal-crystal" data-message="Nord-Kristall meldet stabile Energie">◈</span>
+              <span class="portal-crystal" data-message="Ost-Kristall verstärkt den Glow">◈</span>
+              <span class="portal-crystal" data-message="Süd-Kristall sendet Funken">◈</span>
+              <span class="portal-crystal" data-message="West-Kristall summt zufrieden">◈</span>
+            </div>
+            <div class="crystal-row">
+              <span class="portal-crystal" data-message="test">◈</span>
+              <span class="portal-crystal" data-message="besserer test">◈</span>
+              <span class="portal-crystal" data-message="der beste test">◈</span>
+              <span class="portal-crystal" data-message="ein test">◈</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="portal-controls">
+          <button id="portalButton" class="portal-button">Portal starten ✨</button>
+          <p id="portalStatus" class="portal-status">Das Portal schläft noch. Tappe auf einen Kristall für Infos!</p>
+        </div>
+      </section>
+
+      <section class="concept-grid">
+        <article class="card">
+          <h3>Block-Element</h3>
+          <p>Denke an riesige Minecraft-Blöcke, die jeweils eine ganze Reihe beanspruchen.</p>
+          <div class="block-demo">Ich bin ein kompletter Block!</div>
+        </article>
+        <article class="card">
+          <h3>Inline-Element</h3>
+          <p>Inline-Elemente schweben nebeneinander – perfekt für Kristalle und Icons.</p>
+          <div class="inline-demo">
+            <span class="inline-crystal">◈ Kristall A</span>
+            <span class="inline-crystal">◈ Kristall B</span>
+            <span class="inline-crystal">◈ Kristall C</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="class-id-section">
+        <h2 class="section-title">2. Klassen vs. IDs</h2>
+        <div class="legend">
+          <div>
+            <h4>#portalFrame</h4>
+            <p>Der Rahmen existiert genau einmal. IDs benutzt du nur für Unikate.</p>
+          </div>
+          <div>
+            <h4>.portal-crystal</h4>
+            <p>Alle Kristalle teilen sich die gleiche Klasse, damit sie identisch aussehen.</p>
+          </div>
+        </div>
+        <div class="tag-playground">
+          <span class="info-tag" data-type="block">Block</span>
+          <span class="info-tag" data-type="inline">Inline</span>
+          <span class="info-tag" data-type="glow">Glow</span>
+          <span class="info-tag" data-type="animate">Animate.css</span>
+          <span class="info-tag" data-type="tailwind">Tailwind Utility</span>
+        </div>
+      </section>
+
+      <section class="instructions">
+        <h2 class="section-title">3. Deine Zauberformeln</h2>
+        <p class="section-text">
+          HTML strukturiert, CSS lässt es glänzen und JavaScript sorgt für Interaktionen. Aktiviere Schritt für Schritt die
+          TODOs, um die Musterlösung zu erreichen.
+        </p>
+        <a class="cta" href="../Loesung/index.html">Musterlösung ansehen →</a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Bibliotheken: TailwindCSS CDN · Animate.css · Eigene Styles</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

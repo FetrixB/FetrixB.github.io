@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 20 – Magische Crafting-Station</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              emeraldCraft: '#00ffb2',
+              netherFlame: '#ff4d6d',
+              arcticGlow: '#b3f1ff',
+              obsidian: '#0f172a',
+            },
+            fontFamily: {
+              display: ['Orbitron', 'monospace'],
+              body: ['Nunito', 'system-ui', 'sans-serif'],
+            },
+            dropShadow: {
+              forge: '0 0 15px rgba(0, 255, 178, 0.45)',
+              rune: '0 0 25px rgba(255, 77, 109, 0.4)',
+            },
+            boxShadow: {
+              holo: '0 10px 45px rgba(10, 10, 30, 0.45)',
+            },
+          },
+        },
+      };
+    </script>
+    <script src="script.js" defer></script>
+  </head>
+  <body class="min-h-screen bg-slate-950 text-white font-body selection:bg-emeraldCraft/40 selection:text-obsidian">
+    <div class="relative overflow-hidden pb-16">
+      <div class="absolute inset-0 bg-grid"></div>
+      <div class="absolute -bottom-24 -right-24 w-[34rem] h-[34rem] bg-emeraldCraft/20 blur-3xl rounded-full"></div>
+      <div class="absolute -top-10 -left-10 w-[28rem] h-[28rem] bg-netherFlame/20 blur-3xl rounded-full"></div>
+      <header class="relative px-6 sm:px-10 pt-10 pb-6 max-w-6xl mx-auto">
+        <p class="text-sm uppercase tracking-[0.3em] text-emeraldCraft mb-3">Tag 20 · Drag & Drop Crafting</p>
+        <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl text-white drop-shadow-forge">
+          Repariere die leuchtende Crafting-Station der Weihnachts-Elfen 🎄
+        </h1>
+        <p class="mt-4 text-lg text-slate-200 max-w-3xl leading-relaxed">
+          Die Meister-Handwerkerin braucht deine Hilfe! Mit deinem Code verwandelst du eine
+          kaputte Werkbank in eine dynamische Benutzeroberfläche: Items lassen sich per Drag &
+          Drop kombinieren, Attribute verraten geheime Eigenschaften und Rezepte reagieren sofort.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-4">
+          <span class="badge">⚒️ Fokus: createElement</span>
+          <span class="badge">🎯 Data-Attribute</span>
+          <span class="badge">🧲 Drag & Drop API</span>
+          <span class="badge">✨ State-Management</span>
+        </div>
+      </header>
+
+      <main class="relative max-w-6xl mx-auto px-6 sm:px-10 grid gap-8 lg:grid-cols-[1.2fr_1.3fr]">
+        <section class="panel" aria-label="Inventar und Crafting-Gitter">
+          <div class="flex items-center justify-between gap-4 flex-wrap">
+            <div>
+              <h2 class="panel-title">Inventar</h2>
+              <p class="text-sm text-slate-300">
+                Ziehe Items aus dem Inventar auf die Crafting-Slots. Jedes Element trägt seine Infos
+                per <code>data-*</code> Attribut mit sich.
+              </p>
+            </div>
+            <!-- TODO 1: Baue hier den Reset-Button mit data-reset-grid wieder ein, damit Felix alle Slots mit einem Klick leeren kann. -->
+          </div>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2" data-inventory-panel></div>
+
+          <div class="mt-10">
+            <div class="flex items-center justify-between flex-wrap gap-4">
+              <div>
+                <h2 class="panel-title">Crafting-Gitter</h2>
+                <p class="text-sm text-slate-300">
+                  Jeder Slot kann nur einen Gegenstand halten. Doppelklick räumt den Slot.
+                  Kombiniere klug! 🔐
+                </p>
+              </div>
+              <div class="text-right">
+                <span class="text-xs uppercase tracking-[0.3em] text-slate-400">Energielevel</span>
+                <div class="mt-2 w-40 h-2 rounded-full bg-white/10 overflow-hidden">
+                  <div class="h-full energy-bar" data-energy-bar></div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 crafting-grid" data-grid-panel></div>
+          </div>
+        </section>
+
+        <section class="panel space-y-8" aria-label="Rezepte und Ergebnis">
+          <div>
+            <h2 class="panel-title flex items-center gap-2">
+              📜 Rezept-Buch
+              <span class="text-xs font-semibold text-emeraldCraft bg-white/5 px-2 py-0.5 rounded-full">Spoiler</span>
+            </h2>
+            <p class="text-sm text-slate-300">
+              Jeder Eintrag zeigt, welche Kombination funktioniert. Die Rezepte werden mit
+              <code>createElement</code> aufgebaut – so wie ein echter Crafting-Automat.
+            </p>
+            <div class="mt-4 space-y-3" data-recipe-book></div>
+          </div>
+
+          <div>
+            <h2 class="panel-title">✨ Ergebnis</h2>
+            <article class="result-card" data-result-card>
+              <p class="text-sm text-slate-400">Lege Items ab, um das Rezept zu entdecken.</p>
+            </article>
+          </div>
+
+          <div>
+            <h2 class="panel-title">📡 Status-Konsole</h2>
+            <p class="text-sm text-slate-400">
+              Hier landet jede Statusmeldung des Crafting-Systems. Nutze sie wie das Chat-Fenster in
+              Minecraft, um zu verstehen was passiert.
+            </p>
+            <ul class="event-log" data-event-log></ul>
+          </div>
+        </section>
+      </main>
+
+      <footer class="relative max-w-6xl mx-auto px-6 sm:px-10 mt-12 text-center text-xs text-slate-500">
+        http://192.168.0.20:8000/2025_Adventskalender/Tag_20/Loesung/
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,404 @@
+:root {
+  --panel-bg: rgba(15, 23, 42, 0.8);
+  --glass-border: rgba(148, 163, 184, 0.35);
+  --accent-green: #59f6b7;
+  --accent-gold: #f8c86f;
+  --accent-blue: #60a5fa;
+  --stage-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0f172a, #020617 55%);
+}
+
+.page-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.25rem 5rem;
+}
+
+.hero h1 {
+  text-shadow: 0 6px 24px rgba(96, 165, 250, 0.3);
+}
+
+.rune-lab {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 4rem;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.lab-body {
+  background: linear-gradient(160deg, rgba(15, 118, 110, 0.35), rgba(71, 85, 105, 0.35));
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  padding: 2rem;
+  box-shadow: var(--stage-shadow);
+  backdrop-filter: blur(12px);
+}
+
+/* Bühne für alle GSAP-gesteuerten Layer */
+.rune-stage {
+  position: relative;
+  height: 320px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: radial-gradient(circle at 20% 20%, rgba(248, 200, 111, 0.4), rgba(3, 9, 28, 0.95));
+}
+
+.rune-backdrop {
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml,%3Csvg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg"%3E%3Crect width="160" height="160" fill="none" stroke="%234ade80" stroke-opacity="0.14" stroke-width="1"/%3E%3C/svg%3E')
+    repeat;
+  opacity: 0.25;
+}
+
+.rune-pulse {
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(89, 246, 183, 0.45), rgba(3, 9, 28, 0));
+  filter: blur(12px);
+}
+
+.rune-ring {
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  border: 3px solid rgba(248, 200, 111, 0.5);
+  box-shadow: 0 0 40px rgba(248, 200, 111, 0.35);
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+}
+
+.rune-engraving {
+  width: 120px;
+  height: 120px;
+  border-radius: 24px;
+  background: rgba(3, 7, 18, 0.8);
+  border: 2px solid rgba(148, 163, 184, 0.4);
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 24px rgba(96, 165, 250, 0.35);
+}
+
+.rune-glyph {
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--accent-green);
+}
+
+.rune-orbit {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rune-orb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  box-shadow: 0 0 16px rgba(96, 165, 250, 0.7);
+}
+
+.rune-shard-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.rune-shard {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  background: var(--accent-gold);
+  opacity: 0.5;
+  animation: sparkle 3s linear infinite;
+}
+
+.stage-hud {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.hud-card {
+  background: var(--panel-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 1rem 1.25rem;
+}
+
+.hud-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: rgba(226, 232, 240, 0.8);
+  text-transform: uppercase;
+}
+
+.hud-value {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  margin-top: 0.4rem;
+}
+
+.hud-detail {
+  font-size: 0.85rem;
+  color: rgba(226, 232, 240, 0.8);
+  margin-top: 0.35rem;
+}
+
+.hud-progress {
+  grid-column: 1 / -1;
+  background: var(--panel-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 1rem 1.25rem;
+}
+
+.progress-track {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.35);
+  margin-top: 0.75rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+/* Stellpult für Timeline-Steuerung */
+.control-deck {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.control-button {
+  background: linear-gradient(120deg, rgba(89, 246, 183, 0.25), rgba(96, 165, 250, 0.25));
+  color: #f8fafc;
+  border: 1px solid rgba(89, 246, 183, 0.5);
+  border-radius: 999px;
+  padding: 0.7rem 1.6rem;
+  font-weight: 600;
+  transition: transform 150ms ease, border-color 150ms ease;
+}
+
+.control-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-gold);
+}
+
+.control-button--ghost {
+  background: transparent;
+  border-color: rgba(248, 200, 111, 0.5);
+}
+
+.speed-dial {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(248, 200, 111, 0.3);
+}
+
+.speed-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.speed-dial input {
+  accent-color: var(--accent-green);
+}
+
+.speed-value {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.95rem;
+}
+
+.timeline-panel {
+  background: rgba(2, 6, 23, 0.6);
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  padding: 2rem;
+  box-shadow: var(--stage-shadow);
+}
+
+.panel-eyebrow {
+  letter-spacing: 0.5em;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: rgba(248, 200, 111, 0.9);
+}
+
+.panel-title {
+  font-size: 2rem;
+  margin: 0.6rem 0 1rem;
+}
+
+.panel-copy {
+  color: rgba(226, 232, 240, 0.85);
+  font-size: 0.95rem;
+}
+
+.phase-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Timeline-Schritte erhalten einen aktiven Zustand per JS */
+.phase-list li {
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: rgba(15, 23, 42, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.phase-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.1rem;
+  color: rgba(248, 200, 111, 0.9);
+}
+
+/* TODO 2: Markiere das aktive Timeline-Listenelement wieder sichtbar (Rahmen + Hintergrund). */
+
+.info-card {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  min-height: 220px;
+}
+
+.info-eyebrow {
+  letter-spacing: 0.5em;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.8);
+}
+
+.info-title {
+  font-size: 1.4rem;
+  margin: 0.6rem 0;
+}
+
+.info-copy {
+  color: rgba(226, 232, 240, 0.85);
+  font-size: 0.95rem;
+}
+
+.info-code {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--accent-green);
+}
+
+.scroll-lab {
+  margin-top: 4rem;
+  padding: 2.5rem;
+  border-radius: 28px;
+  border: 1px solid var(--glass-border);
+  background: rgba(2, 6, 23, 0.7);
+}
+
+.scroll-lab__title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.scroll-lab__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.scroll-card {
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  padding: 1.2rem;
+  background: rgba(15, 23, 42, 0.75);
+  min-height: 160px;
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+    transform: translate(-10px, 10px) scale(0.6);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(10px, -15px) scale(1.2);
+  }
+}
+
+@media (max-width: 1024px) {
+  .rune-lab {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .control-deck {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .control-button,
+  .speed-dial {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rune-shard,
+  .rune-orb,
+  .progress-fill {
+    animation: none;
+    transition: none;
+  }
+}

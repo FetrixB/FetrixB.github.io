@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 07 – Der zauberhafte Scroll-Schlitten</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-slate-950 text-slate-50 font-inter">
+    <div class="constellation constellation-left" aria-hidden="true"></div>
+    <div class="constellation constellation-right" aria-hidden="true"></div>
+
+    <header class="relative z-10 max-w-5xl mx-auto px-6 pt-16 pb-12 text-center">
+      <p class="tracking-[0.35em] text-xs text-emerald-200 uppercase mb-4">Tag 07 · Scrollmagie</p>
+      <h1 class="font-orbitron text-3xl md:text-5xl leading-tight text-emerald-100">
+        Erwecke den legendären Schlitten Teil für Teil
+      </h1>
+      <p class="mt-6 text-base md:text-lg text-slate-200 max-w-3xl mx-auto">
+        Jeder Block dieses Schlittens reagiert auf deine Scrollbewegung. Mit AOS-Animationen,
+        fein getimten Delays und einer Prise Intersection Observer erzählst du eine filmreife Geschichte,
+        genau wie eine verzauberte Schriftrolle in der Minecraft-Schneewelt.
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <button id="scroll-hint" class="btn-primary">✨ Starte die Scroll-Zeremonie</button>
+        <button id="spark-toggle" class="btn-ghost">❄️ Sternenfunken umschalten</button>
+      </div>
+    </header>
+
+    <main id="story-scroll" class="relative z-10 max-w-5xl mx-auto px-6 pb-20 space-y-16">
+      <section class="grid md:grid-cols-[1fr_1.2fr] gap-8 items-center" data-aos="fade-up" data-aos-duration="1200">
+        <div>
+          <p class="text-sm text-emerald-200 uppercase tracking-[0.3em]">Scroll-Runen</p>
+          <h2 class="font-orbitron text-2xl md:text-3xl text-white mt-2">Magie in Echtzeit sichtbar machen</h2>
+          <p class="text-slate-300 mt-4">
+            Die Fortschritts-Rune empfängt Signale vom Intersection Observer und zeigt Felix, wie viel
+            Schlittenmagie schon aktiviert wurde. Jedes sichtbare Story-Panel füllt den Balken, genau wie
+            Erfahrungspunkte in Minecraft.
+          </p>
+        </div>
+        <div class="rune-panel">
+          <div class="rune-progress-track" aria-hidden="true">
+            <div class="rune-progress-fill" style="width: 0%"></div>
+          </div>
+          <p id="rune-label" class="mt-3 text-sm text-emerald-200">0% Magie</p>
+          <div class="rune-icons" role="list">
+            <span data-rune="frame">🛠️ Rahmen</span>
+            <span data-rune="engine">⚡ Triebwerk</span>
+            <span data-rune="cargo">🎁 Laderaum</span>
+            <span data-rune="flight">🌌 Testflug</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="space-y-10">
+        <article
+          class="story-card"
+          data-aos="fade-up"
+          data-aos-delay="0"
+          data-aos-duration="900"
+          data-index="0"
+        >
+          <p class="story-label">01 · Gestell</p>
+          <h3>Der Netherite-Rahmen erhebt sich</h3>
+          <p>
+            Die Grundstruktur besteht aus leuchtenden Netherite-Platten. Sie gleiten von unten nach oben in die Szene,
+            damit der Blick des Betrachters geführt wird. Ein sanfter Delay sorgt dafür, dass Felix genug Zeit hat,
+            Details wahrzunehmen.
+          </p>
+          <ul>
+            <li>Animation: <span>data-aos="fade-up"</span></li>
+            <li>Timing: <span>0ms Delay</span></li>
+            <li>Easing: <span>ease-out-quart</span></li>
+          </ul>
+        </article>
+
+        <article
+          class="story-card"
+          data-aos="zoom-in"
+          data-aos-delay="150"
+          data-aos-duration="900"
+          data-index="1"
+        >
+          <p class="story-label">02 · Turbinen</p>
+          <h3>Der Sternen-Antrieb lädt sich auf</h3>
+          <p>
+            Mit zusätzlichen Delay-Runen tauchen funkelnde Turbinen auf. Der Intersection Observer markiert dieses Panel,
+            sobald es mindestens 60% sichtbar ist und verstärkt den Fortschrittsbalken.
+          </p>
+          <ul>
+            <li>Animation: <span>data-aos="zoom-in"</span></li>
+            <li>Delay: <span>150ms</span></li>
+            <li>Sound-Hinweis: <span>Optionaler Hover-Effekt</span></li>
+          </ul>
+        </article>
+
+        <article
+          class="story-card"
+          data-aos="fade-left"
+          data-aos-delay="250"
+          data-aos-duration="900"
+          data-index="2"
+        >
+          <p class="story-label">03 · Geschenkkammer</p>
+          <h3>Geschenke schweben in Position</h3>
+          <p>
+            Sobald dieser Abschnitt aktiv ist, wechseln die Karten in einen "glow"-Zustand. Das hilft Felix zu sehen, wo
+            sich die Scrollposition befindet, genau wie bei aktivierten Redstone-Komponenten.
+          </p>
+          <ul>
+            <li>Animation: <span>data-aos="fade-left"</span></li>
+            <li>Delay: <span>250ms</span></li>
+            <li>Bonus: <span>Weicher Hintergrund-Gradient</span></li>
+          </ul>
+        </article>
+
+        <article
+          class="story-card"
+          data-aos="flip-up"
+          data-aos-delay="350"
+          data-aos-duration="900"
+          data-index="3"
+        >
+          <p class="story-label">04 · Probeflug</p>
+          <h3>Die Runen bestätigen den Start</h3>
+          <p>
+            Ein letzter Scrollabschnitt triggert eine zarte Schüttel-Animation. Sobald der Observer das Panel meldet,
+            aktualisiert die Fortschritts-Rune den Text auf 100% Magie.
+          </p>
+          <ul>
+            <li>Animation: <span>data-aos="flip-up"</span></li>
+            <li>Delay: <span>350ms</span></li>
+            <li>Mobile: <span>Volle Breite und extra Padding</span></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="grid md:grid-cols-2 gap-8" data-aos="fade-up" data-aos-duration="900">
+        <div class="tip-panel">
+          <h3 class="font-orbitron text-xl text-white mb-4">Mobile-First Gedanken</h3>
+          <p>
+            Die Abschnitte nutzen Viewport-Units und großzügige Tap-Ziele. Momentum-Scrolling fühlt sich dadurch auch
+            auf Tablets weich an.
+          </p>
+          <ul class="tip-list">
+            <li>Min. Höhe 80vh pro Karte</li>
+            <li>Breite Buttons für Daumen</li>
+            <li>Sanfte Farbkontraste für Nachtmodus</li>
+          </ul>
+        </div>
+        <div class="tip-panel">
+          <h3 class="font-orbitron text-xl text-white mb-4">Timing & Easing Merkhilfe</h3>
+          <p>
+            Du kannst jede Karte mit eigenen Daten-Attributen versehen. So fühlst du dich wie ein Redstone-Ingenieur, der
+            Ticks misst.
+          </p>
+          <div class="grid grid-cols-2 gap-3 text-sm">
+            <div class="timing-token">data-aos-duration="900"</div>
+            <div class="timing-token">data-aos-delay="150"</div>
+            <div class="timing-token">data-aos-easing="ease-out-back"</div>
+            <div class="timing-token">data-aos-anchor-placement="center-bottom"</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-panel" data-aos="fade-up" data-aos-duration="900">
+        <h3 class="font-orbitron text-2xl mb-4">Bereit für den Runen-Check?</h3>
+        <p>
+          Sobald die Fortschritts-Rune 100% erreicht und alle Karten glühen, ist der Schlitten startklar. Scrolle zurück
+          zum Anfang, um jede Animation erneut auszulösen – AOS führt die Effekte jedes Mal wieder aus.
+        </p>
+        <a href="#story-scroll" class="btn-primary inline-flex justify-center mt-6">🔁 Noch einmal fliegen</a>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="script.js" defer></script>
+  </body>
+</html>

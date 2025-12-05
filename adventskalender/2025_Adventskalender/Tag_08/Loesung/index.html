@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 08 – Lagerfeuer voller CSS-Magie</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.15/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body class="font-['Orbitron','Trebuchet_MS',sans-serif] bg-night text-white">
+    <div class="page-wrapper min-h-screen flex flex-col gap-12 py-10">
+      <header class="hero container mx-auto px-6 py-10 rounded-3xl shadow-hero">
+        <p class="text-xl leading-relaxed text-snow/90">
+          Du hast das Lagerfeuer mitten in der eisigen Minecraft-Wildnis gefunden! Der
+          Feuerwächter vertraut dir an, dass die Flammen aus dem Takt geraten sind und
+          der Schnee liegen bleibt. Heute lernst du, wie das CSS-Boxmodell, warme
+          Farbverläufe und Keyframe-Animationen zusammenarbeiten, damit jede Flamme
+          ihren eigenen Tanz bekommt.
+        </p>
+        <div class="grid gap-4 sm:grid-cols-3 mt-8">
+          <div class="stat-card">
+            <p class="text-xs uppercase tracking-widest text-snow/70">Fokus</p>
+            <p class="text-2xl font-semibold">CSS Boxmodell</p>
+          </div>
+          <div class="stat-card">
+            <p class="text-xs uppercase tracking-widest text-snow/70">Magie</p>
+            <p class="text-2xl font-semibold">HSL + Farbverläufe</p>
+          </div>
+          <div class="stat-card">
+            <p class="text-xs uppercase tracking-widest text-snow/70">Bewegung</p>
+            <p class="text-2xl font-semibold">Keyframes & Timing</p>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex flex-col gap-10">
+        <section class="container mx-auto px-6">
+          <div class="campfire-card relative overflow-hidden">
+            <div
+              class="campfire-scene"
+              aria-label="Warme Flammen, die sich vor einem winterlichen Hintergrund bewegen"
+              data-heat="2"
+            >
+              <div class="sky-glow"></div>
+              <div class="snow-layer" aria-hidden="true"></div>
+              <div class="flame-stack">
+                <div class="flame flame-main"></div>
+                <div class="flame flame-secondary"></div>
+                <div class="flame flame-triple"></div>
+              </div>
+              <div class="spark spark-left"></div>
+              <div class="spark spark-right"></div>
+              <div class="log log-left"></div>
+              <div class="log log-right"></div>
+            </div>
+
+            <div class="control-panel">
+              <div>
+                <label for="wind-slider" class="control-label"
+                  >Windrichtung (Grad) 🌬️</label
+                >
+                <input
+                  type="range"
+                  min="-12"
+                  max="12"
+                  value="0"
+                  step="1"
+                  id="wind-slider"
+                  class="slider"
+                />
+              </div>
+              <div class="control-buttons">
+                <button type="button" id="add-wood" class="btn btn-primary">
+                  🔥 Holz nachlegen
+                </button>
+                <button type="button" id="toggle-snow" class="btn btn-ghost">
+                  ❄️ Schnee pausieren
+                </button>
+              </div>
+              <p id="status-text" class="status-text" aria-live="polite">
+                Die Flammen tanzen in ruhigem Rhythmus.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="info-panel container mx-auto px-6">
+          <article class="info-card">
+            <h2 class="info-title">Boxmodell = Minecraft-Baustein</h2>
+            <p>
+              Content ist wie der Kern eines Blocks, Padding der weiche Mantel,
+              Border die robuste Rüstung und Margin sorgt für Abstand zu anderen
+              Blöcken. Über <code>box-sizing: border-box;</code> stellst du sicher,
+              dass alle Maße berechenbar bleiben.
+            </p>
+            <pre><code>campfire-card {
+  box-sizing: border-box;
+  padding: 2.5rem;
+  border: 3px solid hsl(23 90% 60%);
+}</code></pre>
+          </article>
+          <article class="info-card">
+            <h2 class="info-title">HSL-Farben für Atmosphäre</h2>
+            <p>
+              Mit HSL kannst du wie bei Farbstoffen im Braukessel exakt bestimmen,
+              wie warm oder kalt dein Verlauf wirkt. In <code>style.css</code>
+              liegen dafür Variablen wie <code>--ember-light</code> bereit.
+            </p>
+            <pre><code>background: radial-gradient(
+  circle at 30% 10%,
+  hsl(29 100% 72%),
+  hsl(15 91% 45%) 65%
+);</code></pre>
+          </article>
+          <article class="info-card">
+            <h2 class="info-title">Keyframes machen Bewegung</h2>
+            <p>
+              Jede Flamme erhält eine eigene <code>@keyframes</code>-Animation.
+              Unterschiedliche Delays lassen sie individuell wirken – genau wie
+              Fackeln, die nie identisch flackern.
+            </p>
+            <pre><code>@keyframes flicker {
+  0% { transform: rotate(-4deg) scale(1); }
+  100% { transform: rotate(4deg) scale(1.08); }
+}</code></pre>
+          </article>
+        </section>
+
+        <section class="container mx-auto px-6">
+          <div class="gradient-guide">
+            <h2 class="text-2xl font-semibold mb-4">So liest du den Schnee-Overlay</h2>
+            <p>
+              Drei Ebenen aus radialen Punkten gleiten mit unterschiedlichen
+              Geschwindigkeiten über den Himmel. Die Custom Property
+              <code>--snow-speed</code> wird durch den Schneeschalter gesteuert.
+            </p>
+            <ul class="list-disc pl-6 space-y-2 text-snow/90">
+              <li>
+                <strong>Layer 1:</strong> Große Flocken mit langsamer Bewegung für
+                Tiefe.
+              </li>
+              <li>
+                <strong>Layer 2:</strong> Mittlere Flocken für lebendige Übergänge.
+              </li>
+              <li>
+                <strong>Layer 3:</strong> Tiny Partikel, die wie Funken wirken.
+              </li>
+            </ul>
+            <p class="mt-4">
+              Öffne <code>Loesung/style.css</code>, suche nach dem Kommentar
+              <em>"Schnee Overlay"</em> und untersuche, wie das Boxmodell hilft, die
+              Ebenen übereinanderzustapeln.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="container mx-auto px-6 pb-6 text-sm text-snow/80">
+        <p>
+          Tipp: Öffne die DevTools und aktiviere das Boxmodell-Overlay. Du siehst,
+          wie Content, Padding und Border zusammenarbeiten, damit der Schnee nicht
+          in die Steuerung hineinragt.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

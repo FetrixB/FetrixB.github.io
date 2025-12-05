@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 19 – Elementarstab Werkstatt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="min-h-screen bg-slate-950 text-white">
+    <div class="magic-grid fixed inset-0 pointer-events-none"></div>
+
+    <header class="relative z-10 px-4 py-10 text-center">
+      <p class="text-sm tracking-[0.35em] text-lime-400 uppercase">Tag 19 · DOM-Magie</p>
+      <h1 class="mt-3 text-4xl font-semibold font-orbitron text-emerald-200">
+        Aktiviere den Elementarstab
+      </h1>
+      <p class="mt-4 max-w-3xl mx-auto text-lg text-slate-200">
+        Jeder Button unter dir funktioniert wie ein Gedankenzauber: er erstellt HTML-Elemente,
+        aendert sie oder entfernt sie wieder.
+      </p>
+    </header>
+
+    <main class="relative z-10 px-4 pb-14">
+      <section class="mx-auto max-w-6xl grid gap-8 lg:grid-cols-[2fr_1fr]">
+        <article class="panel">
+          <div class="panel__title">
+            <h2 class="font-orbitron text-2xl text-emerald-100">Magische Konsole</h2>
+            <p class="text-sm text-slate-300">
+              Beschwoere Elemente, entferne sie wieder oder aktiviere coole Effekte.
+            </p>
+          </div>
+
+          <div class="spell-buttons" id="spellButtons">
+            <button class="spell-button" data-spell="wald">🌲 Wald wachsen lassen</button>
+            <button class="spell-button" data-spell="quelle">💧 Wasserquelle beschwoeren</button>
+            <button class="spell-button" data-spell="kristall">💎 Kristallturm bauen</button>
+            <!-- TODO 1: Fuege hier den Funkenregen-Button mit data-spell="funken" hinzu -->
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <button class="utility-button" id="removeLast">Letztes Element aufloesen</button>
+            <button class="utility-button" id="clearAll">Alles reinigen</button>
+            <button class="utility-button" id="toggleGlow">Glow-Runen umschalten</button>
+          </div>
+
+          <div id="creationField" class="creation-field" aria-live="polite">
+            <p class="text-center text-slate-400">Noch keine Magie aktiv. Waehle oben einen Zauber!</p>
+          </div>
+        </article>
+
+        <aside class="panel">
+          <div class="panel__title">
+            <h2 class="font-orbitron text-xl text-cyan-100">Zauberstab-Protokoll</h2>
+            <p class="text-sm text-slate-300">Hier siehst du alle DOM-Ereignisse als Logbuch.</p>
+          </div>
+          <div id="spellLog" class="spell-log" aria-live="polite"></div>
+          <div class="text-xs text-slate-400 mt-4">Tipp: Klicke auf einen Log-Eintrag, um ihn zu markieren.</div>
+        </aside>
+      </section>
+    </main>
+
+    <template id="spellCard">
+      <article class="spell-card">
+        <div class="spell-card__icon"></div>
+        <div>
+          <h3 class="spell-card__title"></h3>
+          <p class="spell-card__text"></p>
+        </div>
+        <span class="spell-card__badge"></span>
+      </article>
+    </template>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,145 @@
+:root {
+  --float-range: 12px;
+  --grid-color: rgba(255, 255, 255, 0.03);
+  --glow-primary: rgba(255, 153, 187, 0.6);
+  --glow-secondary: rgba(125, 211, 252, 0.4);
+}
+
+body {
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.15), transparent 60%),
+    linear-gradient(135deg, rgba(12, 20, 46, 0.9), rgba(28, 9, 34, 0.9));
+}
+
+.pixel-grid,
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pixel-grid {
+  background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.4;
+}
+
+.aurora {
+  background: radial-gradient(circle at 20% 20%, rgba(125, 211, 252, 0.3), transparent 50%),
+    radial-gradient(circle at 80% 10%, rgba(248, 113, 113, 0.25), transparent 55%),
+    radial-gradient(circle at 50% 80%, rgba(52, 211, 153, 0.2), transparent 45%);
+  filter: blur(60px);
+}
+
+.card-floating {
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 20px 40px rgba(8, 8, 20, 0.35);
+}
+
+.card-floating::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: linear-gradient(120deg, var(--glow-primary), var(--glow-secondary));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.card-floating > * {
+  position: relative;
+  z-index: 1;
+}
+
+.card-floating:hover {
+  transform: translateY(calc(var(--float-range) * -1)) scale(1.01);
+  box-shadow: 0 30px 70px rgba(15, 23, 42, 0.45);
+}
+
+.card-floating:hover::after {
+  opacity: 0.8;
+}
+
+.card-floating figure {
+  border-radius: 1rem 1rem 0 0;
+  overflow: hidden;
+}
+
+.card-floating figure .banner-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6), transparent 55%);
+  mix-blend-mode: screen;
+}
+
+.code-chip {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  padding: 0.1rem 0.6rem;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.85rem;
+}
+
+.design-pill {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  background: rgba(15, 23, 42, 0.75);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.design-pill h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.chip {
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(4px);
+  font-size: 0.9rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.chip:hover,
+.chip.active {
+  background: rgba(255, 153, 187, 0.15);
+  border-color: rgba(255, 153, 187, 0.7);
+}
+
+#card-grid.list-view {
+  display: flex;
+  flex-direction: column;
+}
+
+#card-grid.list-view .card {
+  display: grid;
+  grid-template-columns: minmax(160px, 220px) 1fr;
+}
+
+#card-grid.list-view figure {
+  border-radius: 1rem 0 0 1rem;
+  height: 100%;
+}
+
+.banner-mood {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-floating,
+  .card-floating:hover {
+    transition: none;
+    transform: none;
+  }
+}

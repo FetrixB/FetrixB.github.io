@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 05 · Schneemanns Frost-Labor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      integrity="sha512-V8Kc8X9R0CegOYe/gkGEXLJJLLfi5yRvCNrI6VOGGAaHo9dZYkTfGZNVVRhk1FdYyqS/fWznuaCG2l9BtI3KfQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body class="bg-[#020617] text-white font-inter">
+    <div class="aurora" aria-hidden="true"></div>
+    <header class="frost-card">
+      <div class="content-shell header-flex">
+        <div>
+          <p class="eyebrow animate__animated animate__fadeInDown">Tag 05 · Woche 1 · HTML-Fundamente</p>
+          <h1>Baue dem weisen Schneemann ein digitales Zuhause</h1>
+          <p>
+            HTML ist das Fundament, CSS der Schneeputz, und Buttons sind die Türen
+            zu interaktiven Räumen. Heute lernst du, wie ein echtes Haus aus
+            <strong>Header</strong>, <strong>Main</strong> und <strong>Footer</strong>
+            entsteht.
+          </p>
+        </div>
+        <nav aria-label="Seiten-Navigation">
+          <ul>
+            <li><a href="#blaupause">Blueprints</a></li>
+            <li><a href="#labor">Button-Labor</a></li>
+            <li><a href="#fuss">Kontakt &amp; Wärme</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="content-shell hero" aria-labelledby="hero-title">
+        <div class="hero__text">
+          <h2 id="hero-title">Digitale Blockhütte mit warmem Kern</h2>
+          <p>
+            Jeder Abschnitt deiner Seite schützt ein Teil der Schnee-Bibliothek.
+            Sammle alle Bauteile, damit der Schneemann wieder beraten kann.
+          </p>
+          <button class="frost-button" id="rebuildButton">
+            <span>Schneesturm stoppen</span>
+          </button>
+          <div class="status-indicator" role="status" aria-live="polite">
+            <span class="status-dot"></span>
+            <p class="status-text">Status: Warme Energie geladen</p>
+          </div>
+        </div>
+        <div class="hero__card animate__animated animate__pulse animate__infinite">
+          <p class="label">Struktur-Check</p>
+          <ul>
+            <li><span>Header</span><strong>Navigation + Logo</strong></li>
+            <li><span>Main</span><strong>Story, Aufgaben, Buttons</strong></li>
+            <li><span>Footer</span><strong>Schnee-Kontaktzone</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="content-shell blueprint" id="blaupause" aria-labelledby="blueprint-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Layout-Container</p>
+            <h2 id="blueprint-title">Fundament wie ein perfektes Schneebioom</h2>
+            <p>
+              Nutze Container, damit Inhalte nicht davonschlittern. Karten zeigen dir,
+              was in jedem Bereich wohnen sollte.
+            </p>
+          </div>
+          <p class="tag">Flex + Grid im Einsatz</p>
+        </div>
+        <div class="blueprint-grid" role="list">
+          <article class="frost-panel" role="listitem">
+            <h3>Header-Dach</h3>
+            <p>
+              Enthält Logo, Navigation und Call-to-Action. Mit
+              <code>display:flex</code> lässt du Links ordentlich aufgereiht.
+            </p>
+            <ul>
+              <li>Orbitron-Titel</li>
+              <li>Frostige Nav-Links</li>
+              <li>Responsives Menü</li>
+            </ul>
+          </article>
+          <article class="frost-panel" role="listitem">
+            <h3>Main-Kammern</h3>
+            <p>
+              Mehrere <code>section</code>-Blöcke erzählen Story, zeigen Layout-Tipps
+              und liefern Buttons zum Experimentieren.
+            </p>
+            <ul>
+              <li>Hero-Text + Statustafel</li>
+              <li>Blueprint-Karten</li>
+              <li>Interaktives Button-Labor</li>
+            </ul>
+          </article>
+          <article class="frost-panel" role="listitem">
+            <h3>Footer-Feuerstelle</h3>
+            <p>
+              Platz für Kontakt und letzte Funken. Fasse alles in einem schmalen
+              Bereich zusammen, damit Besucher abschließen können.
+            </p>
+            <ul>
+              <li>Schnee-Emoji-Adresszeile</li>
+              <li>Accessibility-Hinweis</li>
+              <li>Copyright Frostcode</li>
+            </ul>
+          </article>
+        </div>
+        <div class="timeline" aria-label="Aufbau-Fortschritt">
+          <div class="timeline-step" data-step="fundament">
+            <p>1. Struktur scan</p>
+            <span>Wartet...</span>
+          </div>
+          <div class="timeline-step" data-step="waende">
+            <p>2. Layout ausrichten</p>
+            <span>Wartet...</span>
+          </div>
+          <div class="timeline-step" data-step="deko">
+            <p>3. Buttons beleben</p>
+            <span>Wartet...</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-shell button-lab" id="labor" aria-labelledby="lab-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Interaktive Buttons</p>
+            <h2 id="lab-title">Erstelle States mit Persönlichkeit</h2>
+            <p>
+              Klick auf die Frost-Buttons, um ihre Blueprint zu aktivieren. JS sorgt
+              für echte Rückmeldungen.
+            </p>
+          </div>
+          <p class="tag">Focus + Hover + Active</p>
+        </div>
+        <div class="lab-wrap">
+          <div class="lab-buttons" role="radiogroup" aria-label="Button-Bauarten">
+            <button class="frost-button is-active" data-blueprint="foundation" aria-pressed="true">
+              Stabiler Header
+            </button>
+            <button class="frost-button" data-blueprint="flow" aria-pressed="false">
+              Flexibler Main
+            </button>
+            <button class="frost-button" data-blueprint="signal" aria-pressed="false">
+              Footer-Signal
+            </button>
+          </div>
+          <div class="blueprint-output" aria-live="polite">
+            <h3>Aktive Blaupause</h3>
+            <p>
+              Wähle einen Button, um zu sehen, welches HTML-Element du verstärkst.
+            </p>
+            <pre><code>&lt;header&gt;Dein Titel + Navigation&lt;/header&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="content-shell footer" id="fuss">
+      <p>❄️ Weise Schneemann-Werkstatt · Dorfplatz -5°C</p>
+      <p>
+        Accessibility-Check: Buttons haben <code>aria-pressed</code> und klare
+        Kontraste. <span class="sr-only">Die Seite nutzt semantische Elemente.</span>
+      </p>
+      <small>&copy; 2025 Frostcode · Bleib neugierig!</small>
+    </footer>
+  </body>
+</html>

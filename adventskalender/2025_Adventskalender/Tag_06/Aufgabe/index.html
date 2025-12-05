@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tag 06 · Das lebendige Buch der Webmagie</title>
+    <meta
+      name="description"
+      content="Minecraft-Adventskalender · Interaktives Buch mit Turn.js und TailwindCSS"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              orbitron: ['\u0022Orbitron\u0022', 'sans-serif'],
+              space: ['\u0022Space Grotesk\u0022', 'sans-serif']
+            },
+            colors: {
+              glow: '#f6d860',
+              mystic: '#312565'
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="font-space bg-slate-950 text-slate-100 min-h-screen relative overflow-x-hidden">
+    <div class="noise-overlay" aria-hidden="true"></div>
+    <div class="floating-sigil" aria-hidden="true"></div>
+
+    <header class="relative z-10 px-6 py-10 text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-amber-200">Tag 06 · Bibliothek von Frostquill</p>
+      <h1 class="mt-4 text-4xl font-orbitron text-amber-100 drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]">
+        Das Buch der Webmagie erwacht
+      </h1>
+      <p class="mt-5 max-w-3xl mx-auto text-lg text-slate-200">
+        Der Bibliothekar vertraut dir das uralte Manuskript an. Jede Seite enthüllt ein Kapitel über strukturierte Artikel,
+        kunstvoll eingebundene Bilder und eine Buchmagie, die du mit Turn.js kontrollierst.
+      </p>
+    </header>
+
+    <main class="relative z-10 max-w-6xl mx-auto px-6 pb-24">
+      <section class="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] items-start">
+        <article class="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 shadow-2xl">
+          <p class="text-sm text-emerald-200 font-semibold tracking-wider">Lektion</p>
+          <h2 class="mt-2 text-2xl font-orbitron text-white">Strukturierte Artikel schreiben</h2>
+          <p class="mt-4 leading-relaxed text-slate-100">
+            Nutze <code class="text-amber-200">&lt;article&gt;</code>, um abgeschlossene Stories wie Kapitel festzuhalten, kombiniere Überschriften
+            mit <code class="text-amber-200">&lt;p&gt;</code>, <code class="text-amber-200">&lt;strong&gt;</code> und <code class="text-amber-200">&lt;blockquote&gt;</code>, damit die Geschichte lebt. Bilder landen in
+            <code class="text-amber-200">&lt;figure&gt;</code> + <code class="text-amber-200">&lt;figcaption&gt;</code>, damit Text und Medien wie ein echtes Buch harmonieren.
+          </p>
+          <blockquote class="mt-6 border-l-4 border-emerald-300/80 pl-6 italic text-slate-50">
+            &ldquo;Jede sauber gegliederte Seite ist wie ein geordneter Inventar-Slot: Du findest deine Ideen sofort wieder.&rdquo;
+          </blockquote>
+          <p class="mt-6 text-slate-100">
+            Sobald JavaScript die Magie entzündet, klappen die Seiten wie bei einem echten Zauberbuch um. Gleichzeitig bleibt ein
+            Fallback als normaler Scroll-Artikel bestehen.
+          </p>
+          <p class="mt-6 text-sm text-slate-300">
+            Dateien öffnen via: <br />
+            <span class="font-mono text-rose-200">http://192.168.0.20:8000/2025_Adventskalender/Tag_06/Loesung/</span>
+          </p>
+        </article>
+
+        <div class="rounded-3xl border border-white/10 bg-gradient-to-br from-mystic/60 via-slate-900 to-slate-950 p-8 shadow-2xl">
+          <p class="text-amber-200 uppercase text-xs tracking-[0.5em]">Zauberformel</p>
+          <ul class="mt-4 space-y-4 text-sm text-slate-100">
+            <li class="flex gap-3"><span class="text-emerald-300">✔</span> Tailwind Play CDN für schnelle Utility-Klassen</li>
+            <li class="flex gap-3"><span class="text-emerald-300">✔</span> Turn.js 4.1 + jQuery für weiche Seiten-Animationen</li>
+            <li class="flex gap-3"><span class="text-emerald-300">✔</span> Progressive Enhancement: echtes Buch + HTML-Fallback</li>
+            <li class="flex gap-3"><span class="text-emerald-300">✔</span> Figur-Layout mit <code>float</code> und <code>object-fit</code> für lesbare Bildtexte</li>
+          </ul>
+          <div class="status-pill mt-6" data-status-badge>🔮 Magie bereit</div>
+        </div>
+      </section>
+
+      <section class="mt-16 space-y-6">
+        <div class="book-wrapper">
+          <div id="book" class="flipbook">
+            <div class="page hard cover">
+              <h2>Deckblatt</h2>
+              <p>Die Geheimnisse der Webmagie</p>
+              <span>Felix · Kapitel der strukturierten Seiten</span>
+            </div>
+            <article class="page page-card prose prose-invert">
+              <h2>Kapitel 1 · Ordnung wie im Inventar</h2>
+              <p>
+                <strong>Artikel strukturieren:</strong> Ein <code>&lt;article&gt;</code> fasst das gesamte Kapitel zusammen.
+                Mit <code>&lt;h2&gt;</code> bis <code>&lt;h4&gt;</code> entstehen klare Hierarchien wie in einer Minecraft-Bibliothek,
+                in der jedes Regal ein Thema speichert.
+              </p>
+              <p>
+                Verwende <code>&lt;em&gt;</code> für magische Begriffe, um Leserblicke zu leiten, und <code>&lt;strong&gt;</code> für
+                wichtige Regeln wie &ldquo;Leser brauchen Pausen&rdquo;.
+              </p>
+              <blockquote>
+                &ldquo;Ohne Zwischenüberschriften blättert niemand freiwillig weiter.&rdquo;
+              </blockquote>
+            </article>
+            <article class="page page-card prose prose-invert">
+              <h2>Kapitel 2 · Bilder schweben neben Text</h2>
+              <p>
+                Bilder gehören in <code>&lt;figure&gt;</code>, damit du Unterschriften über <code>&lt;figcaption&gt;</code> hinzufügen kannst.
+                Mit CSS-<code>float</code> lässt du sie elegant rechts schweben, während die Story links weiterläuft.
+              </p>
+              <!-- TODO 1: Füge hier eine &lt;figure&gt; mit Bild + &lt;figcaption&gt; ein, damit der Artikel einen illustrierten Abschnitt enthält. -->
+              <p>
+                Mit <code>object-fit: cover</code> bleibt der Fokus trotz Responsiveness bestehen.
+              </p>
+            </article>
+            <article class="page page-card prose prose-invert">
+              <h2>Kapitel 3 · Zauberhafte Typografie</h2>
+              <p>
+                Kombiniere systematische <code>&lt;p&gt;</code>-Absätze mit <code>&lt;blockquote&gt;</code>, um wichtige Stimmen hervorzuheben.
+                Eine kurze <code>&lt;ul&gt;</code>-Liste liefert konkrete Schritte:
+              </p>
+              <ul>
+                <li>Baue die Struktur zuerst mit reinem HTML.</li>
+                <li>Setze Tailwind-Klassen für Layout und Abstände ein.</li>
+                <li>Verfeinere das Erlebnis mit eigener CSS-Magie.</li>
+              </ul>
+            </article>
+            <article class="page page-card prose prose-invert">
+              <h2>Kapitel 4 · Turn.js Interaktion</h2>
+              <p>
+                Turn.js kann die Seitenzahl lesen. Wir synchronisieren das mit einer Fortschrittsanzeige, die
+                mitflimmert, wenn du klickst oder über die Pfeiltasten navigierst.
+              </p>
+              <p>
+                Falls JavaScript ausfällt, bleibt unterhalb ein klassischer Artikel sichtbar. So erfüllst du Progressive Enhancement.
+              </p>
+              <p class="text-emerald-200 font-semibold">Tipp: Tippe auf den grünen Button, um zur nächsten Seite zu springen!</p>
+            </article>
+            <div class="page hard outro">
+              <h2>Kapitel abgeschlossen!</h2>
+              <p>Du kannst jetzt Geschichten gestalten, Bilder integrieren und Seiten umblättern lassen.</p>
+              <p>Weiter geht&apos;s mit deiner eigenen magischen Bibliothek.</p>
+            </div>
+          </div>
+          <div class="book-glow" aria-hidden="true"></div>
+        </div>
+
+        <div class="control-panel">
+          <button type="button" class="nav-button" data-direction="prev" aria-label="Vorherige Seite">
+            <span>← Vorherige Seite</span>
+          </button>
+          <div class="progress-magic" aria-live="polite">
+            <p class="text-xs uppercase tracking-[0.4em] text-amber-200">Lesefortschritt</p>
+            <div class="progress-meter">
+              <span class="progress-label" data-progress-text>Kapitel 1 / 5</span>
+              <div class="meter-track">
+                <span class="meter-fill" data-progress-fill style="width: 20%"></span>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="nav-button primary" data-direction="next" aria-label="Nächste Seite">
+            <span>Nächste Seite →</span>
+          </button>
+        </div>
+        <p class="text-sm text-slate-300">
+          Steuerung: Klick auf die Seiten, Pfeiltasten oder Buttons benutzen. Touch-Gesten funktionieren ebenfalls.
+        </p>
+      </section>
+
+      <section id="static-article" class="static-article" hidden>
+        <h2 class="font-orbitron text-2xl text-amber-200">Fallback: Scroll-Lesemodus</h2>
+        <p>
+          Sollte Turn.js blockiert sein, liest du das Kapitel linear weiter. Alle Inhalte der Seiten erscheinen hier ebenfalls,
+          nur ohne Animationen. So bleibt die Story immer zugänglich.
+        </p>
+        <ol class="list-decimal list-inside space-y-2">
+          <li>Struktur mit <code>&lt;article&gt;</code></li>
+          <li>Bilder mit <code>&lt;figure&gt;</code></li>
+          <li>Magische Interaktion via Turn.js</li>
+        </ol>
+      </section>
+    </main>
+
+    <noscript>
+      <div class="noscript-warning">
+        <p>✨ Aktiviere JavaScript, damit das Buch seine Seiten drehen darf. Du kannst sonst den Fallback-Artikel lesen.</p>
+      </div>
+    </noscript>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+    <script src="script.js" defer></script>
+  </body>
+</html>

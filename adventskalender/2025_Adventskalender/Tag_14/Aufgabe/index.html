@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 14 · GSAP Runen-Choreografie</title>
+    <meta
+      name="description"
+      content="Felix choreografiert eine magische Rune mit GSAP Timelines, Tweens und ScrollTrigger."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              orbitron: ['"Orbitron"', 'sans-serif'],
+              mono: ['"Space Mono"', 'monospace']
+            },
+            colors: {
+              cavern: '#03091c',
+              runeGreen: '#59f6b7',
+              runeGold: '#f8c86f',
+              runeBlue: '#60a5fa'
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-slate-950 text-slate-100 font-orbitron">
+    <div class="page-shell">
+      <header class="hero text-center space-y-4">
+        <p class="text-xs uppercase tracking-[0.5em] text-runeGreen">Tag 14 · Rune der GSAP-Magie</p>
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+          Lass die Höhlen-Rune leuchten, drehen und pulsieren wie ein Film-Intro
+        </h1>
+        <p class="text-base md:text-lg text-slate-300 max-w-3xl mx-auto">
+          Heute lernst du, wie GSAP Tween-Objekte, Timelines und Plugins zusammenarbeiten. Du komponierst
+          mehrere Bewegungen, steuerst sie live und lässt zusätzliche Info-Karten beim Scrollen wie magische
+          Glyphen auftauchen.
+        </p>
+      </header>
+
+      <section class="rune-lab" aria-labelledby="stage-title">
+        <div class="lab-body">
+          <div class="rune-stage" role="img" aria-label="Pulsierende Rune mit Partikeln" data-stage>
+            <div class="rune-backdrop" aria-hidden="true"></div>
+            <div class="rune-pulse" data-rune-glow></div>
+            <div class="rune-ring" data-rune-ring>
+              <div class="rune-engraving" data-rune-core>
+                <span class="rune-glyph" data-rune-glyph>GS</span>
+              </div>
+            </div>
+            <div class="rune-orbit" aria-hidden="true">
+              <span class="rune-orb" data-spark></span>
+              <span class="rune-orb" data-spark></span>
+              <span class="rune-orb" data-spark></span>
+            </div>
+            <div class="rune-shard-field" aria-hidden="true">
+              <span class="rune-shard" data-shard></span>
+              <span class="rune-shard" data-shard></span>
+              <span class="rune-shard" data-shard></span>
+              <span class="rune-shard" data-shard></span>
+              <span class="rune-shard" data-shard></span>
+              <span class="rune-shard" data-shard></span>
+            </div>
+          </div>
+
+          <div class="stage-hud">
+            <div class="hud-card">
+              <p class="hud-label">Aktuelle Phase</p>
+              <p class="hud-value" data-phase>Aufladen der Rune</p>
+              <p class="hud-detail" data-phase-detail>
+                Die Timeline sammelt Licht und bringt den ersten Tween in Position.
+              </p>
+            </div>
+            <div class="hud-card">
+              <p class="hud-label">Timeline Loops</p>
+              <p class="hud-value" data-loop-count>0</p>
+              <p class="hud-detail">Jeder Loop entspricht einem kompletten magischen Ritual.</p>
+            </div>
+            <div class="hud-progress">
+              <p class="hud-label">Sequenzfortschritt</p>
+              <!-- TODO 1: Füge hier wieder den Fortschrittsbalken aus zwei verschachtelten DIVs ein.
+                   Nutze genau den Aufbau aus der Lösung, damit data-progress-fill gefunden wird. -->
+            </div>
+          </div>
+
+          <div class="control-deck" aria-label="Timeline Steuerung">
+            <button type="button" class="control-button" data-action="toggle">Pause</button>
+            <button type="button" class="control-button" data-action="reverse">Rückwärts</button>
+            <button type="button" class="control-button control-button--ghost" data-action="burst">
+              Rune verstärken
+            </button>
+            <label class="speed-dial">
+              <span class="speed-label">Tempo</span>
+              <input type="range" min="0.5" max="2" value="1" step="0.1" data-speed />
+              <span class="speed-value" data-speed-value>1.0x</span>
+            </label>
+          </div>
+        </div>
+
+        <aside class="timeline-panel" id="stage-title">
+          <p class="panel-eyebrow">Timeline Map</p>
+          <h2 class="panel-title">Vier perfekt getimte GSAP Abschnitte</h2>
+          <p class="panel-copy">
+            Jeder Schritt nutzt Tweens innerhalb einer Timeline. Du wechselst zwischen <code>from</code>,
+            <code>to</code> und <code>fromTo</code>, setzt Delays durch Timeline-Positionen und löst Callbacks
+            genau dann aus, wenn ein Abschnitt startet.
+          </p>
+          <ol class="phase-list">
+            <li data-phase-step>
+              <span class="phase-number">01</span>
+              <p>
+                <strong>Aufladen:</strong> Kern skaliert und glüht, Ring sammelt Energie.
+              </p>
+            </li>
+            <li data-phase-step>
+              <span class="phase-number">02</span>
+              <p>
+                <strong>Rotation:</strong> Ring kippt leicht, Orbit-Teilchen ziehen Kreise.
+              </p>
+            </li>
+            <li data-phase-step>
+              <span class="phase-number">03</span>
+              <p>
+                <strong>Pulsieren:</strong> Glyphen blitzen auf, Farbe springt zwischen Jade und Gold.
+              </p>
+            </li>
+            <li data-phase-step>
+              <span class="phase-number">04</span>
+              <p>
+                <strong>Cine Wrap:</strong> Partikel werden eingesogen und der Loop schließt sich.
+              </p>
+            </li>
+          </ol>
+        </aside>
+      </section>
+
+      <section class="grid gap-6 md:grid-cols-3 mt-16">
+        <article class="info-card" data-scroll-card>
+          <p class="info-eyebrow">Tween vs Timeline</p>
+          <h3 class="info-title">Warum Timelines gewinnen</h3>
+          <p class="info-copy">
+            Statt Delay-Rechnungen verknüpft die Timeline die Tweens. Du kannst später einzelne Module
+            austauschen, ohne alle Zeiten zu untersuchen.
+          </p>
+          <code class="info-code">timeline.to(core, { scale: 1.15 }, '<') </code>
+        </article>
+        <article class="info-card" data-scroll-card>
+          <p class="info-eyebrow">Ease Bibliothek</p>
+          <h3 class="info-title">Kurven für Emotionen</h3>
+          <p class="info-copy">
+            Mit <code>ease: 'sine.inOut'</code> startest und stoppst weich. Für dramatische Momente nutzt du
+            <code>expo</code> oder <code>elastic</code>.
+          </p>
+          <code class="info-code">gsap.to(ring, { rotationX: 45, ease: 'expo.out' })</code>
+        </article>
+        <article class="info-card" data-scroll-card>
+          <p class="info-eyebrow">Plugins</p>
+          <h3 class="info-title">ScrollTrigger Demo</h3>
+          <p class="info-copy">
+            Sobald du weiter nach unten scrollst, blendet GSAP die Lernkarten mit ScrollTrigger ein. Genau so
+            steuerst du später ganze Story-Seiten.
+          </p>
+          <code class="info-code">ScrollTrigger.create({ trigger: card, start: 'top 80%' })</code>
+        </article>
+      </section>
+
+      <section class="scroll-lab" aria-label="ScrollTrigger Beispiele">
+        <h2 class="scroll-lab__title">ScrollTrigger Facts</h2>
+        <div class="scroll-lab__grid">
+          <article class="scroll-card" data-scroll-card>
+            <h3>Delay ersetzen</h3>
+            <p>
+              ScrollTrigger sorgt dafür, dass ein Abschnitt startet, wenn er sichtbar wird. Kein statisches Delay
+              mehr, sondern echtes User-Timing.
+            </p>
+          </article>
+          <article class="scroll-card" data-scroll-card>
+            <h3>Mehrere Targets</h3>
+            <p>
+              Mit <code>gsap.utils.toArray()</code> kannst du viele Karten einsammeln und denselben Trigger-Code
+              wiederverwenden.
+            </p>
+          </article>
+          <article class="scroll-card" data-scroll-card>
+            <h3>Performant</h3>
+            <p>
+              GSAP nutzt RAF und cleveres Caching. Dadurch laufen alle Animationen smooth, auch wenn viele Effekte
+              gleichzeitig aktiv sind.
+            </p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

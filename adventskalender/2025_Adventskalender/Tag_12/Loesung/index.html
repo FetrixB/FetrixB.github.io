@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 12 · Frosttempel aus Glas</title>
+    <meta
+      name="description"
+      content="Rekonstruiere den Frosttempel mit Glasmorphismus, Glow und CSS-Custom-Properties."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['"Orbitron"', 'sans-serif'],
+              body: ['"Space Grotesk"', 'system-ui'],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-slate-950 text-white font-body">
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="snow" aria-hidden="true"></div>
+    <main class="temple-shell mx-auto max-w-6xl px-4 py-10 lg:px-8">
+      <header class="hero-panel glass-panel">
+        <p class="eyebrow">Tag 12 · Frosttempel der Priesterin</p>
+        <h1>Baue transparente Eisfenster mit Glasmorphismus</h1>
+        <p>
+          Stell dir vor, du setzt Glasblöcke zusammen, die Licht wie echte
+          Nordlichter brechen. Mit CSS-Blur, Schatten und Custom Properties gibst
+          jeder Schicht Tiefe, damit der Tempel wieder leuchtet.
+        </p>
+        <div class="hero-badges">
+          <span>backdrop-filter</span>
+          <span>rgba + Transparenz</span>
+          <span>box-shadow vs. drop-shadow</span>
+          <span>CSS Custom Properties</span>
+        </div>
+      </header>
+
+      <section class="control-panel glass-panel" aria-label="Frost-Controller">
+        <div class="panel-heading">
+          <h2>Frost-Controller ❄️</h2>
+          <p>Stell Blur, Glow und Farbthema wie echte Eisglas-Ingenieur*innen ein.</p>
+        </div>
+        <div class="controls-grid">
+          <label for="blurRange" class="control">
+            <span>Frostlevel (Blur)</span>
+            <input id="blurRange" type="range" min="5" max="40" value="26" />
+            <span id="blurValue" class="readout">Frost-Level: 26px Blur</span>
+          </label>
+          <div class="control">
+            <span>Glow-Verstärkung</span>
+            <button id="glowToggle" class="glow-toggle" aria-pressed="true">
+              Glow aktiv ✨
+            </button>
+            <p class="helper-text">
+              Schalte den Glow aus, falls Besucher*innen weniger Licht wollen.
+            </p>
+          </div>
+          <div class="control">
+            <span>Farbtempel wählen</span>
+            <div class="theme-buttons" role="group" aria-label="Themen">
+              <button data-theme="aurora" class="is-active">Aurora</button>
+              <button data-theme="moonstone">Mondstein</button>
+              <button data-theme="ember">Polar-Glut</button>
+            </div>
+          </div>
+        </div>
+        <div class="diagnostics">
+          <div class="diagnostic">
+            <span>Transparenz-Tiefe</span>
+            <div class="bar">
+              <div id="transparencyBar"></div>
+            </div>
+          </div>
+          <div class="diagnostic">
+            <span>Kontrast-Level</span>
+            <div class="contrast-note" id="contrastBadge">Leichtes HUD-Panel</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="frost-grid" aria-label="Glas-Paneele">
+        <article class="glass-panel" data-panel="ripple">
+          <p class="panel-label">Paneel 01</p>
+          <h3>Runen-Schaltfläche</h3>
+          <p>
+            Eine Mischung aus `rgba()` Hintergrund und kräftigen Box-Shadows lässt
+            Buttons schweben wie Platten in Minecrafts End-Dimension.
+          </p>
+          <div class="panel-action">
+            <button class="pill">Runen fokussieren</button>
+            <small>Box-Shadow: 0 25px 60px</small>
+          </div>
+        </article>
+        <article class="glass-panel" data-panel="depth">
+          <p class="panel-label">Paneel 02</p>
+          <h3>VIP-Statusanzeige</h3>
+          <p>
+            Custom Properties (`--panel-hue`) färben alle Highlights. Ändere einen
+            Wert und alle Paneele passen sich direkt an.
+          </p>
+          <div class="status">
+            <span>Reflexion 92%</span>
+            <span>Glow { var(--glow-strength) }</span>
+          </div>
+        </article>
+        <article class="glass-panel" data-panel="glyph">
+          <p class="panel-label">Paneel 03</p>
+          <h3>Glyphen-Gallery</h3>
+          <p>
+            Ein dezentes `drop-shadow()` hebt SVG-Symbole vom Hintergrund ab,
+            selbst wenn das Paneel durchsichtig bleibt.
+          </p>
+          <div class="glyph-badge">
+            <svg viewBox="0 0 24 24" role="presentation">
+              <path d="M12 2L20 8L12 22L4 8Z" />
+            </svg>
+            <span>Drop-Shadow aktiv</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="shadow-lab glass-panel" aria-label="Schattentechnik">
+        <div class="panel-heading">
+          <h2>Shadow-Labor</h2>
+          <p>Vergleiche Box-Shadow und Drop-Shadow direkt.</p>
+        </div>
+        <div class="shadow-comparison">
+          <div class="shadow-card shadow-card--box">
+            <strong>Box-Shadow</strong>
+            <p>Wirft Schatten von ganzen Paneelen.</p>
+            <div class="panel-demo">HUD</div>
+          </div>
+          <div class="shadow-card shadow-card--drop">
+            <strong>Drop-Shadow</strong>
+            <p>Betrifft nur transparente SVG-Formen.</p>
+            <div class="panel-demo">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <circle cx="32" cy="32" r="20"></circle>
+                <path d="M32 16L40 32L32 48L24 32Z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="transparency-layers glass-panel" aria-label="Transparenz-Hierarchie">
+        <div class="panel-heading">
+          <h2>Transparenz-Hierarchie</h2>
+          <p>Jede Ebene erhält eine andere Deckkraft, damit Tiefe entsteht.</p>
+        </div>
+        <div class="transparency-stack">
+          <div class="depth-layer depth-layer--sky">Himmel 10%</div>
+          <div class="depth-layer depth-layer--ice">Eiswand 35%</div>
+          <div class="depth-layer depth-layer--hud">HUD 70%</div>
+        </div>
+        <p class="helper-text">
+          CSS Custom Properties speichern die Farben, sodass Themenwechsel alles
+          gleichzeitig aktualisieren.
+        </p>
+      </section>
+
+      <section class="journey glass-panel" aria-label="Rekonstruktions-Schritte">
+        <div class="panel-heading">
+          <h2>Reparatur-Protokoll</h2>
+          <p>Folge diesen Schritten, um Glas-Paneele aufzubauen.</p>
+        </div>
+        <ol class="journey-steps">
+          <li data-step="1">
+            <span>1</span>
+            <div>
+              <strong>Grundlicht auslegen</strong>
+              <p>Lege einen dunklen Hintergrund, damit Glow sichtbar wird.</p>
+            </div>
+          </li>
+          <li data-step="2">
+            <span>2</span>
+            <div>
+              <strong>Paneele definieren</strong>
+              <p>Nutze `rgba()` + `backdrop-filter`, damit Text lesbar bleibt.</p>
+            </div>
+          </li>
+          <li data-step="3">
+            <span>3</span>
+            <div>
+              <strong>Glow feinjustieren</strong>
+              <p>Box-Shadow für Tiefe, Drop-Shadow für Icons kombinieren.</p>
+            </div>
+          </li>
+          <li data-step="4">
+            <span>4</span>
+            <div>
+              <strong>Theme speichern</strong>
+              <p>Custom Properties sichern alle Farbwerte für spätere Wechsel.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <footer class="glass-panel footer-panel">
+        <p>
+          Öffne diese Version immer über
+          <code>http://192.168.0.20:8000/2025_Adventskalender/Tag_12/Loesung/</code>
+          damit alle Assets korrekt geladen werden.
+        </p>
+      </footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

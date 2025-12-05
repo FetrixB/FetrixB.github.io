@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 17 – Magischer Geschenk-Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-slate-950 text-white">
+    <div class="minecraft-grid" aria-hidden="true"></div>
+    <div class="snow-layer" aria-hidden="true"></div>
+
+    <header class="hero">
+      <div class="hero__content">
+        <p class="hero__badge">Tag 17 · Funktionen & Zufallsmagie</p>
+        <h1 class="hero__title">💎 Magischer Geschenk-Generator</h1>
+        <p class="hero__text">
+          In der Geschenk-Manufaktur der Weihnachts-Elfen planst du heute wie ein
+          Minecraft-Loot-Designer. Mit durchdachten JavaScript-Funktionen,
+          Parametern und Rückgabewerten erschaffst du zufällige Items – genau wie
+          in einer Schatztruhe voller Überraschungen.
+        </p>
+        <div class="hero__stats">
+          <div>
+            <p class="hero__stats-label">Funktionen</p>
+            <p class="hero__stats-value">Parameter · Return · Defaults</p>
+          </div>
+          <div>
+            <p class="hero__stats-label">Zufall</p>
+            <p class="hero__stats-value">Math.random · Gewichtung</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero__orb" aria-hidden="true">
+        <span class="hero__orb-core"></span>
+        <span class="hero__orb-ring"></span>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="control-panel">
+        <div class="panel-card">
+          <h2>🎁 Konfiguriere deine Loot-Rezepte</h2>
+          <p>
+            Jede Auswahl wird an unsere Funktionen übergeben. Sie reagieren auf
+            deine Parameter wie Rezepte in Minecraft: andere Zutaten → anderes
+            Ergebnis!
+          </p>
+          <form class="controls" id="generatorForm">
+            <label class="control">
+              <span>Kategorie auswählen</span>
+              <select name="category" id="categorySelect">
+                <option value="spielzeug">Spielzeug voller Redstone</option>
+                <option value="buecher">Magische Bücher</option>
+                <option value="kleidung">Winter-Rüstungen</option>
+                <option value="games">Gamer-Highlights</option>
+                <option value="mischung">Gemischte Loot-Kiste</option>
+              </select>
+            </label>
+
+            <label class="control">
+              <span>Anzahl an Items (1–5)</span>
+              <input type="number" id="amountInput" min="1" max="5" value="3" />
+            </label>
+
+            <label class="control">
+              <span>Legendär-Chance-Booster</span>
+              <input type="range" id="boosterRange" min="1" max="3" step="1" value="1" />
+              <small id="boosterValue">x1</small>
+            </label>
+
+            <label class="toggle">
+              <input type="checkbox" id="mysteryToggle" />
+              <span>Extra Überraschungswürfel hinzufügen</span>
+            </label>
+
+            <button type="submit" class="btn-generate">✨ Geschenke erzeugen</button>
+          </form>
+        </div>
+        <div class="panel-card panel-card--glass">
+          <h3>📦 Generator-Status</h3>
+          <ul id="statusList" class="status-list">
+            <li>Warte auf deine ersten Parameter...</li>
+          </ul>
+          <div class="legend">
+            <span class="rare rare--common">Gewöhnlich</span>
+            <span class="rare rare--rare">Selten</span>
+            <span class="rare rare--epic">Episch</span>
+            <span class="rare rare--legendary">Legendär</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>🧰 Ausgabekiste</h2>
+          <p>Hier tauchen die Items auf, die deine Funktionen zurückgeben.</p>
+        </div>
+        <div id="giftGrid" class="gift-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="insights">
+        <article>
+          <h3>🧠 Funktionen als Rezepte</h3>
+          <p>
+            `generateGiftBatch(category, amount, options)` nimmt Parameter
+            entgegen und gibt fertige Items zurück – genau wie eine Crafting-
+            Anleitung in Minecraft.
+          </p>
+        </article>
+        <article>
+          <h3>🎯 Parameter-Power</h3>
+          <p>
+            Mit Default-Werten sorgen wir dafür, dass die Funktion sogar mit
+            fehlenden Angaben sinnvolle Ergebnisse erzeugt.
+          </p>
+        </article>
+        <article>
+          <h3>🎲 Zufall aber fair</h3>
+          <p>
+            Gewichtete Wahrscheinlichkeiten halten häufige Items häufig und
+            legendäre Items super selten – Loot, wie er sich anfühlen soll.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Vergleich zur Aufgaben-Version: `Tag_17/Aufgabe/` &bull; Musterlösung:
+        `Tag_17/Loesung/`
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

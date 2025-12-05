@@ -1,0 +1,187 @@
+/* 
+🎄 MINECRAFT WEIHNACHTSDORF - STYLE.CSS 🎄
+Magische CSS-Zauber für das verschneite Minecraft-Weihnachtsdorf
+*/
+
+/* Minecraft-Schrift für Titel - pixelig und retro */
+.minecraft-title {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    text-shadow: 
+        4px 4px 0px #d97706,    /* Orange Schatten für 3D-Effekt */
+        8px 8px 0px #92400e,    /* Dunklerer Schatten */
+        12px 12px 20px rgba(0, 0, 0, 0.5); /* Weicher Schatten */
+    letter-spacing: 4px;
+    /* Animierter Glanz-Effekt */
+    background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706, #f59e0b, #fbbf24);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s ease-in-out infinite;
+}
+
+/* Untertitel mit grünem Minecraft-Look */
+.minecraft-subtitle {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    text-shadow: 
+        2px 2px 0px #166534,    /* Grüner Schatten */
+        4px 4px 0px #14532d,    /* Dunklerer Schatten */
+        6px 6px 15px rgba(0, 0, 0, 0.4);
+    letter-spacing: 2px;
+}
+
+/* Minecraft-Block Styling für Kartenelemente */
+.minecraft-block {
+    /* Pixeliger 3D-Effekt wie Minecraft-Blöcke */
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top-color: rgba(255, 255, 255, 0.6);
+    border-left-color: rgba(255, 255, 255, 0.6);
+    border-bottom-color: rgba(0, 0, 0, 0.3);
+    border-right-color: rgba(0, 0, 0, 0.3);
+    
+    /* Hover-Effekt */
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.minecraft-block:hover {
+    /* Beim Hover: Block "schwebt" wie in Minecraft */
+    transform: translateY(-8px) rotateX(5deg);
+    box-shadow: 
+        0 12px 25px rgba(0, 0, 0, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Minecraft-Button mit pixeligem Design */
+.minecraft-button {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    letter-spacing: 1px;
+    /* 3D-Button Effekt */
+    border: 3px solid #dc2626;
+    border-top-color: #f87171;
+    border-left-color: #f87171;
+    border-bottom-color: #991b1b;
+    border-right-color: #991b1b;
+    
+    /* Schatten und Effekte */
+    box-shadow: 
+        0 6px 0 #991b1b,
+        0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.minecraft-button:hover {
+    /* Button "drücken" Effekt */
+    transform: translateY(2px);
+    box-shadow: 
+        0 4px 0 #991b1b,
+        0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.minecraft-button:active {
+    /* Beim Klicken ganz runterdrücken */
+    transform: translateY(4px);
+    box-shadow: 
+        0 2px 0 #991b1b,
+        0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Schneeflocken Animation */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    font-size: 1em;
+    pointer-events: none;
+    z-index: 10;
+    /* Verschiedene Schneeflocken-Symbole für Abwechslung */
+    user-select: none;
+    animation: fall linear infinite;
+}
+
+/* Fallanimation für Schneeflocken */
+@keyframes fall {
+    from {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Schneeflocken schwanken beim Fallen (wie echter Schnee) */
+.snowflake:nth-child(odd) {
+    animation: fall linear infinite, sway ease-in-out infinite;
+}
+
+@keyframes sway {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+}
+
+/* Glanz-Animation für den Haupttitel */
+@keyframes shine {
+    0% { background-position: 200% 0; }
+    50% { background-position: 0 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Pulsierender Kristall-Effekt */
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: scale(1.2);
+        opacity: 1;
+        filter: drop-shadow(0 0 20px #3b82f6);
+    }
+}
+
+/* Responsive Design für kleinere Bildschirme */
+@media (max-width: 768px) {
+    .minecraft-title {
+        font-size: 3rem !important;
+        letter-spacing: 2px;
+    }
+    
+    .minecraft-subtitle {
+        font-size: 2rem !important;
+    }
+    
+    .minecraft-block {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Sanfte Übergänge für alle Elemente */
+* {
+    transition: all 0.3s ease-out;
+}
+
+/* Körper-Styling mit Minecraft-Feel */
+body {
+    font-family: 'Orbitron', monospace;
+    background-attachment: fixed;
+}
+
+/* Container-Elemente mit subtiler Animation */
+.container > * {
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

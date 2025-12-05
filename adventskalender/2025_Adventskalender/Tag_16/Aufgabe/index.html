@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 16 – Die Eishexe erwartet Antworten</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-slate-950 text-white min-h-screen">
+    <div class="relative overflow-hidden">
+      <div class="aurora"></div>
+      <div class="snow"></div>
+      <div class="max-w-5xl mx-auto px-4 py-10 md:py-16">
+        <header class="text-center space-y-4">
+          <p class="text-cyan-300 font-mono tracking-widest text-xs uppercase">Tag 16 · Frostwald-Prüfung</p>
+          <h1 class="text-3xl md:text-5xl font-display text-shadow">
+            Auroras Bedingungsprüfung
+          </h1>
+          <p class="text-base md:text-lg text-slate-200 max-w-3xl mx-auto">
+            Erstelle eine clevere if/else-Logik, die wie eine freundliche Eishexe reagiert. Du steuerst
+            Emotionen, Texte und Tipps komplett über JavaScript-Bedingungen.
+          </p>
+        </header>
+
+        <main class="mt-10 grid gap-8 lg:grid-cols-[1.1fr,0.9fr]">
+          <section class="glass-panel space-y-6" aria-label="Eishexe">
+            <div class="flex items-center gap-4">
+              <div class="character-portrait emotion-calm" id="character-portrait">
+                <span class="text-5xl" id="emotion-icon">❄️</span>
+              </div>
+              <div>
+                <p class="text-cyan-200 font-semibold">Aurora Eisflüstern</p>
+                <p class="text-sm text-slate-200">
+                  Beobachtet deine Antworten und nutzt if/else um zu entscheiden, ob du würdig bist.
+                </p>
+              </div>
+            </div>
+            <div class="status-chip" id="status-chip">berechnend</div>
+            <p class="text-sm text-slate-200 leading-relaxed">
+              Nutze das Eingabefeld, die Tonlage und die Kristallenergie, um verschiedene Reaktionen
+              hervorzurufen. Jede Entscheidung löst eine andere Emotion aus.
+            </p>
+          </section>
+
+          <section class="glass-panel space-y-5" aria-label="Interaktion">
+            <div>
+              <label for="player-input" class="label">Deine magische Antwort</label>
+              <textarea
+                id="player-input"
+                class="input-field"
+                rows="3"
+                placeholder="z.B. Weise Hexe, führe mich zum Nordlichtpfad"
+              ></textarea>
+            </div>
+
+            <div class="grid gap-4 md:grid-cols-2">
+              <label class="label">
+                Tonlage
+                <select id="tone-select" class="input-field mt-2">
+                  <option value="frage">Neugierige Frage</option>
+                  <option value="kompliment">Freundliches Kompliment</option>
+                  <option value="witz">Vorsichtiger Witz</option>
+                  <option value="herausforderung">Mutige Herausforderung</option>
+                </select>
+              </label>
+              <label class="label">
+                Kristallenergie (0-10)
+                <input
+                  type="number"
+                  id="crystal-input"
+                  min="0"
+                  max="10"
+                  value="5"
+                  class="input-field mt-2"
+                />
+              </label>
+            </div>
+
+            <div class="flex flex-wrap gap-4">
+              <button id="evaluate-btn" class="btn-primary">Antwort abschicken</button>
+              <button id="shuffle-btn" class="btn-ghost">Zufälligen Tipp testen</button>
+              <button id="reset-btn" class="btn-outline">Zurücksetzen</button>
+            </div>
+          </section>
+        </main>
+
+        <section class="mt-10 grid gap-8 lg:grid-cols-[1.1fr,0.9fr]">
+          <div class="glass-panel space-y-5">
+            <h2 class="section-title">Reaktion der Eishexe</h2>
+            <p id="reaction-text" class="text-lg text-slate-50">
+              Die Hexe wartet geduldig auf deine Worte...
+            </p>
+            <p id="hint-text" class="text-sm text-cyan-100">
+              Die Tipps erscheinen hier, sobald du die Bedingungen ausprobierst.
+            </p>
+            <div class="flex items-center gap-4">
+              <div>
+                <p class="text-xs uppercase tracking-wider text-slate-400">Emotion</p>
+                <p id="emotion-label" class="text-2xl font-display">ruhig</p>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wider text-slate-400">Kristallbewertung</p>
+                <p id="crystal-label" class="text-2xl font-display">neutral</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-panel space-y-4">
+            <h2 class="section-title">Auroras Logbuch</h2>
+            <!-- TODO 1: Füge hier eine <ul> mit der ID "log-list" und passenden Klassen ein, sodass jeder Versuch gespeichert wird. -->
+            <p class="text-sm text-slate-300">
+              Aktuell fehlt der Container für Einträge. Sobald du ihn ergänzt, kann die Hexe deine
+              Antworten auflisten.
+            </p>
+          </div>
+        </section>
+
+        <section class="mt-10 glass-panel space-y-4">
+          <h2 class="section-title">Wie die Logik aufgebaut ist</h2>
+          <div class="logic-grid">
+            <div>
+              <p class="logic-title">If / Else Baum</p>
+              <p class="logic-copy">
+                Analysiert Schlüsselwörter wie "freund" oder "eis" und reagiert passend.
+              </p>
+            </div>
+            <div>
+              <p class="logic-title">Else-if Ketten</p>
+              <p class="logic-copy">
+                Die Kristallmenge entscheidet, wie großzügig du wirkst.
+              </p>
+            </div>
+            <div>
+              <p class="logic-title">Switch Statement</p>
+              <p class="logic-copy">
+                Jede Tonlage löst einen anderen Tipp für dich aus.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 13 · Pixel-Eisbär auf Tour</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              orbitron: ['"Orbitron"', 'sans-serif'],
+              mono: ['"Space Mono"', 'monospace']
+            },
+            colors: {
+              aurora: '#14b8a6'
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-slate-950 text-white min-h-screen font-orbitron">
+    <div class="max-w-6xl mx-auto px-6 py-10 space-y-10">
+      <header class="text-center space-y-3">
+        <p class="text-xs uppercase tracking-[0.4em] text-emerald-300">
+          Tag 13 · Polar-Sprint Labor
+        </p>
+        <h1 class="text-4xl md:text-5xl font-bold text-white">
+          Lass den Pixel-Eisbären durch das Winterdorf rennen ❄️🐻
+        </h1>
+        <p class="text-base md:text-lg text-slate-200 max-w-3xl mx-auto">
+          Keyframe-Schritte bauen den Laufzyklus auf, Anime.js übernimmt die flüssigen Bewegungen
+          und clevere Performance-Tricks halten alles butterweich – wie auf Eis.
+        </p>
+      </header>
+
+      <section class="stage" aria-labelledby="scene-title">
+        <div class="stage__sky">
+          <div class="aurora"></div>
+          <div class="aurora aurora--pink"></div>
+          <div class="aurora aurora--gold"></div>
+          <div class="snow-layer" data-snow></div>
+        </div>
+
+        <div class="stage__hud">
+          <div>
+            <p class="stage__label">Status</p>
+            <p class="stage__value" data-status>Bereit für den Sprint</p>
+          </div>
+          <div>
+            <p class="stage__label">Geschwindigkeit</p>
+            <p class="stage__value" data-speed-readout>0 km/h</p>
+          </div>
+          <div>
+            <p class="stage__label">Frame Sync</p>
+            <p class="stage__value" data-fps>-- fps</p>
+          </div>
+        </div>
+
+        <div class="runway" id="runway">
+          <!-- TODO 1: Baue hier den Fortschrittsbalken wieder ein, damit das Anime.js Update die Strecke sichtbar macht. -->
+          <div class="pixel-bear" id="pixelBear" role="figure" aria-label="Pixel-Eisbär Sprint Animation">
+            <div class="pixel-bear__sprite">
+              <span class="chunk body"></span>
+              <span class="chunk head"></span>
+              <span class="chunk ear ear--front"></span>
+              <span class="chunk ear ear--back"></span>
+              <span class="chunk muzzle"></span>
+              <span class="chunk nose"></span>
+              <span class="chunk eye"></span>
+              <span class="chunk paw paw--front"></span>
+              <span class="chunk paw paw--back"></span>
+              <span class="chunk tail"></span>
+              <span class="chunk belly"></span>
+            </div>
+          </div>
+          <div class="bear-shadow" data-shadow aria-hidden="true"></div>
+        </div>
+
+        <div class="flex flex-col gap-4 md:flex-row md:items-center justify-between mt-8">
+          <button id="boostButton" class="btn">
+            ⚡ Turbo-Booster aktivieren
+          </button>
+          <p class="text-sm text-slate-300 tracking-wide" data-loop-hint>
+            Tippe auf den Button für ein Callback-Event, das die Anime.js Timeline beschleunigt.
+          </p>
+        </div>
+      </section>
+
+      <section class="grid gap-6 md:grid-cols-2">
+        <article class="info-card">
+          <h2 class="info-card__title">🎮 Laufzyklus in Keyframes</h2>
+          <ul class="info-card__list">
+            <li><strong>steps(2)</strong> sorgt für echte Sprite-Sprünge beim Heben der Beine.</li>
+            <li>Keyframes <code>aurora-flow</code> &amp; <code>track-loop</code> halten die Welt in Bewegung.</li>
+            <li>CSS <code>animation-fill-mode: both</code> lässt Elemente ruhig starten und enden.</li>
+          </ul>
+          <p class="info-card__meta">Die Pixelblöcke bleiben kantig, weil wir jede Bewegung ohne weiches Fading springen lassen.</p>
+        </article>
+
+        <article class="info-card">
+          <h2 class="info-card__title">🧠 Performance Tricks</h2>
+          <ul class="info-card__list">
+            <li><code>transform</code> statt <code>left/top</code> verhindert Layout-Reflow.</li>
+            <li><code>will-change: transform</code> sagt dem Browser frühzeitig Bescheid.</li>
+            <li><code>requestAnimationFrame</code> speist den FPS-Monitor synchron mit dem Browser-Takt.</li>
+          </ul>
+          <p class="info-card__meta">So läuft der Bär butterweich – selbst auf langsamen Tablets.</p>
+        </article>
+      </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

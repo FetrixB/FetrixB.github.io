@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄 Minecraft Weihnachtsdorf - Willkommen! 🎮</title>
+    
+    <!-- TailwindCSS für modernes Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Minecraft-Schrift von Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Unsere eigenen Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen overflow-x-hidden">
+    <!-- Schneeflocken Container -->
+    <div id="snowflakes-container" class="fixed inset-0 pointer-events-none z-10"></div>
+    
+    <!-- Haupt-Container mit Winter-Farbverlauf Hintergrund -->
+    <div class="min-h-screen bg-gradient-to-b from-blue-900 via-purple-900 to-indigo-900 relative">
+        
+        <!-- Minecraft-Kristall Dekoration (oben links) -->
+        <div class="absolute top-4 left-4 text-6xl animate-pulse">💎</div>
+        
+        <!-- Minecraft-Bäume Dekoration (oben rechts) -->
+        <div class="absolute top-4 right-4 text-4xl">🌲🌲</div>
+        
+        <!-- Hauptinhalt -->
+        <div class="container mx-auto px-4 py-8 relative z-20">
+            
+            <!-- Großer Minecraft-Titel Banner -->
+            <header class="text-center py-12">
+                <h1 class="minecraft-title text-6xl md:text-8xl font-black text-yellow-400 mb-4 drop-shadow-lg">
+                    🎄 MINECRAFT 🎄
+                </h1>
+                <h2 class="minecraft-subtitle text-3xl md:text-5xl font-bold text-green-400 mb-6">
+                    WEIHNACHTSDORF
+                </h2>
+                <p class="text-xl md:text-2xl text-white font-semibold">
+                    🎮 Der Kristall der Erbauer flackert... 🎮
+                </p>
+            </header>
+            
+            <!-- Willkommens-Sektion -->
+            <main class="max-w-4xl mx-auto text-center">
+                
+                <!-- Story-Bereich -->
+                <section class="bg-black bg-opacity-40 p-8 rounded-lg mb-8 backdrop-blur-sm">
+                    <h3 class="text-2xl font-bold text-yellow-300 mb-4">
+                        🌟 Willkommen, Erbauer! 🌟
+                    </h3>
+                    <p class="text-lg text-gray-200 leading-relaxed">
+                        Du bist im verschneiten Minecraft-Weihnachtsdorf angekommen! 
+                        Der magische Kristall der Erbauer verliert seine Kraft... 
+                        Nur durch die Magie der <span class="text-green-400 font-bold">Webentwicklung</span> 
+                        kannst du ihn wieder zum Leben erwecken! ⚡
+                    </p>
+                </section>
+                
+                <!-- Minecraft Bilder Galerie -->
+                <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="minecraft-block bg-green-600 p-6 rounded-lg text-center">
+                        <div class="text-4xl mb-2">🏠</div>
+                        <h4 class="text-white font-bold">Weihnachtshaus</h4>
+                        <p class="text-green-100">Gemütliches Zuhause</p>
+                    </div>
+                    <div class="minecraft-block bg-blue-600 p-6 rounded-lg text-center">
+                        <div class="text-4xl mb-2">❄️</div>
+                        <h4 class="text-white font-bold">Schneelandschaft</h4>
+                        <p class="text-blue-100">Endlose Winterwelt</p>
+                    </div>
+                    <div class="minecraft-block bg-yellow-600 p-6 rounded-lg text-center">
+                        <div class="text-4xl mb-2">🎁</div>
+                        <h4 class="text-white font-bold">Geschenke</h4>
+                        <p class="text-yellow-100">Magische Überraschungen</p>
+                    </div>
+                </section>
+                
+                <!-- Abenteuer-Start Button -->
+                <section class="text-center">
+                    <button id="adventure-btn" class="minecraft-button bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        🚀 Abenteuer beginnen! 🚀
+                    </button>
+                    <div id="adventure-message" class="mt-4 text-yellow-300 font-bold text-lg hidden">
+                        🎉 Das Abenteuer hat begonnen! Lass uns Webseiten bauen! 🎉
+                    </div>
+                </section>
+                
+            </main>
+            
+            <!-- Footer mit Minecraft-Emojis -->
+            <footer class="text-center mt-12 text-gray-400">
+                <p>🎮 Erstellt mit HTML, CSS und JavaScript 🎮</p>
+                <div class="text-2xl mt-2">⛄ 🎄 ⭐ 🎁 ❄️</div>
+            </footer>
+            
+        </div>
+    </div>
+    
+    <!-- JavaScript für Interaktivität -->
+    <script src="script.js"></script>
+</body>
+</html>

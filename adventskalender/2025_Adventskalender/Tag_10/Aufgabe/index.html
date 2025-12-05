@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="winter">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 10 · Elfenwerkbank Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              frostmint: '#9EF8FF',
+              peppermint: '#FF5C8D',
+              ginger: '#FFB347',
+              night: '#040A1C'
+            },
+            fontFamily: {
+              orbitron: ['Orbitron', 'sans-serif'],
+              poppins: ['Poppins', 'system-ui']
+            }
+          }
+        }
+      };
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-night text-white min-h-screen font-poppins relative overflow-hidden">
+    <div class="aurora" aria-hidden="true"></div>
+    <div class="snowfield" aria-hidden="true"></div>
+
+    <div class="page-shell relative z-10">
+      <header class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <p class="tracking-[0.3em] text-xs uppercase text-frostmint/70">
+            Tag 10 · Formulare retten die Werkbank
+          </p>
+          <h1 class="text-3xl md:text-5xl font-orbitron text-white">
+            Elfenwerkbank Control Center
+          </h1>
+          <p class="text-slate-200/80 text-sm md:text-base max-w-2xl mt-2">
+            Die alten Hebel sind eingerostet. Du gibst den Elfen eine futuristische Oberfläche,
+            mit der sie Wünsche einsammeln, priorisieren und an die Geschenkmaschinen weiterleiten.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <button class="btn btn-outline btn-sm border-frostmint text-frostmint hover:bg-frostmint/10">
+            Story-Modus
+          </button>
+          <button class="btn btn-primary btn-sm bg-peppermint border-0 shadow-lg shadow-peppermint/30">
+            Notfallkanal öffnen
+          </button>
+        </div>
+      </header>
+
+      <main class="workshop-grid mt-8">
+        <aside class="control-panel">
+          <div class="pixel-heading">Werkbank-Module</div>
+          <p class="text-xs text-slate-300/80">
+            Wähle ein Modul, um unterschiedliche Bereiche der Produktionshalle zu inspizieren.
+          </p>
+          <div class="panel-nav">
+            <button class="nav-pill is-active" data-panel-target="orders">
+              <span>🎁 Wunschannahme</span>
+              <small>Formulare &amp; Validierung</small>
+            </button>
+            <button class="nav-pill" data-panel-target="inventory">
+              <span>🧰 Ressourcen</span>
+              <small>Kapazität &amp; Energie</small>
+            </button>
+            <button class="nav-pill" data-panel-target="timeline">
+              <span>🛠️ Werkzeuge</span>
+              <small>Aufgaben &amp; Fortschritt</small>
+            </button>
+          </div>
+
+          <div class="panel panel--frost mt-6">
+            <div class="panel-label">Sofortstatus</div>
+            <dl class="status-grid">
+              <div>
+                <dt>Gesamtaufträge</dt>
+                <dd data-counter="total">3</dd>
+              </div>
+              <div>
+                <dt>Express</dt>
+                <dd data-counter="urgent">1</dd>
+              </div>
+              <div>
+                <dt>Bereit zum Versand</dt>
+                <dd data-counter="ready">1</dd>
+              </div>
+            </dl>
+          </div>
+        </aside>
+
+        <section class="dashboard-surface">
+          <div class="panel hero">
+            <div>
+              <p class="text-xs uppercase tracking-[0.2em] text-frostmint/70">aktive Schicht</p>
+              <h2 class="text-2xl font-orbitron">Nordpol-Schicht 3 · Sternenzeit 19:45</h2>
+              <p class="text-sm text-slate-200/80 max-w-3xl mt-2">
+                Formulare sind wie Redstone-Schaltungen: sauber verbunden, klar beschriftet und mit
+                sichtbaren Status-Lichtern. Hier steuerst du alles per Klick statt per Hammer.
+              </p>
+            </div>
+            <!-- TODO 1: Baue hier die zweispaltigen Status-Badges ein, damit die Elfen sofort sehen,
+                 wie nutzerfreundlich das Interface gerade ist und ob das Validierungs-Licht aktiv ist. -->
+          </div>
+
+          <div class="panel-stack">
+            <section class="panel" data-panel="orders">
+              <div class="panel-label">🎯 Neues Wunschformular</div>
+              <form id="gift-order-form" class="elf-form">
+                <div class="elf-field" data-state="idle">
+                  <label for="elfName">Elf-Name</label>
+                  <input
+                    id="elfName"
+                    name="elfName"
+                    type="text"
+                    required
+                    placeholder="z.B. Zirpel"
+                  />
+                  <p class="elf-hint">Damit man weiß, wer diesen Wunsch betreut.</p>
+                </div>
+
+                <div class="elf-field" data-state="idle">
+                  <label for="kidName">Kind / Empfänger</label>
+                  <input
+                    id="kidName"
+                    name="kidName"
+                    type="text"
+                    required
+                    placeholder="Name des Kindes"
+                  />
+                  <p class="elf-hint">Wird live in der Vorschau angezeigt.</p>
+                </div>
+
+                <div class="elf-field" data-state="idle">
+                  <label for="wishItem">Wunschgegenstand</label>
+                  <input
+                    id="wishItem"
+                    name="wishItem"
+                    type="text"
+                    required
+                    placeholder="Frost-Pickaxe, Schleifenschlitten..."
+                  />
+                </div>
+
+                <div class="elf-field" data-state="idle">
+                  <label for="wishType">Kategorie</label>
+                  <select id="wishType" name="wishType">
+                    <option value="Redstone">Redstone-Gadget</option>
+                    <option value="Dekoration">Weihnachtsdeko</option>
+                    <option value="Abenteuer">Abenteuer-Gear</option>
+                    <option value="Haustier">Begleiter</option>
+                  </select>
+                </div>
+
+                <div class="elf-field">
+                  <label>Priorität</label>
+                  <div class="priority-group" role="group" aria-label="Priorität wählen">
+                    <button type="button" class="priority-pill is-active" data-priority="Standard">
+                      Standard
+                    </button>
+                    <button type="button" class="priority-pill" data-priority="Express">
+                      Express
+                    </button>
+                    <button type="button" class="priority-pill" data-priority="Notfall">
+                      Notfall
+                    </button>
+                  </div>
+                  <p class="elf-hint">Schaltet die Maschinenstufe automatisch um.</p>
+                </div>
+
+                <div class="elf-field" data-state="idle">
+                  <label for="deadline">Lieferung bis</label>
+                  <input id="deadline" name="deadline" type="date" />
+                </div>
+
+                <div class="elf-field elf-switch">
+                  <label class="switch-label" for="qualityCheck">
+                    <span>Qualitätskontrolle erforderlich</span>
+                    <small>Elfen müssen die Wunschliste gegenprüfen</small>
+                  </label>
+                  <input type="checkbox" id="qualityCheck" name="qualityCheck" checked />
+                </div>
+
+                <button type="button" class="advanced-toggle" id="advanced-toggle">
+                  ✨ Geheime Elfenoptionen anzeigen
+                </button>
+
+                <div id="advanced-block" class="advanced-block hidden">
+                  <div class="elf-field" data-state="idle">
+                    <label for="workstation">Werkbank Slot</label>
+                    <select id="workstation" name="workstation">
+                      <option value="Nordlicht">Nordlicht 1</option>
+                      <option value="Zuckerwatte">Zuckerwatte 2</option>
+                      <option value="Schneesturm">Schneesturm 3</option>
+                    </select>
+                  </div>
+                  <div class="elf-field" data-state="idle">
+                    <label for="notes">Notizen an das Maschinen-Team</label>
+                    <textarea id="notes" name="notes" rows="2" placeholder="z.B. Kufen glänzend lackieren"></textarea>
+                  </div>
+                </div>
+
+                <div class="panel panel--preview" id="live-preview">
+                  <p class="text-xs uppercase tracking-[0.2em] text-frostmint/60">Live-Vorschau</p>
+                  <h3 class="preview-title">Noch kein Wunsch eingetragen</h3>
+                  <p class="preview-meta">Priorität: <span id="preview-priority">Standard</span></p>
+                  <p class="preview-meta">Kategorie: <span id="preview-type">Redstone-Gadget</span></p>
+                  <p class="preview-meta">Qualitätscheck: <span id="preview-quality">Ja</span></p>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-full mt-2 bg-peppermint border-0 shadow-lg shadow-peppermint/30">
+                  Wunsch an Maschine senden
+                </button>
+              </form>
+            </section>
+
+            <section class="panel hidden" data-panel="inventory">
+              <div class="panel-label">🧰 Ressourcenüberblick</div>
+              <div class="inventory-board">
+                <article>
+                  <h3>Materialtrichter</h3>
+                  <p class="text-sm text-slate-300/90">
+                    Analysiert, ob genug Holz, Stoff und Redstone für die laufenden Aufträge da sind.
+                  </p>
+                  <div class="inventory-meter">
+                    <div class="inventory-meter__fill" id="material-meter"></div>
+                  </div>
+                  <div class="inventory-meta">
+                    <span id="capacity-label">83% Werkbank-Energie</span>
+                    <input type="range" id="capacity-range" min="20" max="120" value="83" />
+                  </div>
+                </article>
+
+                <article>
+                  <h3>Energiekerne</h3>
+                  <ul class="energy-list">
+                    <li>
+                      <span>Schlitten-Akku</span>
+                      <meter value="0.75">75%</meter>
+                    </li>
+                    <li>
+                      <span>Geschenk-Scanner</span>
+                      <meter value="0.55">55%</meter>
+                    </li>
+                    <li>
+                      <span>Konfetti-Drucker</span>
+                      <meter value="0.9">90%</meter>
+                    </li>
+                  </ul>
+                </article>
+              </div>
+            </section>
+
+            <section class="panel hidden" data-panel="timeline">
+              <div class="panel-label">🛠️ Werkzeuge &amp; Aufgaben</div>
+              <div class="timeline">
+                <button class="timeline-chip" data-stage="Scannen">1 · Wunschkarte scannen</button>
+                <button class="timeline-chip" data-stage="Planen">2 · Bauplan bestätigen</button>
+                <button class="timeline-chip" data-stage="Montage">3 · Einzelteile montieren</button>
+                <button class="timeline-chip" data-stage="QA">4 · Glitzerprüfung</button>
+              </div>
+              <div class="timeline-panel">
+                <h3>Aktueller Produktionsschritt</h3>
+                <p id="timeline-description">
+                  Tippe auf einen Schritt, um den Fokus in der Werkstatt zu setzen.
+                </p>
+              </div>
+              <div class="timeline-progress">
+                <div class="timeline-progress__bar" id="timeline-progress"></div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <aside class="order-stream panel">
+          <div class="panel-label">📦 Aktive Wunschliste</div>
+          <ul id="order-list" class="order-list"></ul>
+        </aside>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      <span>Neuer Wunsch erfasst!</span>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

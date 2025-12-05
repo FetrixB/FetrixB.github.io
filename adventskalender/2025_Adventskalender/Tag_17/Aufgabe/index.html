@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 17 – Geschenk-Generator (Aufgabe)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-slate-950 text-white">
+    <div class="minecraft-grid" aria-hidden="true"></div>
+    <div class="snow-layer" aria-hidden="true"></div>
+
+    <header class="hero">
+      <div class="hero__content">
+        <p class="hero__badge">Tag 17 · Funktionen & Zufallsmagie</p>
+        <h1 class="hero__title">🎄 Dein Geschenk-Generator</h1>
+        <p class="hero__text">
+          Baue heute einen Loot-Generator, der wie eine Minecraft-Schatztruhe
+          arbeitet. Stell die richtigen Parameter ein und lass Funktionen die
+          Arbeit übernehmen.
+        </p>
+      </div>
+      <div class="hero__orb" aria-hidden="true">
+        <span class="hero__orb-core"></span>
+        <span class="hero__orb-ring"></span>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="control-panel">
+        <div class="panel-card">
+          <h2>⚙️ Steuerung</h2>
+          <p>
+            Jede Auswahl wird später als Parameter in unsere Funktionen
+            übergeben. So entstehen aus denselben Abläufen immer neue Items.
+          </p>
+          <form class="controls" id="generatorForm">
+            <label class="control">
+              <span>Kategorie auswählen</span>
+              <select name="category" id="categorySelect">
+                <option value="spielzeug">Spielzeug</option>
+                <option value="buecher">Bücher</option>
+                <option value="kleidung">Pixel-Kleidung</option>
+                <option value="games">Games</option>
+                <option value="mischung">Gemischte Loot-Kiste</option>
+              </select>
+            </label>
+
+            <label class="control">
+              <span>Anzahl an Items (1–5)</span>
+              <input type="number" id="amountInput" min="1" max="5" value="3" />
+            </label>
+
+            <label class="control">
+              <span>Legendär-Chance-Booster</span>
+              <input type="range" id="boosterRange" min="1" max="3" step="1" value="1" />
+              <small id="boosterValue">x1</small>
+            </label>
+
+            <label class="toggle">
+              <input type="checkbox" id="mysteryToggle" />
+              <span>Überraschungswürfel hinzufügen</span>
+            </label>
+
+            <button type="submit" class="btn-generate">✨ Geschenke erzeugen</button>
+          </form>
+        </div>
+        <div class="panel-card panel-card--glass">
+          <h3>📦 Generator-Status</h3>
+          <ul id="statusList" class="status-list">
+            <li>Starte die erste Loot-Runde!</li>
+          </ul>
+          <!-- TODO 1: Füge hier die Seltenheits-Legende mit vier Badges wieder ein, damit Felix die Loot-Klassen sofort erkennt. -->
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>🧰 Ausgabekiste</h2>
+          <p>Hier erscheinen die Items deiner Funktionen.</p>
+        </div>
+        <div id="giftGrid" class="gift-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="insights">
+        <article>
+          <h3>🧠 Funktionen</h3>
+          <p>Nutze Parameter, um Items zu steuern.</p>
+        </article>
+        <article>
+          <h3>🎯 Default-Werte</h3>
+          <p>Ohne Eingabe trotzdem sinnvolle Ergebnisse liefern.</p>
+        </article>
+        <article>
+          <h3>🎲 Zufall</h3>
+          <p>Math.random und Arrays für Loot-Listen.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Teste später gegen `Tag_17/Loesung/`</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
