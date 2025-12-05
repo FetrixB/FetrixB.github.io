@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 23 · Portal der Schneeflocken</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-slate-950 text-white min-h-screen">
+    <header class="hero relative isolate overflow-hidden">
+      <canvas id="snowPortal" class="hero__canvas"></canvas>
+      <div class="hero__gradient"></div>
+      <div class="hero__content container mx-auto px-6 py-24 flex flex-col gap-8">
+        <div class="max-w-3xl space-y-4">
+          <p class="tracking-[0.5em] uppercase text-xs md:text-sm text-sky-200">
+            Tag 23 · Drei Dimensionen der Feiertage
+          </p>
+          <h1 class="font-display text-4xl md:text-6xl leading-tight drop-shadow-[0_0_25px_rgba(59,130,246,0.6)]">
+            Öffne das Portal zur 3D-Schneesturm-Dimension
+          </h1>
+          <p class="text-lg md:text-xl text-sky-100/90">
+            Kombiniere Three.js, Tailwind und GSAP, um Schneeflocken aus allen Richtungen tanzen zu lassen
+            und verwandle deinen Header in ein lebendiges 3D-Biom.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-4">
+          <a href="#control" class="glow-button">Starte den 3D-Zauber</a>
+          <p class="text-sm md:text-base text-slate-100/70">
+            Echtzeit-Portaltemperatur: <span data-snow-count>120%</span>
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16 space-y-20">
+      <section class="grid gap-6 md:grid-cols-3" aria-label="Portalstatus">
+        <article class="stat-card">
+          <p class="text-xs uppercase tracking-[0.3em] text-sky-100/70">Dimension</p>
+          <p class="stat-card__value">FrostKammer-23B</p>
+          <p class="text-sm text-slate-100/70">
+            Szene, Kamera und Renderer arbeiten wie drei Koordinatenachsen zusammen.
+          </p>
+        </article>
+        <article class="stat-card">
+          <p class="text-xs uppercase tracking-[0.3em] text-sky-100/70">Partikel</p>
+          <p class="stat-card__value"><span id="flakeCount">1600</span> Flocken</p>
+          <p class="text-sm text-slate-100/70">
+            Point-Geometrie und Shader-Material formen ultra-leichte Schneekristalle.
+          </p>
+        </article>
+        <article class="stat-card">
+          <p class="text-xs uppercase tracking-[0.3em] text-sky-100/70">Portallicht</p>
+          <p class="stat-card__value" id="portalMood">Aurora-Modus</p>
+          <p class="text-sm text-slate-100/70">
+            Ambient- und Punktlichter sorgen für Tiefe wie in einem Nether-Portal.
+          </p>
+        </article>
+      </section>
+
+      <section id="control" class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-start">
+        <div class="glass-panel space-y-6">
+          <div class="space-y-2">
+            <p class="text-xs uppercase tracking-[0.4em] text-sky-200">Interaktion</p>
+            <h2 class="text-2xl font-display">Regle die Schneesturm-Intensität</h2>
+            <p class="text-slate-100/80">
+              Die Geschwindigkeit steuert, wie schnell die Partikel ihr Koordinatensystem wechseln. Hohe Werte bedeuten
+              einen chaotischen Blizzard – genau das Richtige für ein dramatisches Weihnachtsfinale.
+            </p>
+          </div>
+          <label class="flex flex-col gap-3 text-sm">
+            <span>Geschwindigkeit des Partikelstroms</span>
+            <input
+              id="speedControl"
+              type="range"
+              min="1"
+              max="3"
+              step="0.1"
+              value="1.2"
+              class="w-full accent-sky-400"
+            />
+          </label>
+          <button id="burstButton" class="glow-button w-full text-center">Schneeflocken-Burst</button>
+        </div>
+        <div class="glass-panel space-y-5">
+          <h3 class="text-xl font-display">DOM + Canvas = Hybrid Experience</h3>
+          <ul class="space-y-4 text-slate-100/80">
+            <li>
+              <span class="font-semibold text-sky-200">Overlay-Layer:</span> Der Canvas liegt unterhalb deiner Texte, sodass du
+              Storytelling und Visualisierung kombinierst.
+            </li>
+            <li>
+              <span class="font-semibold text-sky-200">Responsive Renderer:</span> Wir passen Größe und Pixel Ratio bei jeder
+              Fensteränderung an.
+            </li>
+            <li>
+              <span class="font-semibold text-sky-200">Performance:</span> Nur leichte Punktgeometrien halten die FPS hoch – auch
+              auf Tablets.
+            </li>
+          </ul>
+          <a
+            href="https://threejs.org/"
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex items-center gap-2 text-sky-200 hover:text-sky-100"
+          >
+            Offizielle Three.js-Enzyklopädie öffnen →
+          </a>
+        </div>
+      </section>
+
+      <section class="grid gap-8 md:grid-cols-2">
+        <div class="glass-panel space-y-4">
+          <h3 class="text-xl font-display">Was im Code passiert</h3>
+          <p>
+            ✔️ Wir erzeugen zufällige Positionen in einem 3D-Würfel und speichern individuelle Geschwindigkeiten pro
+            Partikel.
+          </p>
+          <p>
+            ✔️ Ein Torus fungiert als Portalrahmen, dessen Material reflektierendes Licht nutzt, um Tiefe zu erzeugen.
+          </p>
+          <p>
+            ✔️ Der Animations-Loop aktualisiert Positionen, rotiert das Portal sanft und rendert jede Szene mit der gleichen
+            Kamera.
+          </p>
+        </div>
+        <div class="glass-panel space-y-4">
+          <h3 class="text-xl font-display">Pro-Tipps für Felix</h3>
+          <p>
+            🔧 Füge weitere Meshes wie Schneebäume hinzu – du brauchst nur Geometrie + Material.
+          </p>
+          <p>
+            🎛️ Baue DOM-Kontrollen aus (z. B. Checkbox für Windrichtung) und binde sie an Uniforms oder JS-Variablen.
+          </p>
+          <p>
+            🎯 Optimiere mit `PointsMaterial` und `BufferGeometry`, wenn du auf 5.000+ Partikel erhöhen willst.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-10 text-center text-slate-100/70 text-sm">
+      Portal stabilisiert von Felix · 3D-Schnee dank Three.js · Animation-Power von GSAP
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

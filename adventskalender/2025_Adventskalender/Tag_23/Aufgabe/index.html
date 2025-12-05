@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 23 · Portal-Baustelle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-slate-950 text-white min-h-screen">
+    <header class="hero relative isolate overflow-hidden">
+      <canvas id="snowPortal" class="hero__canvas"></canvas>
+      <div class="hero__gradient"></div>
+      <div class="hero__content container mx-auto px-6 py-20 flex flex-col gap-6">
+        <p class="tracking-[0.4em] uppercase text-xs text-sky-200">Tag 23</p>
+        <h1 class="font-display text-4xl md:text-5xl">
+          Baue dein eigenes 3D-Schneeflocken-Portal
+        </h1>
+        <p class="text-lg text-sky-100/90">
+          Szene, Kamera, Renderer – deine drei wichtigsten Koordinaten. Darauf legst du animierte Partikel, die in alle
+          Richtungen schweben.
+        </p>
+        <div class="flex flex-wrap gap-4 items-center">
+          <a href="#control" class="glow-button">Weiter zum Interface</a>
+          <p class="text-sm text-slate-100/80">
+            Portalstatus: <span data-snow-count>100%</span> Aktivität
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16 space-y-14">
+      <section class="grid gap-6 md:grid-cols-3" aria-label="Portalstatus">
+        <article class="stat-card">
+          <p class="text-xs uppercase tracking-[0.3em] text-sky-100/70">Scene</p>
+          <p class="stat-card__value">Dämmerlicht</p>
+          <p class="text-sm text-slate-100/70">
+            Die Szene sammelt alle Objekte, damit sie gemeinsam gerendert werden.
+          </p>
+        </article>
+        <article class="stat-card">
+          <p class="text-xs uppercase tracking-[0.3em] text-sky-100/70">Camera</p>
+          <p class="stat-card__value">60° Blick</p>
+          <p class="text-sm text-slate-100/70">
+            Perspektivische Kamera sorgt für Tiefe – perfekt für Schnee, der auf dich zufliegt.
+          </p>
+        </article>
+        <article class="stat-card">
+          <p class="text-xs uppercase tracking-[0.3em] text-sky-100/70">Renderer</p>
+          <p class="stat-card__value" id="portalMood">Standard</p>
+          <p class="text-sm text-slate-100/70">
+            Rendert den Canvas ständig neu, damit der Blizzard lebendig wirkt.
+          </p>
+        </article>
+      </section>
+
+      <section id="control" class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-start">
+        <div class="glass-panel space-y-5">
+          <div class="space-y-2">
+            <p class="text-xs uppercase tracking-[0.4em] text-sky-200">Regler</p>
+            <h2 class="text-2xl font-display">Schneesturm kontrollieren</h2>
+            <p class="text-slate-100/80">
+              Dein Slider soll bestimmen, wie wild sich die Partikel bewegen. Ohne DOM-Kontrolle fühlt sich das Portal
+              schnell statisch an.
+            </p>
+          </div>
+          <label class="flex flex-col gap-3 text-sm">
+            <span>Geschwindigkeit des Partikelstroms</span>
+            <!-- TODO 1: Füge hier das Range-Input mit der ID "speedControl" ein (min 1, max 3, Schritt 0.1, Startwert 1.2). -->
+          </label>
+          <button id="burstButton" class="glow-button w-full text-center">Schneepower aktivieren</button>
+        </div>
+        <div class="glass-panel space-y-4">
+          <h3 class="text-xl font-display">Hybrid Aufbau</h3>
+          <p>
+            Mixe DOM und Canvas: Texte erklären das Portal, der Canvas liefert die Magie. Du brauchst nur einen cleveren
+            Layer-Stack.
+          </p>
+          <p>
+            GSAP pulsiert Karten per Klick. Spiele mit Animationen, die Feedback geben, wenn Felix den Regler bewegt.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-10 text-center text-slate-100/70 text-sm">
+      Vergleiche Aufgabe und Lösung, um das Portal zu perfektionieren.
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

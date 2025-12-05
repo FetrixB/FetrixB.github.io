@@ -33,4 +33,5 @@ TailwindCSS, GSAP, tsparticles
 - **Model**: gpt-4o-mini-2024-07-18
 - **API Endpoint**: https://api.llm7.io/v1
 - **Features**: Chat-Interface, Weihnachtsthemen-Assistant
+- **Free Tier**: Keine API-Key erforderlich! LLMv7 bietet kostenlosen Zugang
 - **Use Case**: Interaktive Minecraft-Weihnachts-Beratung

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag 21 · Schneeball-Physikarena</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              night: "#031226",
+              emerald: "#34d399",
+              frost: "#a5f3fc",
+              candy: "#f472b6",
+              ember: "#fb7185",
+            },
+            fontFamily: {
+              orbitron: ['"Orbitron"', "sans-serif"],
+              pixel: ['"Press Start 2P"', "cursive"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="min-h-screen bg-night text-white font-orbitron">
+    <div class="snow-layer">
+      <header class="max-w-5xl mx-auto px-6 pt-10 text-center">
+        <p class="tag-badge">Tag 21 · Schneeball-Schlachtplan</p>
+        <h1 class="text-3xl md:text-5xl font-semibold mt-4 drop-shadow-lg">
+          Physik-Schlachtfeld für Felix ❄️💥
+        </h1>
+        <p class="mt-4 text-base md:text-lg text-frost max-w-3xl mx-auto">
+          Die Kinder brauchen ein echtes Score-System! Baue eine Zentrale, die
+          Schneebälle mit <span class="text-emerald">Matter.js</span> steuert,
+          Treffer sichtbar macht und die wildeste Schneeballschlacht des Dorfes
+          kontrolliert.
+        </p>
+      </header>
+
+      <main
+        class="max-w-6xl mx-auto px-6 py-10 grid gap-8 lg:grid-cols-[minmax(280px,360px)_1fr]"
+      >
+        <section class="glass-panel control-panel">
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="text-2xl font-semibold">Game Deck</h2>
+            <div class="status-grid">
+              <span id="loopBadge" class="status-chip">Loop stabil</span>
+              <span id="statusBadge" class="status-chip status-chip--idle"
+                >Bereit</span
+              >
+            </div>
+          </div>
+
+          <div class="score-grid mt-6">
+            <article class="score-card">
+              <p>Würfe</p>
+              <p id="shotCount" class="score-value">0</p>
+            </article>
+            <article class="score-card">
+              <p>Treffer</p>
+              <p id="hitCount" class="score-value">0</p>
+            </article>
+            <article class="score-card">
+              <p>Trefferquote</p>
+              <p id="accuracyValue" class="score-value">0%</p>
+            </article>
+          </div>
+
+          <div class="combo-meter mt-6" aria-label="Treffer-Serie">
+            <div id="comboFill" class="combo-fill"></div>
+            <p class="combo-label">Combo-Power</p>
+          </div>
+
+          <div class="loop-monitor mt-6">
+            <div>
+              <p class="monitor-label">Game Loop Δt</p>
+              <p id="deltaValue" class="monitor-value">0 ms</p>
+            </div>
+            <div>
+              <p class="monitor-label">Vergangene Zeit</p>
+              <p id="clockValue" class="monitor-value">0.0 s</p>
+            </div>
+            <div>
+              <p class="monitor-label">Aktive Schneebälle</p>
+              <p id="activeSnowballs" class="monitor-value">0</p>
+            </div>
+          </div>
+
+          <div class="control-group mt-8">
+            <label class="control-label" for="angleInput"
+              >Abwurfwinkel</label
+            >
+            <input
+              id="angleInput"
+              type="range"
+              min="25"
+              max="75"
+              value="42"
+            />
+            <div class="slider-values">
+              <span>25°</span>
+              <span id="angleValue" class="highlight-value">42°</span>
+              <span>75°</span>
+            </div>
+          </div>
+
+          <div class="control-group mt-6">
+            <label class="control-label" for="powerInput"
+              >Wurfkraft</label
+            >
+            <input id="powerInput" type="range" min="12" max="24" value="18" />
+            <div class="slider-values">
+              <span>12</span>
+              <span id="powerValue" class="highlight-value">18</span>
+              <span>24</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-4 mt-8">
+            <button id="launchButton" class="primary-btn">
+              🎯 Schneeball werfen
+            </button>
+            <label class="auto-chip">
+              <input id="autoFireToggle" type="checkbox" />
+              <span>Auto-Launch aktivieren</span>
+            </label>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="text-lg text-frost tracking-wide">Treffer-Feed</h3>
+            <div id="hitFeed" class="feed-grid" aria-live="polite"></div>
+          </div>
+
+          <div class="mt-6 grid gap-3 text-sm text-frost/80">
+            <p>✅ Matter.js sorgt für Gravity, Bounces und Kollisionschecks.</p>
+            <p>✅ requestAnimationFrame steuert unser manuelles HUD-Update.</p>
+            <p>✅ Jeder Treffer löst Combo-Belohnungen für Felix aus.</p>
+          </div>
+        </section>
+
+        <section class="glass-panel arena-panel">
+          <div class="arena-header">
+            <p>Windlage: <span id="windValue">Still</span></p>
+            <p>Status: <span id="zoneState">Ziele bereit</span></p>
+          </div>
+
+          <div class="target-hints" id="targetHints">
+            <span class="target-chip" data-chip="ember">Rubin-Totem · 120 Punkte</span>
+            <span class="target-chip" data-chip="mint">Pixel-Schlitten · 150 Punkte</span>
+            <span class="target-chip" data-chip="aqua">Frost-Kristall · 200 Punkte</span>
+          </div>
+
+          <div class="arena-wrapper">
+            <div id="arena" class="pixel-border"></div>
+            <div id="arenaOverlay" class="arena-overlay"></div>
+          </div>
+
+          <p class="arena-hint">
+            Tipp: Stelle dir vor, der Winkel ist wie die Launcher-Höhe in Minecraft
+            und die Power entspricht deiner Redstone-Stärke!
+          </p>
+        </section>
+      </main>
+
+      <section class="max-w-5xl mx-auto px-6 pb-16 grid gap-6 md:grid-cols-2">
+        <article class="lore-card">
+          <h3 class="text-xl mb-3">Story Connection</h3>
+          <p>
+            Jeder Zielblock steht für ein Dorf-Kind. Triffst du es, erhält das Team
+            Power-Ups. Dank Physik-Engine fühlen sich Würfe echt an – kein Zufall,
+            sondern echte Berechnungen.
+          </p>
+        </article>
+        <article class="lore-card">
+          <h3 class="text-xl mb-3">Tech-Highlights</h3>
+          <ul class="list-disc list-inside space-y-1 text-sm leading-6">
+            <li>Game Loop mit Delta-Time für stabile Effekte</li>
+            <li>Kollisionsevents von Matter.js triggern Score-Boosts</li>
+            <li>UI-Feedback mit Tailwind + eigenen Pixel-Styles</li>
+          </ul>
+        </article>
+      </section>
+    </div>
+
+    <template id="feed-template">
+      <article class="feed-card">
+        <p class="feed-text"></p>
+      </article>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

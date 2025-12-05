@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minecraft Weihnachtsmission – Tag 22</title>
+    <meta
+      name="description"
+      content="Baue eine moderne Minecraft-Weihnachts-Landing-Page mit intelligenter KI-Begleitung und glitzerndem Schneefall."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Space+Grotesk:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              frost: "#78f0ff",
+              ember: "#ff5f6d",
+              pine: "#1d9c7c",
+            },
+            fontFamily: {
+              display: ["Orbitron", "Space Grotesk", "sans-serif"],
+              body: ["Space Grotesk", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-slate-950 text-white overflow-x-hidden">
+    <div id="snow-canvas" aria-hidden="true"></div>
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <header class="glass-panel sticky top-0 border-b border-white/10">
+        <div class="layout flex flex-col gap-4 md:flex-row md:items-center md:justify-between py-4">
+          <a class="text-2xl font-display tracking-[0.2em] text-frost" href="#hero">Frostbyte HQ</a>
+          <nav class="flex flex-wrap gap-4 text-sm uppercase tracking-wide">
+            <a class="nav-link" href="#hero">Hero</a>
+            <a class="nav-link" href="#struktur">Struktur</a>
+            <a class="nav-link" href="#features">Features</a>
+            <a class="nav-link" href="#chat">KI-Chat</a>
+          </nav>
+          <button class="cta-button" data-scroll="#chat">✨ Chat starten</button>
+        </div>
+      </header>
+
+      <main class="flex-1">
+        <section id="hero" class="section layout grid gap-12 lg:grid-cols-2 items-center">
+          <div class="space-y-8">
+            <p class="badge">Tag 22 · Weihnachtswelt Kontrollzentrum</p>
+            <h1 class="hero-title">
+              Schaffe die<br />
+              <span class="text-frost">intelligenteste Winter-Landing-Page</span>
+            </h1>
+            <p class="hero-text">
+              Navigiere durch eine modulare Projektstruktur, entzünde magische CTAs und sprich mit einer
+              KI-Elfe, die echten Weihnachtszauber mit <strong>Minecraft-Wissen</strong> kombiniert.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <button class="cta-button" data-scroll="#features">🚀 Projektplan sehen</button>
+              <button class="ghost-button" data-scroll="#chat">🎄 KI befragen</button>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="stat-card">
+                <p class="stat-value">3</p>
+                <p class="stat-label">Module (HTML · CSS · JS)</p>
+              </div>
+              <div class="stat-card">
+                <p class="stat-value">24/7</p>
+                <p class="stat-label">Weihnachtswissen per API</p>
+              </div>
+            </div>
+          </div>
+          <div class="hero-panel">
+            <p class="text-sm uppercase tracking-[0.3em] text-white/60">Live Status</p>
+            <ul class="mt-4 space-y-3 text-sm">
+              <li class="status-line">
+                <span>Navigation</span>
+                <span class="status-dot bg-emerald-400"></span>
+              </li>
+              <li class="status-line">
+                <span>LLM-API</span>
+                <span class="status-dot bg-amber-400"></span>
+              </li>
+              <li class="status-line">
+                <span>Schneesturm</span>
+                <span class="status-dot bg-sky-300"></span>
+              </li>
+            </ul>
+            <div class="mt-8 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm">
+              <p class="font-semibold">Projektauftrag</p>
+              <p class="text-white/80 mt-2">
+                Baue eine Landing Page, die Besucher begrüßt, führt und direkt mit einer KI-Elfe verbindet.
+                Nutze moderne UX-Muster für Desktop, Tablet und Switch-View.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="struktur" class="section layout grid gap-8 lg:grid-cols-3">
+          <article class="module-card">
+            <h2>HTML · Seitenaufbau</h2>
+            <p>
+              Klare Sektionen (Hero, Features, Chat) und eine Navigation, die direkt zu jedem Bereich scrollt.
+              Jede Sektion ist wie ein eigenes Minecraft-Biom.
+            </p>
+            <ul>
+              <li>Hero mit CTA Buttons</li>
+              <li>Feature-Gitter + Roadmap</li>
+              <li>Chat-Bereich mit Formular</li>
+            </ul>
+          </article>
+          <article class="module-card">
+            <h2>CSS · visuelle Magie</h2>
+            <p>
+              Tailwind für Layout, eigenes CSS für Glasoptik, Neonlinien und das Partikel-Canvas für den
+              Schnee. Responsive, fokussiert und klar kommentiert.
+            </p>
+            <ul>
+              <li>Glas-Effekte & Glow</li>
+              <li>Schriftmix Orbitron/Grotesk</li>
+              <li>Custom Buttons & Timeline</li>
+            </ul>
+          </article>
+          <article class="module-card">
+            <h2>JavaScript · Verhalten</h2>
+            <p>
+              GSAP belebt die Cards, tsparticles beschneit den Screen und das Chat-Modul ruft die LLM-API
+              auf – mit robustem Error-Handling.
+            </p>
+            <ul>
+              <li>Smooth Scroll Navigation</li>
+              <li>LLM-Fetch mit JSON</li>
+              <li>Fallback bei Fehlern</li>
+            </ul>
+          </article>
+        </section>
+
+        <section id="features" class="section layout">
+          <div class="section-header">
+            <p class="badge">Feature-Labor</p>
+            <h2 class="section-title">Was diese Landing Page besonders macht</h2>
+          </div>
+          <div class="grid gap-6 md:grid-cols-2">
+            <article class="feature-card">
+              <h3>🎯 Hero + Navigation</h3>
+              <p>
+                Sticky Navigation, die Buttons automatisch zu Sektionen scrollt. Der Hero erklärt sofort, was
+                Besucher tun sollen – CTA oder KI-Chat.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>💬 Chat mit gpt-4o-mini</h3>
+              <p>
+                Nutzt das Endpoint <code>https://api.llm7.io/v1/chat/completions</code>. LLMv7 Free Tier verfügbar!
+                Optional: API-Key für erweiterte Features.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>❄️ Schnee per tsparticles</h3>
+              <p>
+                Ein separates Canvas erzeugt große und kleine Schneeflocken, die sanft mit verschiedenen
+                Geschwindigkeiten fallen.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>⚙️ Progressive Enhancement</h3>
+              <p>
+                Ohne JS bleibt der Content lesbar. Mit JS geht die volle Magie los: animierte Karten, Chat und
+                API-Feedback.
+              </p>
+            </article>
+          </div>
+          <div class="roadmap">
+            <h3>Roadmap für dein Projekt</h3>
+            <ol>
+              <li>
+                <span>1</span>
+                HTML-Sektionen mit klaren IDs anlegen
+              </li>
+              <li>
+                <span>2</span>
+                Glasoptik & Partikel-Hintergrund stylen
+              </li>
+              <li>
+                <span>3</span>
+                Chat-Formular + Fetch-Logik implementieren
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="chat" class="section layout grid gap-10 lg:grid-cols-[2fr,1.2fr]">
+          <div class="chat-panel">
+            <p class="badge">LLM Interface</p>
+            <h2 class="section-title">Frag die KI-Elfe</h2>
+            <p class="text-white/80">
+              LLMv7 Free Tier: Direkt loslegen ohne API-Key! Optional kannst du einen API-Key für erweiterte Features eingeben.
+            </p>
+            <div class="key-panel">
+              <label for="apiKeyInput">API-Key (Optional)</label>
+              <div class="key-row">
+                <input id="apiKeyInput" type="password" placeholder="Optional: sk-live-..." autocomplete="off" />
+                <button id="saveKeyBtn" type="button">Sichern</button>
+              </div>
+              <p id="keyStatus" class="status-hint">LLMv7 Free Tier aktiv - Kein API-Key erforderlich!</p>
+            </div>
+            <form id="chatForm" class="chat-form" autocomplete="off">
+              <label for="messageInput">Deine Frage</label>
+              <textarea id="messageInput" rows="4" placeholder="Welche weihnachtliche Quest empfiehlst du?" required></textarea>
+              <div class="flex flex-col gap-3 md:flex-row md:items-center">
+                <button id="sendBtn" type="submit" class="cta-button flex-1">Antwort vom LLM holen</button>
+                <button id="clearChatBtn" type="button" class="ghost-button w-full md:w-auto">Chat leeren</button>
+              </div>
+              <p id="chatStatus" class="status-hint">Bereit für deine erste Frage! 🎁</p>
+            </form>
+          </div>
+          <div class="chat-display">
+            <div class="chat-display-header">
+              <p>Chat-Verlauf</p>
+              <span class="text-xs uppercase tracking-[0.2em] text-white/70">In-Browser Speicherung</span>
+            </div>
+            <div id="chatHistory" class="chat-history" role="log" aria-live="polite"></div>
+            <div class="hint-panel">
+              <p class="font-semibold">Prompt-Ideen</p>
+              <ul>
+                <li>"Hilf mir, eine Quest-Navigation zu bauen"</li>
+                <li>"Was ist eine gute CTA-Beschriftung?"</li>
+                <li>"Welche Farben wirken wie Diamant-Armor?"</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="layout section">
+          <div class="section-header">
+            <p class="badge">Technik-Notizen</p>
+            <h2 class="section-title">API-Fluss verstehen</h2>
+          </div>
+          <div class="grid gap-6 lg:grid-cols-3">
+            <article class="note-card">
+              <h3>1. Anfrage bauen</h3>
+              <p>Wir sammeln System- + Nutzer-Message und senden JSON über <code>fetch()</code>.</p>
+              <pre><code>{
+  "model": "gpt-4o-mini-2024-07-18",
+  "messages": [
+    { "role": "system", "content": "Sei die KI-Elfe" },
+    { "role": "user", "content": "Brauche CTA-Idee" }
+  ]
+}</code></pre>
+            </article>
+            <article class="note-card">
+              <h3>2. Antwort nutzen</h3>
+              <p>
+                Die Rückgabe enthält ein <code>choices</code>-Array. Wir holen den Text und zeigen ihn als Chat-Blase
+                an.
+              </p>
+            </article>
+            <article class="note-card">
+              <h3>3. Fehler behandeln</h3>
+              <p>
+                Ohne Key oder bei Netzwerkproblemen geben wir freundliche Offline-Antworten, damit Nutzer nie im Schnee
+                stehen bleiben.
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="layout py-8 text-center text-sm text-white/70">
+        <p>
+          Minecraft Weihnachtswelt HQ · Powered by TailwindCSS, GSAP & tsparticles · Tag 22 Adventskalender
+        </p>
+      </footer>
+    </div>
+
+    <template id="chat-bubble-template">
+      <article class="chat-bubble">
+        <p class="chat-role"></p>
+        <p class="chat-text"></p>
+      </article>
+    </template>
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/tsparticles@3.6.1/tsparticles.bundle.min.js"></script>
+    <script defer src="script.js"></script>
+  </body>
+</html>
