@@ -12,6 +12,9 @@ let nextDir;
 let score = 0;
 let running = false;
 let loopInterval = 100; // ms
+const minLoopInterval = 30;
+
+const difficultySelect = document.getElementById('difficulty');
 
 function reset() {
   snake = [{ x: Math.floor(cols/2), y: Math.floor(rows/2) }];
@@ -21,6 +24,16 @@ function reset() {
   score = 0;
   running = true;
   document.getElementById('score').textContent = `Score: ${score}`;
+}
+
+// apply difficulty value (interval in ms) from the UI
+function applyDifficulty() {
+  if (!difficultySelect) return;
+  const val = parseInt(difficultySelect.value, 10);
+  if (!isNaN(val)) {
+    loopInterval = Math.max(minLoopInterval, val);
+    if (timerId) restartLoop();
+  }
 }
 
 function placeFood() {
@@ -60,8 +73,8 @@ function gameStep() {
     document.getElementById('score').textContent = `Score: ${score}`;
     placeFood();
     // speed up slightly every 5 points
-    if (score % 5 === 0 && loopInterval > 30) {
-      loopInterval = Math.max(30, loopInterval - 8);
+    if (score % 5 === 0 && loopInterval > minLoopInterval) {
+      loopInterval = Math.max(minLoopInterval, loopInterval - 8);
       restartLoop();
     }
   } else {
@@ -82,9 +95,32 @@ function draw() {
 
   // draw snake
   for (let i = 0; i < snake.length; i++) {
-    ctx.fillStyle = i === 0 ? '#6ef0a6' : '#3bd78f';
     const s = snake[i];
-    ctx.fillRect(s.x*scale+1, s.y*scale+1, scale-2, scale-2);
+    if (i === 0) {
+      // head: blue
+      ctx.fillStyle = '#4ea3ff';
+      ctx.fillRect(s.x*scale+1, s.y*scale+1, scale-2, scale-2);
+
+      // small eye to help track direction
+      ctx.fillStyle = '#07203b';
+      const eyeSize = Math.max(2, Math.floor(scale * 0.12));
+      let ex = s.x*scale + Math.floor(scale/2) - Math.floor(eyeSize/2);
+      let ey = s.y*scale + Math.floor(scale/2) - Math.floor(eyeSize/2);
+
+      // place eye slightly toward movement direction if available
+      if (dir) {
+        if (dir.x === 1) ex = s.x*scale + scale - 6;
+        if (dir.x === -1) ex = s.x*scale + 4;
+        if (dir.y === 1) ey = s.y*scale + scale - 6;
+        if (dir.y === -1) ey = s.y*scale + 4;
+      }
+
+      ctx.fillRect(ex, ey, eyeSize, eyeSize);
+    } else {
+      // body: green
+      ctx.fillStyle = '#3bd78f';
+      ctx.fillRect(s.x*scale+1, s.y*scale+1, scale-2, scale-2);
+    }
   }
 
   if (!running) {
@@ -116,12 +152,20 @@ function restartLoop() {
 
 document.getElementById('restart').addEventListener('click', () => {
   reset();
+  applyDifficulty();
   restartLoop();
 });
+
+if (difficultySelect) {
+  difficultySelect.addEventListener('change', () => {
+    applyDifficulty();
+  });
+}
 
 window.addEventListener('keydown', handleKey);
 
 // init
 reset();
+applyDifficulty();
 startLoop();
 draw();

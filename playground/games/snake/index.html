@@ -12,6 +12,17 @@
     <canvas id="game" width="400" height="400"></canvas>
     <div class="info">
       <span id="score">Score: 0</span>
+
+      <!-- difficulty selector -->
+      <label for="difficulty" class="hint">Difficulty:</label>
+      <select id="difficulty" title="Select difficulty (lower = faster)">
+        <option value="140">Easy</option>
+        <option value="100" selected>Normal</option>
+        <option value="70">Hard</option>
+        <option value="40">Insane</option>
+        <option value="10">Imposiable</option>
+      </select>
+
       <button id="restart">Restart</button>
       <p class="hint">Use arrow keys to play</p>
     </div>
