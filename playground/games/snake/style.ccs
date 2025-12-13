@@ -1,0 +1,45 @@
+/* Simple styles for the snake game */
+:root{
+  --bg:#0b1223;
+  --panel:#0f1b2b;
+  --accent:#6ef0a6;
+  --muted:#9aa7bd;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(180deg,var(--bg),#071022);
+  color:var(--accent);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  padding:20px;
+}
+.container{
+  text-align:center;
+}
+canvas{
+  background:var(--panel);
+  border:6px solid rgba(255,255,255,0.03);
+  display:block;
+  margin:12px auto;
+  image-rendering:pixelated;
+}
+.info{
+  margin-top:8px;
+  color:var(--muted);
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:center;
+}
+button{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.06);
+  color:var(--accent);
+  padding:6px 10px;
+  border-radius:6px;
+  cursor:pointer;
+}
+.hint{font-size:12px;color:var(--muted)}
