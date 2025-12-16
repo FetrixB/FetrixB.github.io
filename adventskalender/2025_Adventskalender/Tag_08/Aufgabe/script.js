@@ -24,8 +24,12 @@ function updateHeatLevel() {
 
 if (windSlider) {
   windSlider.addEventListener("input", (event) => {
-    // TODO 3: Nutze den Sliderwert, um die CSS-Variable "--wind-angle" zu setzen
-    // und beschreibe im Status-Text, ob der Wind nach links oder rechts pustet.
+    const value = Number(event.target.value);
+    // Setzt eine CSS-Variable, die im Keyframe genutzt wird, um die Flammen zu kippen.
+    root.style.setProperty("--wind-angle", `${value}deg`);
+    if (statusText) {
+      statusText.textContent = `Der Wind pustet die Flammen um ${value}° nach ${value >= 0 ? "rechts" : "links"}.`;
+    }
   });
 }
 

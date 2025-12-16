@@ -132,7 +132,7 @@ body {
   border-radius: 60% 60% 45% 45%;
   background: radial-gradient(circle at 30% 20%, var(--ember-light), var(--ember) 55%, var(--ember-dark) 90%);
 
-  /* TODO 2: Gib der Flamme hier wieder eine Keyframe-Animation für das Flackern. */
+  animation: flicker 1.8s ease-in-out infinite alternate;
   transform-origin: bottom center;
 }
 

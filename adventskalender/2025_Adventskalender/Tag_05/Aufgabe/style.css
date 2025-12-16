@@ -127,6 +127,8 @@ nav a:focus-visible {
 }
 
 .frost-button {
+  --btn-depth: 6px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -135,14 +137,13 @@ nav a:focus-visible {
   border-radius: 999px;
   font-weight: 700;
   color: var(--deep-night);
-  background: var(--frost-green);
+  background: linear-gradient(135deg, var(--frost-green), var(--frost-blue));
   border: none;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  box-shadow: 0 var(--btn-depth) 0 rgba(11, 61, 99, 0.9), 0 18px 35px rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-
-  /* TODO 2: Gib dem Button wieder den frostigen Verlauf + 3D-Schatten, damit Hover- und Active-Stati sichtbar werden. */
 }
 
 .status-indicator {

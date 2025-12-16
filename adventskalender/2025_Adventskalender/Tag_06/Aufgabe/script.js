@@ -61,10 +61,13 @@
     if (!progressLabel || !progressFill) {
       return;
     }
-    // TODO 3: Nutze formatStage(page, total), berechne die Prozentbreite und rufe updateSigil auf.
-    progressLabel.textContent = 'TODO: Fortschritt berechnen';
-    progressFill.style.width = '20%';
-    setStatus('Noch ohne Fortschrittslogik');
+    progressLabel.textContent = formatStage(page, total);
+    const safeTotal = Math.max(1, total - 1);
+    const progress = Math.min(1, Math.max(0, (page - 1) / safeTotal));
+    progressFill.style.width = `${(progress * 100).toFixed(0)}%`;
+    updateSigil(progress);
+    tipIndex = (tipIndex + 1) % tips.length;
+    setStatus(tips[tipIndex]);
   }
 
   function createDebouncedResize(callback, delay = 200) {

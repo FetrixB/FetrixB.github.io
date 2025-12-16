@@ -147,7 +147,22 @@ body {
 
 /* TODO 2: Baue hier die sichtbare Tooltip-Blase mit content, Hintergrundfarbe, Schrift und Übergangseffekten nach. */
 .map-hotspot::after {
-    /* Nutze attr(data-tooltip) für den Text und gib der Blase einen kontraststarken Hintergrund. */
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 23, 42, 0.9);
+    color: #e2e8f0;
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.75rem;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    border: 1px solid rgba(94, 234, 212, 0.6);
 }
 
 .map-hotspot:hover::after,

@@ -63,7 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (scrollToSection) {
-            // TODO 3: Scrolle sanft zur passenden Sektion (scrollIntoView) und markiere sie kurz mit der Klasse "focus-glow".
+            const target = document.getElementById(locationId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                target.classList.add('focus-glow');
+                setTimeout(() => target.classList.remove('focus-glow'), 1200);
+            }
         }
 
         document.documentElement.style.setProperty('--active-location-color', data.color);

@@ -29,7 +29,13 @@ const initScrollStory = () => {
     (entries) => {
       entries.forEach((entry) => {
         const cardIndex = Number(entry.target.dataset.index);
-        // TODO 3: Ergänze hier die komplette Sichtbarkeitslogik (aktive Karten ins Set, Klasse "story-card-active" setzen und wieder entfernen).
+        if (entry.isIntersecting) {
+          activated.add(cardIndex);
+          entry.target.classList.add('story-card-active');
+        } else {
+          activated.delete(cardIndex);
+          entry.target.classList.remove('story-card-active');
+        }
       });
       updateProgress();
     },
@@ -37,7 +43,6 @@ const initScrollStory = () => {
       threshold: 0.55,
     }
   );
-
   cards.forEach((card) => observer.observe(card));
 
   scrollHint?.addEventListener('click', () => {

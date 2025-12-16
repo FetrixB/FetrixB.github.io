@@ -27,7 +27,12 @@ function initBlueprintLab() {
     const data = blueprintMessages[key];
     if (!data || !heading || !paragraph || !codeBlock) return;
 
-    // TODO 3: Übernimm hier Titel, Beschreibung und Code in die Ausgabe und triggere einen kurzen Flash-Effekt.
+    heading.textContent = data.title;
+    paragraph.textContent = data.description;
+    codeBlock.textContent = data.code;
+
+    output.classList.remove("flash");
+    requestAnimationFrame(() => output.classList.add("flash"));
   };
 
   buttons.forEach((button) => {

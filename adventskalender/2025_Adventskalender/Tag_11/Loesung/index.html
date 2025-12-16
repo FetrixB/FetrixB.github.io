@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -122,8 +122,8 @@
           <article class="control-card">
             <div class="card-label">Geschwindigkeits-Magie</div>
             <label for="speed-control">Wie stark sollen alle Layer reagieren?</label>
-            <input type="range" id="speed-control" min="30" max="120" value="70" />
-            <div class="slider-value"><span id="speed-value">70%</span> Bewegungskraft</div>
+            <input type="range" id="speed-control" min="300" max="1200" value="700" />
+            <div class="slider-value"><span id="speed-value">700%</span> Bewegungskraft</div>
             <p class="hint">
               Tipp: Niedrige Werte = ruhiger Hintergrund, hohe Werte = dramatischer Tiefeneffekt.
             </p>
