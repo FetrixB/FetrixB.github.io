@@ -1,30 +1,34 @@
-# Tag 24 - Das große Finale
+# Tag 24 - Das große Finale: Minecraft-Weihnachtsspiel
 
 ## Story
-Der magische Moment ist gekommen! Das gesamte Minecraft-Weihnachtsreich steht in voller Pracht vor dir – das Portal glüht, die Schatzkiste funkelt, der Schneemann lächelt aus seinem digitalen Zuhause, die Eishexe nickt anerkennend und der Eisbär läuft zufrieden über den Bildschirm. Alle Dorfbewohner versammeln sich für die große Enthüllung: "Heute wird unser Reich für die ganze Welt sichtbar!", verkündet der Bürgermeister feierlich. "Und mit einem spektakulären Intro-Screen werden alle Besucher die Magie von Anfang an spüren!" Du erkennst, dass heute der Moment der Wahrheit ist: GitHub Pages Deployment, Accessibility-Optimierungen und ein cineastischer Intro-Screen werden deine 24-tägige Reise krönen!
+Der magische Moment ist gekommen! Das gesamte Minecraft-Weihnachtsreich steht in voller 3D-Pracht vor dir – der Schneemann wartet darauf, dass du mit ihm Schneebälle wirfst, Geschenke sind im verschneiten Biom versteckt und warten darauf gesammelt zu werden, und in der Ferne leuchtet ein magisches Weihnachtsportal! "Felix!", ruft der Bürgermeister begeistert, "23 Tage hast du gelernt und gebaut - heute erschaffst du dein eigenes interaktives Minecraft-Weihnachtsspiel!" Die Eishexe fügt hinzu: "Mit Three.js bringst du unsere Welt zum Leben - Spieler können durch die 3D-Landschaft laufen, Geschenke einsammeln und sogar Schneebälle werfen!" Das ist dein Meisterstück - ein vollständiges Browser-Spiel!
 
 ## Lernen
 
-### GitHub Pages Deployment für weltweite Verfügbarkeit
-- Repository-Settings für Pages-Aktivierung konfigurieren
-- Build-Prozess und Asset-Optimierung verstehen
-- Custom Domain und HTTPS-Konfiguration für Professionalität
+### Three.js Game Development - Interaktive 3D-Welten
+- Scene, Camera und Renderer für 3D-Minecraft-Umgebung
+- Geometrien für Blöcke, Geschenke und Charaktere erstellen
+- Texturen laden und auf 3D-Objekte anwenden (Minecraft-Style)
+- Beleuchtung für stimmungsvolle Weihnachtsatmosphäre
 
-### Accessibility für inklusive Web-Experiences
-- ARIA-Labels für Screen Reader Unterstützung
-- Tastaturnavigation für motor-eingeschränkte Nutzer
-- Color-Contrast und Font-Size für visuelle Zugänglichkeit
+### Player Controls & Game Mechanics
+- Erste-Person-Steuerung mit Maus und Tastatur
+- Collision Detection für realistische Bewegung
+- Item Collection System für Geschenke-Sammeln
+- Projektile (Schneebälle) werfen und Physik
+- Score-System und Game-Over-Logik
 
-### Feinschliff und Performance-Optimierung
-- Code-Minification für schnellere Ladezeiten
-- Image-Optimization für bessere Performance
-- SEO-Meta-Tags für Suchmaschinen-Sichtbarkeit
+### Audio & Visual Effects für Immersion
+- Weihnachtsmusik und Soundeffekte einbinden
+- Partikel-Systeme für Schneefall und Effekte
+- Dynamische Schatten für realistisches Minecraft-Feeling
+- UI-Overlays für Score, Zeit und Anweisungen
 
 ## Aufgabe
-Seite veröffentlichen & finalen Intro-Screen einbauen.
+Interaktives 3D-Minecraft-Weihnachtsspiel erstellen mit Three.js.
 
 ## Ziel-WOW
-Komplette Weihnachtswelt online abrufbar.
+Vollständiges Browser-Spiel: Durch 3D-Minecraft-Welt laufen, Geschenke sammeln, Schneebälle werfen, Weihnachtsmusik hören - das perfekte Finale nach 24 Tagen Webentwicklung!
 
 ## Libraries
-TailwindCSS, GSAP, AOS.js
+Three.js, TailwindCSS, Web Audio API

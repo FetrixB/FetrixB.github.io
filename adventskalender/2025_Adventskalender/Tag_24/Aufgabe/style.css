@@ -1,466 +1,298 @@
-:root {
-  --portal-green: #3dd68c;
-  --obsidian: #050612;
-  --emerald: #34d399;
-  --ruby: #ff5f6d;
-  --frost: rgba(148, 197, 255, 0.08);
-  --glass: hsla(220deg, 50%, 95%, 0.05);
-  --border: rgba(255, 255, 255, 0.08);
-}
+/* ========================================
+   🎄 Minecraft Weihnachtsspiel Styles 🎄
+   Pixel-perfektes Design für das große Finale!
+   ======================================== */
 
 * {
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background: radial-gradient(circle at top, rgba(126, 232, 250, 0.2), transparent 40%),
-    radial-gradient(circle at 20% 20%, rgba(255, 95, 109, 0.25), transparent 35%),
-    #020617;
-  font-family: 'Space Grotesk', 'Orbitron', system-ui;
-  color: white;
-  min-height: 100vh;
+    font-family: 'Orbitron', 'Courier New', monospace;
+    background: linear-gradient(135deg, #1a472a 0%, #2d5aa0 50%, #1a472a 100%);
+    overflow: hidden;
+    cursor: none; /* Versteckt Cursor im Spiel */
 }
 
-main {
-  position: relative;
-}
-
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 16px;
-  background: var(--portal-green);
-  color: #031f2e;
-  padding: 0.8rem 1.4rem;
-  border-radius: 999px;
-  z-index: 999;
-  font-weight: 600;
-  text-decoration: none;
-  transition: top 0.2s ease;
-}
-
-.skip-link:focus {
-  top: 20px;
-}
-
-.ambient-stars,
-.ambient-grid {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.ambient-stars::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px);
-  background-size: 4px 4px;
-  opacity: 0.25;
-  animation: twinkle 10s linear infinite;
-}
-
-.ambient-grid::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(50, 119, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(50, 119, 255, 0.08) 1px, transparent 1px);
-  background-size: 140px 140px;
-  transform: skewY(-10deg);
-  opacity: 0.2;
-}
-
+/* ===============================
+   🎮 INTRO SCREEN STYLES
+   =============================== */
 .intro-screen {
-  position: fixed;
-  inset: 0;
-  background: rgba(5, 6, 18, 0.96);
-  backdrop-filter: blur(14px);
-  display: grid;
-  place-items: center;
-  z-index: 998;
-  padding: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 2s ease-in-out;
 }
 
 .intro-content {
-  max-width: 600px;
-  text-align: center;
-  background: linear-gradient(125deg, rgba(61, 214, 140, 0.08), rgba(126, 232, 250, 0.08));
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 32px;
-  padding: 2.5rem;
-  box-shadow: 0 30px 120px rgba(3, 15, 37, 0.7);
+    text-align: center;
+    max-width: 800px;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 4px solid #ffcc00;
+    border-radius: 16px;
+    box-shadow: 
+        0 0 50px rgba(255, 204, 0, 0.6),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
-.launch-button {
-  margin-top: 2rem;
-  background: linear-gradient(110deg, var(--portal-green), #7ee8fa);
-  color: #041414;
-  border: none;
-  border-radius: 999px;
-  padding: 1rem 2.4rem;
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.intro-title {
+    font-size: 3.5rem;
+    color: #ffcc00;
+    text-shadow: 
+        3px 3px 0 #cc0000,
+        6px 6px 0 #660000,
+        0 0 30px #ffcc00;
+    margin-bottom: 20px;
+    font-weight: 900;
+    letter-spacing: 2px;
 }
 
-.launch-button:focus-visible {
-  outline: 3px solid white;
-  outline-offset: 4px;
+.intro-subtitle {
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-.launch-button:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 20px 40px rgba(61, 214, 140, 0.4);
+.story-text {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 12px;
+    margin: 25px 0;
+    text-align: left;
+    border: 2px solid rgba(255, 204, 0, 0.3);
 }
 
-.hero-grid {
-  display: grid;
-  gap: 3rem;
-  align-items: center;
-  grid-template-columns: minmax(0, 1fr);
+.story-text p {
+    color: #e0e0e0;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
-@media (min-width: 1024px) {
-  .hero-grid {
-    grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
-  }
+.story-text ul {
+    margin: 15px 0 15px 20px;
+    color: #ffffff;
 }
 
-.hero-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 1.2rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.04);
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
+.story-text li {
+    margin-bottom: 8px;
+    font-size: 1rem;
 }
 
-.hero-title {
-  font-family: 'Orbitron', 'Space Grotesk', ui-sans-serif;
-  font-size: clamp(2.2rem, 4vw, 3.8rem);
-  margin-top: 1rem;
-  line-height: 1.2;
+.controls-info {
+    background: rgba(0, 100, 0, 0.3);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: 2px solid #00ff00;
 }
 
-.hero-text {
-  margin-top: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 620px;
+.controls-info h3 {
+    color: #00ff00;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
 }
 
-.glass-panel {
-  background: var(--glass);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 1.5rem;
-  box-shadow: 0 20px 60px rgba(2, 9, 20, 0.5);
+.controls-info p {
+    color: #ccffcc;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
-.portal-glow {
-  width: 128px;
-  height: 128px;
-  border-radius: 30%;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(61, 214, 140, 0.35));
-  box-shadow: 0 0 40px rgba(61, 214, 140, 0.5);
-  animation: pulse 4s ease-in-out infinite;
+.start-button {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 18px 40px;
+    background: linear-gradient(45deg, #cc0000, #ff3333);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    box-shadow: 
+        0 6px 20px rgba(204, 0, 0, 0.6),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    margin-top: 25px;
 }
 
-.progress-bar {
-  margin-top: 0.6rem;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  height: 12px;
-  border-radius: 999px;
-  overflow: hidden;
-  outline: none;
+.start-button:hover {
+    background: linear-gradient(45deg, #ff3333, #ff6666);
+    box-shadow: 
+        0 8px 25px rgba(255, 51, 51, 0.8),
+        inset 0 2px 6px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
 }
 
-.progress-fill {
-  display: block;
-  height: 100%;
-  width: 0;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--portal-green), #7ee8fa, #94b9ff);
-  transition: width 0.4s ease;
+.start-button:active {
+    transform: translateY(1px);
+    box-shadow: 
+        0 4px 15px rgba(204, 0, 0, 0.6),
+        inset 0 1px 3px rgba(255, 255, 255, 0.2);
 }
 
-.progress-label {
-  font-size: 0.85rem;
-  color: #d2f9e6;
-  margin-top: 0.6rem;
+/* ===============================
+   🎮 GAME UI OVERLAY STYLES
+   =============================== */
+.game-ui {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* UI soll Mausklicks durchlassen */
+    z-index: 100;
 }
 
-.hero-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.ui-top {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+    align-items: center;
 }
 
-.hero-card {
-  border-radius: 26px;
-  padding: 1.8rem;
-  background: rgba(4, 8, 20, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 20px 60px rgba(3, 6, 14, 0.6);
+.score-panel {
+    display: flex;
+    gap: 25px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px 25px;
+    border-radius: 12px;
+    border: 3px solid #ffcc00;
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
 }
 
-.hero-card h3 {
-  font-family: 'Orbitron', ui-sans-serif;
-  font-size: 1.2rem;
-  margin-bottom: 0.4rem;
+.score-item {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    white-space: nowrap;
 }
 
-.celebrate-btn {
-  margin-top: 1.5rem;
-  padding: 0.8rem 1.4rem;
-  border-radius: 16px;
-  border: 1px dashed rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.04);
-  color: #fefefe;
-  font-weight: 600;
-  cursor: pointer;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+.score-icon {
+    margin-right: 8px;
+    font-size: 1.3rem;
 }
 
-.celebrate-btn:hover {
-  border-color: var(--portal-green);
-  transform: translateY(-2px);
+/* Fadenkreuz in der Mitte des Bildschirms */
+.crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 900;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(255, 255, 255, 0.8);
+    pointer-events: none;
 }
 
-.section-header {
-  text-align: left;
+.ui-bottom {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.section-chip {
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.75rem;
-  color: #c0f8ff;
+.action-hint {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
 }
 
-.section-title {
-  font-family: 'Orbitron', ui-sans-serif;
-  font-size: clamp(2rem, 3vw, 2.8rem);
-  margin-top: 0.4rem;
+.action-hint span {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-.section-text {
-  margin-top: 0.5rem;
-  color: rgba(255, 255, 255, 0.8);
+/* TODO 2: Erstelle die Victory Screen Styles
+   Tipp: Kopiere den Code aus der Musterlösung für:
+   - .victory-screen (mit gradient background und animations)
+   - .victory-content (styling für den Container)
+   - .victory-title (große goldene Überschrift mit Pulse-Animation)
+   - .victory-subtitle, .victory-stats, .stat-item (für die Statistiken)
+   - .celebration-text (grüner Bereich mit Glückwünschen)
+   - .play-again-button (grüner Button zum Neustarten)
+   
+   Vergiss nicht die @keyframes für victoryAppear und pulse Animationen! */
+
+/* ===============================
+   🎮 GAME CANVAS STYLES
+   =============================== */
+.game-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    cursor: none; /* Verstecke Cursor während des Spiels */
+    z-index: 1;
 }
 
-.mission-card {
-  padding: 1.5rem;
-  border-radius: 22px;
-  border: 1px solid var(--border);
-  background: rgba(3, 6, 16, 0.9);
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+/* ===============================
+   🎨 UTILITY CLASSES & ANIMATIONS
+   =============================== */
+.hidden {
+    display: none !important;
 }
 
-.mission-checkbox {
-  margin-top: 0.3rem;
-  width: 1rem;
-  height: 1rem;
-  accent-color: var(--portal-green);
+/* Fade-In Animation für Intro */
+@keyframes fadeIn {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.9); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
 }
 
-.mission-title {
-  font-weight: 700;
-  font-size: 1.1rem;
+/* Responsive Design für kleinere Bildschirme */
+@media (max-width: 768px) {
+    .intro-title {
+        font-size: 2.5rem;
+    }
+    
+    .intro-content {
+        padding: 30px;
+        margin: 20px;
+    }
+    
+    .score-panel {
+        flex-direction: column;
+        gap: 15px;
+    }
 }
 
-.mission-desc {
-  margin-top: 0.3rem;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.mission-tip {
-  margin-top: 0.5rem;
-  display: inline-block;
-  font-size: 0.75rem;
-  color: #86efac;
-}
-
-.access-panel,
-.aos-panel,
-.data-card,
-.finale-panel,
-.finale-card {
-  border-radius: 26px;
-  background: rgba(4, 6, 18, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  padding: 2rem;
-  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.5);
-}
-
-.toggle-btn {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 999px;
-  padding: 0.6rem 1.3rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.toggle-btn[aria-pressed='true'] {
-  background: var(--portal-green);
-  border-color: var(--portal-green);
-  color: #02130b;
-}
-
-.aos-panel {
-  background: rgba(7, 17, 39, 0.9);
-}
-
-.aos-demo {
-  border-radius: 18px;
-  padding: 1.2rem;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px dashed rgba(255, 255, 255, 0.15);
-  font-family: 'Orbitron', ui-sans-serif;
-}
-
-.data-card h3,
-.finale-card h3 {
-  font-family: 'Orbitron', ui-sans-serif;
-  font-size: 1.3rem;
-}
-
-.seo-details {
-  margin-top: 1rem;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 0.8rem 1rem;
-}
-
-.seo-details summary {
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.timeline {
-  margin-top: 1rem;
-  list-style: none;
-  padding: 0;
-}
-
-.timeline li {
-  padding: 0.7rem 1rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 0.6rem;
-  position: relative;
-  padding-left: 2.5rem;
-}
-
-.timeline li::before {
-  content: '\2713';
-  position: absolute;
-  left: 0.9rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.timeline li.active {
-  border-color: var(--portal-green);
-  color: var(--portal-green);
-}
-
-.timeline li.active::before {
-  color: var(--portal-green);
-}
-
-.finale-panel {
-  background: linear-gradient(135deg, rgba(10, 17, 40, 0.95), rgba(9, 37, 31, 0.9));
-}
-
-.finale-card {
-  background: rgba(2, 7, 18, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-footer a {
-  color: var(--portal-green);
-}
-
-.sparkle {
-  position: fixed;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff, rgba(255, 255, 255, 0));
-  pointer-events: none;
-  z-index: 999;
-}
-
-/* TODO 2: Ergänze hier den High-Contrast-Look für den Body und die Panels */
-
-.text-boost {
-  font-size: 18px;
-}
-
-.calm-motion * {
-  animation: none !important;
-  transition-duration: 0s !important;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  border: 0;
-}
-
-@keyframes twinkle {
-  0% {
-    transform: translateY(0);
-    opacity: 0.2;
-  }
-  50% {
-    transform: translateY(-6px);
-    opacity: 0.35;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 0.2;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 30px rgba(61, 214, 140, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 80px rgba(148, 197, 255, 0.5);
-  }
-  100% {
-    box-shadow: 0 0 30px rgba(61, 214, 140, 0.3);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0s !important;
-    transition-duration: 0s !important;
-  }
+@media (max-width: 480px) {
+    .intro-title {
+        font-size: 2rem;
+    }
+    
+    .start-button {
+        font-size: 1.4rem;
+        padding: 12px 25px;
+    }
 }

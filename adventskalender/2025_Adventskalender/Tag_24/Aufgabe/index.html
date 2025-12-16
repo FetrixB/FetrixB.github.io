@@ -1,278 +1,87 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Minecraft Weihnachtsreich – Finale mit GitHub Pages Deployment, Accessibility und Performance-Boost." />
-    <title>Tag 24 · Launch das Weihnachtsreich</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-GYBVLdZLh9vDOMkMt2rt7NmBGG99nmCaTKty+O+kO5OVwOB1p5MNDoAuCEi0aKBslZx2drXr/7L0d6C0wGMU9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              portal: '#3dd68c',
-              obsidian: '#080b18',
-              aurora: '#7ee8fa',
-              candy: '#ff5f6d'
-            },
-            fontFamily: {
-              display: ['Orbitron', 'Space Grotesk', 'ui-sans-serif'],
-              body: ['Space Grotesk', 'ui-sans-serif']
-            }
-          }
-        }
-      };
-    </script>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body class="min-h-screen bg-slate-950 text-white font-body antialiased overflow-x-hidden">
-    <a href="#main" class="skip-link">Zum Inhalt springen</a>
-
-    <div class="ambient-stars" aria-hidden="true"></div>
-    <div class="ambient-grid" aria-hidden="true"></div>
-
-    <div id="intro-overlay" class="intro-screen" role="dialog" aria-modal="true" aria-labelledby="intro-title" aria-describedby="intro-desc">
-      <div class="intro-content">
-        <p class="text-sm uppercase tracking-[0.4em] text-emerald-200">Tag 24 · Launch-Control</p>
-        <h1 id="intro-title" class="text-3xl md:text-4xl font-display text-white mt-4">Ready für das Portal-Feuerwerk?</h1>
-        <p id="intro-desc" class="text-lg text-slate-100 mt-4 leading-relaxed">
-          Alle Minecraft-Residents warten darauf, dass du den Intro-Screen startest und die Seite auf GitHub Pages live schaltest. Mit Accessibility-Boost, Performance-Power und GSAP-Kinoeffekt wird jeder Besucher staunen.
-        </p>
-        <button id="launch-btn" class="launch-button" aria-label="Intro-Screen starten">
-          Intro-Screen zünden
-        </button>
-        <p class="mt-4 text-xs text-slate-200">Tipp: Enter startet auch per Tastatur · Escape überspringt das Intro.</p>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄 Minecraft Weihnachtsspiel - Das große Finale! 🎮</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Intro-Screen beim Start des Spiels -->
+    <div id="intro-screen" class="intro-screen">
+        <div class="intro-content">
+            <h1 class="intro-title">🎄 Minecraft Weihnachtsspiel 🎄</h1>
+            <p class="intro-subtitle">Das große Finale deiner Webentwicklungsreise!</p>
+            
+            <div class="story-text">
+                <p>🎮 Lieber Felix,</p>
+                <p>23 Tage hast du gelernt und programmiert - heute erschaffst du dein eigenes 3D-Spiel!</p>
+                <p>🎯 <strong>Deine Mission:</strong></p>
+                <ul>
+                    <li>🎁 Sammle alle Weihnachtsgeschenke (mindestens 10)</li>
+                    <li>⚔️ Wirf Schneebälle auf Schneemänner (mindestens 5)</li>
+                    <li>🌟 Erreiche das magische Weihnachtsportal</li>
+                </ul>
+                
+                <div class="controls-info">
+                    <h3>🕹️ Steuerung:</h3>
+                    <p><strong>WASD</strong> - Bewegung | <strong>Maus</strong> - Umschauen | <strong>Linksklick</strong> - Schneeball werfen</p>
+                </div>
+            </div>
+            
+            <button id="start-game" class="start-button">
+                🚀 Spiel Starten
+            </button>
+        </div>
     </div>
 
-    <main id="main" class="relative z-10">
-      <section class="py-20 px-6 md:px-10 lg:px-16" data-aos="fade-up">
-        <div class="max-w-6xl mx-auto hero-grid">
-          <article>
-            <p class="hero-chip" data-hero-animate><span aria-hidden="true">✨</span> Finale Mission · 100% Fokus</p>
-            <h2 class="hero-title" data-hero-animate>Baue den galaktischen Intro-Screen & deploye auf GitHub Pages</h2>
-            <p class="hero-text" data-hero-animate>
-              Stell dir vor, du stellst deinen besten Minecraft-Bau auf einen weltweiten Server. Genau das machst du heute: Du aktivierst GitHub Pages, optimierst Accessibility und Performance und begrüßt jeden Besucher mit einem epischen GSAP-Intro.
-            </p>
-            <div class="mt-8 space-y-4" aria-live="polite" aria-atomic="true">
-              <div data-hero-animate class="glass-panel">
-                <h3 class="text-lg font-semibold text-emerald-200 flex items-center gap-2">
-                  <span class="text-2xl" aria-hidden="true">🧭</span> GitHub Pages Checkliste
-                </h3>
-                <ul class="mt-4 space-y-2 text-sm text-slate-100">
-                  <li>✔ Repository → Settings → Pages → Deploy from <strong>main</strong></li>
-                  <li>✔ Branch speichern → GitHub erzeugt URL <code>felix.github.io/.../Tag_24/</code></li>
-                  <li>✔ HTTPS aktivieren + Domain optional verbinden</li>
-                </ul>
-              </div>
-              <div class="glass-panel" data-hero-animate>
-                <div class="flex items-center gap-4">
-                  <div class="portal-glow" aria-hidden="true"></div>
-                  <div>
-                    <p class="text-sm text-emerald-100">Launch-Ready-Level</p>
-                    <div class="progress-wrapper mt-2" >
-                      <div id="launch-progress" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-describedby="progress-label" tabindex="0">
-                        <span id="progress-fill" class="progress-fill"></span>
-                      </div>
-                      <p id="progress-label" class="progress-label">0% fertig · mach die Mission!</p>
-                      <p id="sr-status" class="sr-only" aria-live="polite"></p>
-                    </div>
-                  </div>
+    <!-- Game UI Overlay -->
+    <div id="game-ui" class="game-ui hidden">
+        <div class="ui-top">
+            <div class="score-panel">
+                <div class="score-item">
+                    <span class="score-icon">🎁</span>
+                    <span>Geschenke: <span id="gifts-count">0</span>/10</span>
                 </div>
-              </div>
+                <div class="score-item">
+                    <span class="score-icon">⚔️</span>
+                    <span>Schneemänner: <span id="snowmen-count">0</span>/5</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-icon">⭐</span>
+                    <span>Mission: <span id="mission-status">Sammle Geschenke!</span></span>
+                </div>
             </div>
-          </article>
-          <aside class="hero-aside" data-aos="fade-left">
-            <div class="hero-card" data-hero-animate>
-              <h3>Accessibility Radar</h3>
-              <p class="text-sm text-slate-200">Screenreader-Labels, Fokus-Sichtbarkeit & Tastaturnavigation aktiviert.</p>
-              <dl class="mt-4 grid grid-cols-2 gap-4 text-sm">
-                <div>
-                  <dt class="text-slate-400">Kontrast</dt>
-                  <dd class="text-emerald-300 font-semibold">AAA+</dd>
-                </div>
-                <div>
-                  <dt class="text-slate-400">Fokus</dt>
-                  <dd class="text-emerald-300 font-semibold">Sichtbar</dd>
-                </div>
-                <div>
-                  <dt class="text-slate-400">ARIA</dt>
-                  <dd class="text-emerald-300 font-semibold">Mehrsprachig</dd>
-                </div>
-                <div>
-                  <dt class="text-slate-400">Keyboard</dt>
-                  <dd class="text-emerald-300 font-semibold">100%</dd>
-                </div>
-              </dl>
+            
+            <div class="crosshair">+</div>
+        </div>
+        
+        <div class="ui-bottom">
+            <div class="action-hint">
+                <span id="action-text">WASD zum Bewegen - Maus zum Umschauen - Linksklick zum Schneeball werfen</span>
             </div>
-            <div class="hero-card" data-aos="zoom-in">
-              <h3>Performance-Labor</h3>
-              <ul class="mt-4 text-sm text-slate-200 space-y-2">
-                <li>🌐 Lazy Loading für Bilder</li>
-                <li>⚙ Komprimierte Assets & CDN</li>
-                <li>🔍 SEO Meta + Social Preview</li>
-              </ul>
-              <button id="celebrate-btn" class="celebrate-btn" type="button">Launch feiern 🎉</button>
-            </div>
-          </aside>
         </div>
-      </section>
+    </div>
 
-      <section class="py-16 px-6 md:px-10 lg:px-16" data-aos="fade-up">
-        <div class="max-w-6xl mx-auto">
-          <header class="section-header">
-            <p class="section-chip">🚀 Deployment Mission Control</p>
-            <h2 class="section-title">Hake jede Aufgabe ab wie eine Redstone-Schaltung</h2>
-            <p class="section-text">Jede Checkbox entspricht einem GitHub-Pages-Schritt. Mit jedem Klick wächst deine Launch-Leiste.</p>
-          </header>
-          <div class="grid gap-6 lg:grid-cols-3">
-            <article class="mission-card">
-              <div class="flex items-start gap-3">
-                <input type="checkbox" id="step-settings" data-deploy-step="settings" class="mission-checkbox" aria-describedby="settings-desc" />
-                <div>
-                  <label for="step-settings" class="mission-title">Pages aktivieren</label>
-                  <p id="settings-desc" class="mission-desc">Wähle in den Repository-Einstellungen den Ordner <strong>/docs oder main</strong> und bestätige.</p>
-                  <span class="mission-tip">Pro Tipp: Branch vor Aktivierung pushen.</span>
-                </div>
-              </div>
-            </article>
-            <article class="mission-card">
-              <div class="flex items-start gap-3">
-                <input type="checkbox" id="step-domain" data-deploy-step="domain" class="mission-checkbox" aria-describedby="domain-desc" />
-                <div>
-                  <label for="step-domain" class="mission-title">Domain + HTTPS</label>
-                  <p id="domain-desc" class="mission-desc">Trage optional deine Wunschdomain ein und aktiviere "Enforce HTTPS".</p>
-                  <span class="mission-tip">GitHub stellt kostenlos Zertifikate bereit.</span>
-                </div>
-              </div>
-            </article>
-            <article class="mission-card">
-              <div class="flex items-start gap-3">
-                <input type="checkbox" id="step-a11y" data-deploy-step="a11y" class="mission-checkbox" aria-describedby="a11y-desc" />
-                <div>
-                  <label for="step-a11y" class="mission-title">Accessibility-Scan</label>
-                  <p id="a11y-desc" class="mission-desc">Nutze Lighthouse oder WAVE, prüfe ARIA-Labels & Fokus-Reihenfolge.</p>
-                  <span class="mission-tip">100 Punkte sind möglich!</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+    <!-- TODO 1: Füge hier den Victory Screen hinzu 
+         Tipp: Erstelle ein div mit der id "victory-screen" und class "victory-screen hidden"
+         Es sollte einen Titel "🏆 MISSION ERFOLGREICH! 🏆" enthalten,
+         Statistiken für Geschenke, Schneemänner und Zeit anzeigen,
+         und einen "🔄 Nochmal spielen" Button haben.
+         Schaue in der Musterlösung nach, wie der Victory Screen aussehen soll! -->
 
-      <section class="py-16 px-6 md:px-10 lg:px-16" data-aos="fade-up">
-        <div class="max-w-6xl mx-auto grid gap-10 lg:grid-cols-2">
-          <article class="access-panel">
-            <header>
-              <p class="section-chip">♿ Accessibility Deck</p>
-              <h2 class="section-title">Mach jede Navigation so klar wie Koordinaten im HUD</h2>
-              <p class="section-text">Teste verschiedene Modi direkt auf der Seite – alles reagiert live.</p>
-            </header>
-            <div class="flex flex-wrap gap-3 mt-4">
-              <!-- TODO 1: Baue hier den High-Contrast-Button mit data-toggle-class="contrast-mode" wieder ein -->
-              <button class="toggle-btn" data-toggle-class="text-boost" data-label="Große Schrift" aria-pressed="false" type="button">Schrift Boost</button>
-              <button class="toggle-btn" data-toggle-class="calm-motion" data-label="Sanfte Animation" aria-pressed="false" type="button">Sanfte Animation</button>
-            </div>
-            <ul class="mt-6 space-y-3 text-sm text-slate-100">
-              <li><strong>Skip-Link:</strong> sofort zum Hauptinhalt springen.</li>
-              <li><strong>Fokus-Ring:</strong> gut sichtbar dank Neon-Outline.</li>
-              <li><strong>SR-Status:</strong> Live-Region meldet jeden Fortschritt.</li>
-            </ul>
-          </article>
-          <article class="aos-panel" data-aos="zoom-in">
-            <h3 class="text-xl font-display text-white">Scroll-Magie mit AOS</h3>
-            <p class="text-sm text-slate-200">AOS animiert jedes Story-Kapitel sobald es sichtbar wird – ganz ohne zusätzliches JavaScript.</p>
-            <div class="mt-6 space-y-4">
-              <div class="aos-demo" data-aos="flip-left">Smooth Fade-Up</div>
-              <div class="aos-demo" data-aos="flip-right">Portal Flip</div>
-              <div class="aos-demo" data-aos="zoom-out">Star Zoom</div>
-            </div>
-            <p class="text-xs text-slate-400 mt-6">Tipp: In <code>create_lesson.py</code> beschreibst du, wie <code>data-aos</code> Attribute funktionieren.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="py-16 px-6 md:px-10 lg:px-16" data-aos="fade-up">
-        <div class="max-w-6xl mx-auto">
-          <header class="section-header">
-            <p class="section-chip">🧊 Performance & SEO Observatorium</p>
-            <h2 class="section-title">Mach deine Seite schneller als ein Eisboot auf Packed-Ice</h2>
-          </header>
-          <div class="grid gap-6 lg:grid-cols-3">
-            <article class="data-card">
-              <h3>Core Web Vitals</h3>
-              <p class="text-sm text-slate-200">Nutze Lighthouse → Performance > 90. Tailwind CDN + optimierte Bilder helfen.</p>
-              <ul class="mt-4 space-y-2 text-xs uppercase tracking-wide text-emerald-200">
-                <li>LCP &lt; 2.5s</li>
-                <li>CLS &lt; 0.1</li>
-                <li>FID ≈ 0</li>
-              </ul>
-            </article>
-            <article class="data-card">
-              <h3>SEO-Meta</h3>
-              <p class="text-sm text-slate-200">Titel, Description und Social Preview machen deine Welt auffindbar.</p>
-              <details class="seo-details">
-                <summary>Empfohlene Tags</summary>
-                <ul class="text-slate-100 text-sm mt-2 list-disc list-inside">
-                  <li><code>&lt;meta property="og:image" ...&gt;</code></li>
-                  <li><code>&lt;meta name="twitter:card" ...&gt;</code></li>
-                  <li><code>&lt;link rel="canonical" ...&gt;</code></li>
-                </ul>
-              </details>
-            </article>
-            <article class="data-card">
-              <h3>Deployment-Log</h3>
-              <p class="text-sm text-slate-200">Sieh live, welcher Schritt schon erledigt ist.</p>
-              <ul id="timeline" class="timeline" aria-live="polite">
-                <li data-timeline="settings">Pages aktiviert</li>
-                <li data-timeline="domain">Domain & HTTPS</li>
-                <li data-timeline="a11y">Accessibility geprüft</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="py-20 px-6 md:px-10 lg:px-16" data-aos="fade-up">
-        <div class="max-w-5xl mx-auto finale-panel">
-          <p class="section-chip">🎮 Finale Cinematic</p>
-          <h2 class="section-title">Intro-Screen + Deployment = offizielle Öffnung des Weihnachtsreichs</h2>
-          <p class="section-text">
-            Sobald deine Seite auf <strong>http://192.168.0.20:8000/2025_Adventskalender/Tag_24/Loesung/</strong> glänzt, pushst du sie nach GitHub. Dann erleben Freund*innen & Familie die Reise genau so, wie du sie gestaltest.
-          </p>
-          <div class="grid gap-6 md:grid-cols-2 mt-8">
-            <article class="finale-card">
-              <h3>Intro-Story</h3>
-              <p class="text-sm text-slate-200">GSAP blendet Texte, Portal und Stats ein – wie ein Trailer.</p>
-              <ul class="list-disc list-inside text-sm text-slate-100 mt-4">
-                <li>Overlay mit <code>role="dialog"</code></li>
-                <li>Escape schließt es sofort</li>
-                <li>Button fokussiert barrierefrei</li>
-              </ul>
-            </article>
-            <article class="finale-card">
-              <h3>Deployment-Tipp</h3>
-              <p class="text-sm text-slate-200">Nutze <code>git status</code> → <code>git add</code> → <code>git commit</code> → <code>git push</code>. Danach wartet Pages-URL im Repo.</p>
-              <p class="text-xs text-slate-400 mt-4">Bonus: Aktiviere Branch-Schutz, damit nichts aus Versehen überschrieben wird.</p>
-            </article>
-          </div>
-          <p class="mt-10 text-center text-lg text-emerald-200 font-display">Felix, du hast eine komplette Experience erschaffen. Jetzt gehört das Weihnachtsreich offiziell dir!</p>
-        </div>
-      </section>
-
-      <footer class="py-10 px-6 text-center text-xs text-slate-400">
-        <p>Made mit ❤️, Tailwind (Play CDN laut <a href="https://v3.tailwindcss.com/docs/installation/play-cdn" target="_blank" rel="noreferrer" class="underline">Docs</a>), GSAP und AOS.</p>
-      </footer>
-    </main>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-DT29+rsoAhH2m6q+UpBAkLTlaX2UjsFvdcGaOeL50DJBSSTXobHxPPH/FkOFjHlkRQAt2bQVWwtIgMeY9ycQ7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-o7C0BpvyEukgqS0bkkCm1cWg5kyR3O6jwxKF1uHmIiMaivGi99ZTSdKCbFf8gDuwZQ+Q0imeISFRCGDpa2BkLw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-ymN1dDHK5vVsQt1zAr72Xd1LSeX776BF3/f6/Dr7guP5AnbcW2CYwiVdc+GqORdzdrIW6DCr4k74vNys8wSh/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Game Canvas - hier wird das 3D-Spiel gerendert -->
+    <canvas id="game-canvas" class="game-canvas hidden"></canvas>
+    
+    <!-- Audio Elements für Soundeffekte -->
+    <audio id="background-music" loop>
+        <source src="https://www.soundjay.com/misc/sounds/jingle-bells.wav" type="audio/wav">
+    </audio>
+    
+    <!-- Three.js und andere Libraries von CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/FirstPersonControls.js"></script>
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
