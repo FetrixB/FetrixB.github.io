@@ -47,8 +47,8 @@
     <div class="calendar" id="calendar">
         <!-- Türen werden durch JS erstellt -->
     </div><br />
-    <center><a href="http://192.168.0.20:8000/2025_Adventskalender/">Webserver &Uuml;bersicht (lokal)</a></center><br /><br />
-    <center><a href="https://fetrixb.github.io/adventskalender/2025_Adventskalender/">Webserver &Uuml;bersicht (online)</a></center>
+    <center><a href="https://web.tb-cloudlab.org/2025_Adventskalender/">Webserver &Uuml;bersicht (Zuhause)</a></center><br /><br />
+    <center><a href="https://fetrixb.github.io/adventskalender/2025_Adventskalender/">Webserver &Uuml;bersicht (Github)</a></center>
     
     <script>
         // Heutiges Datum ermitteln
@@ -57,30 +57,30 @@
         const currentMonth = today.getMonth();
 
         // Verschlüsselte Links
-        const encryptedLinks = ['http://192.168.0.20:8888/', //01
-            'http://192.168.0.20:8888/', // 02
-            'http://192.168.0.20:8888/', // 03
-            'http://192.168.0.20:8888/', // 04
-            'http://192.168.0.20:8888/', // 05
-            'http://192.168.0.20:8888/', // 06
-            'http://192.168.0.20:8888/', // 07
-            'http://192.168.0.20:8888/', // 08
-            'http://192.168.0.20:8888/', // 09
-            'http://192.168.0.20:8888/', // 10
-            'http://192.168.0.20:8888/', // 11
-            'http://192.168.0.20:8888/', // 12
-            'http://192.168.0.20:8888/', // 13
-            'http://192.168.0.20:8888/', // 14
-            'http://192.168.0.20:8888/', // 15
-            'http://192.168.0.20:8888/', // 16
-            'http://192.168.0.20:8888/', // 17
-            'http://192.168.0.20:8888/', // 18
-            'http://192.168.0.20:8888/', // 19
-            'http://192.168.0.20:8888/', // 20
-            'http://192.168.0.20:8888/', // 21
-            'http://192.168.0.20:8888/', // 22
-            'http://192.168.0.20:8888/', // 23
-            'http://192.168.0.20:8888/'] // 24
+        const encryptedLinks = ['https://jupyter.tb-cloudlab.org/', //01
+            'https://jupyter.tb-cloudlab.org/', // 02
+            'https://jupyter.tb-cloudlab.org/', // 03
+            'https://jupyter.tb-cloudlab.org/', // 04
+            'https://jupyter.tb-cloudlab.org/', // 05
+            'https://jupyter.tb-cloudlab.org/', // 06
+            'https://jupyter.tb-cloudlab.org/', // 07
+            'https://jupyter.tb-cloudlab.org/', // 08
+            'https://jupyter.tb-cloudlab.org/', // 09
+            'https://jupyter.tb-cloudlab.org/', // 10
+            'https://jupyter.tb-cloudlab.org/', // 11
+            'https://jupyter.tb-cloudlab.org/', // 12
+            'https://jupyter.tb-cloudlab.org/', // 13
+            'https://jupyter.tb-cloudlab.org/', // 14
+            'https://jupyter.tb-cloudlab.org/', // 15
+            'https://jupyter.tb-cloudlab.org/', // 16
+            'https://jupyter.tb-cloudlab.org/', // 17
+            'https://jupyter.tb-cloudlab.org/', // 18
+            'https://jupyter.tb-cloudlab.org/', // 19
+            'https://jupyter.tb-cloudlab.org/', // 20
+            'https://jupyter.tb-cloudlab.org/', // 21
+            'https://jupyter.tb-cloudlab.org/', // 22
+            'https://jupyter.tb-cloudlab.org/', // 23
+            'https://jupyter.tb-cloudlab.org/'] // 24
 
         function decrypt(a) {
             return atob(a);

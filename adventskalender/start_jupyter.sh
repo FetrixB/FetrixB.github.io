@@ -10,7 +10,6 @@ sleep 2
 # Start Jupyter without systemd-inhibit first to debug
 echo "Starting Jupyter Lab..."
 jupyter lab \
-    --ServerApp.base_url=/jupyter/ \
     --ip=0.0.0.0 \
     --port=8888 \
     --no-browser \
@@ -21,6 +20,4 @@ jupyter lab \
     --ServerApp.trust_xheaders=True \
     --ServerApp.allow_remote_access=True \
     --ServerApp.allow_credentials=True \
-    --ServerApp.tornado_settings='{"ws_ping_interval": 30000, "ws_ping_timeout": 30000}' \
-    --ServerApp.terminado_settings='{"shell_command": ["/bin/bash"]}' \
     --log-level=INFO
