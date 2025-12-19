@@ -218,7 +218,7 @@ Wenn alle TODOs sitzen, fühlt sich die Karte wieder wie ein echtes Navigationss
 - Die Hotspots teleportieren Besucher zu `#portal`, `#markt`, `#schmiede` und `#bibliothek`.
 - Tooltips erscheinen sowohl über Buttons als auch über den `title`-Text der `<area>`-Tags.
 - `setActiveLocation` scrollt sanft und hebt Abschnitte durch `focus-glow` hervor.
-- Teste zuerst die Aufgabe-Version (`http://192.168.0.20:8000/2025_Adventskalender/Tag_04/Aufgabe/`) und vergleiche danach mit der Lösung.
+- Teste zuerst die Aufgabe-Version (`https://web.tb-cloudlab.org/2025_Adventskalender/Tag_04/Aufgabe/`) und vergleiche danach mit der Lösung.
 - Technische Checks: `node --check Tag_04/Loesung/script.js`, `node --check Tag_04/Aufgabe/script.js`, `stylelint Tag_04/Loesung/style.css`.
 
 🎁 Bonus-Ideen: Ergänze weitere Wegpunkte (z.B. `#geschenke`), baue responsive Layout-Switches oder lass das Info-Panel Bilder anzeigen. Deine Karte kann wachsen wie ein echtes Minecraft-Dorf!"""

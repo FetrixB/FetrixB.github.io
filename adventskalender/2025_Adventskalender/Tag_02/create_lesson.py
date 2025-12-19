@@ -234,9 +234,9 @@ def create_lesson():
         ),
         nbf.v4.new_markdown_cell(
             "## 🌐 Testen deiner Lösung\n\n"
-            "1. Öffne `http://192.168.0.20:8000/2025_Adventskalender/Tag_02/Aufgabe/` in deinem Browser.\n"
+            "1. Öffne `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_02/Aufgabe/` in deinem Browser.\n"
             "2. Klicke auf den Button, beobachte den Glow und bewege den Mauszeiger über die Kristalle.\n"
-            "3. Vergleiche anschließend mit `http://192.168.0.20:8000/2025_Adventskalender/Tag_02/Loesung/`.\n"
+            "3. Vergleiche anschließend mit `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_02/Loesung/`.\n"
             "4. Wenn alles identisch aussieht, bist du bereit für Tag 03!"
         ),
         nbf.v4.new_markdown_cell("# 🌟 Erfolg & Möglichkeiten"),

@@ -214,7 +214,7 @@ HTML("""
         nbf.v4.new_markdown_cell(
             """## 🎯 Mission: 3 magische TODOs lösen
 
-Im Ordner `Tag_20/Aufgabe/` wartet eine fast fertige Version. Drei Bausteine fehlen noch – du ergänzt sie Schritt für Schritt und prüfst alles direkt im Browser (`http://192.168.0.20:8000/2025_Adventskalender/Tag_20/Aufgabe/`)."""
+Im Ordner `Tag_20/Aufgabe/` wartet eine fast fertige Version. Drei Bausteine fehlen noch – du ergänzt sie Schritt für Schritt und prüfst alles direkt im Browser (`https://web.tb-cloudlab.org/2025_Adventskalender/Tag_20/Aufgabe/`)."""
         ),
         nbf.v4.new_markdown_cell(
             """### 📝 **TODO 1: HTML – Reset-Button ergänzen**
@@ -277,8 +277,8 @@ Nach allen TODOs solltest du sehen:
         nbf.v4.new_markdown_cell(
             """## 🌐 Testen deiner Lösung
 
-1. **Aufgabe öffnen:** `http://192.168.0.20:8000/2025_Adventskalender/Tag_20/Aufgabe/`
-2. **Vergleich:** `http://192.168.0.20:8000/2025_Adventskalender/Tag_20/Loesung/`
+1. **Aufgabe öffnen:** `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_20/Aufgabe/`
+2. **Vergleich:** `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_20/Loesung/`
 3. Klicke durch alle Rezepte, aktiviere den Reset-Button und prüfe, ob der Balken reagiert.
 4. Erst wenn alles identisch aussieht, bist du ready für Tag 21!"""
         ),

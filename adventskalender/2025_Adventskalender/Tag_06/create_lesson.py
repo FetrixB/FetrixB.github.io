@@ -112,7 +112,7 @@ def create_lesson():
 
     cells.append(
         nbf.v4.new_markdown_cell(
-            """## 🌐 Testen deiner Lösung\n- Aufgabe öffnen: `http://192.168.0.20:8000/2025_Adventskalender/Tag_06/Aufgabe/`\n- Lösung vergleichen: `http://192.168.0.20:8000/2025_Adventskalender/Tag_06/Loesung/`\n- Browser-DevTools nutzen, um `float`/`object-fit` zu prüfen.\n- Falls Turn.js-Fehler auftauchen, Screenshot & Konsole checken."""
+            """## 🌐 Testen deiner Lösung\n- Aufgabe öffnen: `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_06/Aufgabe/`\n- Lösung vergleichen: `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_06/Loesung/`\n- Browser-DevTools nutzen, um `float`/`object-fit` zu prüfen.\n- Falls Turn.js-Fehler auftauchen, Screenshot & Konsole checken."""
         )
     )
 

@@ -582,7 +582,7 @@ Ohne diesen Event Listener bleibt der "Nochmal spielen" Button stumm. Mit dieser
 
 1. **Öffne deinen Browser** und navigiere zu:
    ```
-   http://192.168.0.20:8000/2025_Adventskalender/Tag_24/Aufgabe/
+   https://web.tb-cloudlab.org/2025_Adventskalender/Tag_24/Aufgabe/
    ```
 
 2. **Prüfe die Grundfunktionen:**

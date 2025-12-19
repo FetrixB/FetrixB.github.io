@@ -271,8 +271,8 @@ Schreibe in `updateOutput` die drei Zeilen, die Titel, Beschreibung und Code set
 
     cell18 = nbf.v4.new_markdown_cell(
         """## 🌐 Testen deiner Lösung
-- Aufgabe testen: http://192.168.0.20:8000/2025_Adventskalender/Tag_05/Aufgabe/
-- Musterlösung vergleichen: http://192.168.0.20:8000/2025_Adventskalender/Tag_05/Loesung/
+- Aufgabe testen: https://web.tb-cloudlab.org/2025_Adventskalender/Tag_05/Aufgabe/
+- Musterlösung vergleichen: https://web.tb-cloudlab.org/2025_Adventskalender/Tag_05/Loesung/
 
 Nutze unbedingt diese Server-URLs, damit Tailwind-CDN und Pfade stimmen."""
     )

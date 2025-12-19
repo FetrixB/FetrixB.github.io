@@ -388,8 +388,8 @@ def create_lesson():
             """
             ## 🌐 Teste deine Version
 
-            - **Aufgabe:** http://192.168.0.20:8000/2025_Adventskalender/Tag_07/Aufgabe/
-            - **Musterlösung:** http://192.168.0.20:8000/2025_Adventskalender/Tag_07/Loesung/
+            - **Aufgabe:** https://web.tb-cloudlab.org/2025_Adventskalender/Tag_07/Aufgabe/
+            - **Musterlösung:** https://web.tb-cloudlab.org/2025_Adventskalender/Tag_07/Loesung/
 
             Öffne beide Tabs nebeneinander und scrolle gleichzeitig. So siehst du sofort, ob alle Runen bei dir im gleichen Moment aufleuchten.
             """

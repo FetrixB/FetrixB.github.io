@@ -258,11 +258,11 @@ Nach allen TODOs solltest du sehen:
 
 **Starte die Aufgabe:**
 
-http://192.168.0.20:8000/2025_Adventskalender/Tag_19/Aufgabe/
+https://web.tb-cloudlab.org/2025_Adventskalender/Tag_19/Aufgabe/
 
 **Vergleiche mit der Loesung:**
 
-http://192.168.0.20:8000/2025_Adventskalender/Tag_19/Loesung/
+https://web.tb-cloudlab.org/2025_Adventskalender/Tag_19/Loesung/
 
 Oeffne beide Seiten im Browser. Achte darauf, dass du wirklich ueber den lokalen Server gehst, damit Skripte und Pfade funktionieren.
 """

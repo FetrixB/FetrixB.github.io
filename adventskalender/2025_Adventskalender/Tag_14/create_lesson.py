@@ -262,8 +262,8 @@ beeindruckend wie die Lösung aussieht.
 """
 
     test_md = """## 🌐 Test & Vergleich
-- **Aufgabe testen:** `http://192.168.0.20:8000/2025_Adventskalender/Tag_14/Aufgabe/`
-- **Musterlösung ansehen:** `http://192.168.0.20:8000/2025_Adventskalender/Tag_14/Loesung/`
+- **Aufgabe testen:** `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_14/Aufgabe/`
+- **Musterlösung ansehen:** `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_14/Loesung/`
 - Prüfe im DevTools-Tab "Network", dass GSAP und ScrollTrigger sauber geladen werden.
 """
 

@@ -300,8 +300,8 @@ Wenn alle TODOs gelöst sind, solltest du sehen:
         ),
         nbf.v4.new_markdown_cell(
             """## 🌐 Teste deine Seite
-- Aufgabe öffnen: `http://192.168.0.20:8000/2025_Adventskalender/Tag_10/Aufgabe/`
-- Lösung vergleichen: `http://192.168.0.20:8000/2025_Adventskalender/Tag_10/Loesung/`
+- Aufgabe öffnen: `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_10/Aufgabe/`
+- Lösung vergleichen: `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_10/Loesung/`
 - Wenn Unterschiede sichtbar sind, überprüfe vor allem die TODO-Stellen"""
         ),
         nbf.v4.new_markdown_cell(

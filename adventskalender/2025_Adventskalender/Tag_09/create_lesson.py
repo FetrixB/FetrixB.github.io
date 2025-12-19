@@ -193,9 +193,9 @@ Im Moment ist der Block leer. Trage dort `transform: translateY(calc(var(--float
 
 Schreibe dort die Event-Listener: Lies das `data-theme-choice` aus, setze `document.documentElement.setAttribute('data-theme', themeMap[choice])` und markiere den aktiven Button mit `btn-active`. Vergleiche mit `Tag_09/Loesung/script.js`, um zu sehen, wie sauber die Lösung aussieht.
 
-👉 Test-URL Aufgabe: `http://192.168.0.20:8000/2025_Adventskalender/Tag_09/Aufgabe/`
+👉 Test-URL Aufgabe: `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_09/Aufgabe/`
 
-👉 Referenz-URL Lösung: `http://192.168.0.20:8000/2025_Adventskalender/Tag_09/Loesung/`"""
+👉 Referenz-URL Lösung: `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_09/Loesung/`"""
     )
 
     success_code = nbf.v4.new_code_cell(

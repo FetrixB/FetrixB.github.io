@@ -262,9 +262,9 @@ Schau dir die fertige Version in `Loesung/script.js` an, wenn du einen Tipp brau
     cells.append(
         nbf.v4.new_markdown_cell(
             """## 🌐 Testen deiner Lösung
-**Aufgabe öffnen:** `http://192.168.0.20:8000/2025_Adventskalender/Tag_18/Aufgabe/`
+**Aufgabe öffnen:** `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_18/Aufgabe/`
 
-**Mit Lösung vergleichen:** `http://192.168.0.20:8000/2025_Adventskalender/Tag_18/Loesung/`
+**Mit Lösung vergleichen:** `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_18/Loesung/`
 
 Starte außerdem `node --check Tag_18/Aufgabe/script.js`, damit du sicher bist, dass keine Tippfehler im JavaScript stecken."""
         )

@@ -116,7 +116,7 @@ def create_lesson():
 
     cells.append(
         nbf.v4.new_markdown_cell(
-            """## 🌐 Testen deiner Lösung\n- Aufgabe öffnen: `http://192.168.0.20:8000/2025_Adventskalender/Tag_23/Aufgabe/`\n- Lösung vergleichen: `http://192.168.0.20:8000/2025_Adventskalender/Tag_23/Loesung/`\n- Prüfe die Konsole auf Fehler und achte auf FPS, wenn du den Slider auf Maximum schiebst."""
+            """## 🌐 Testen deiner Lösung\n- Aufgabe öffnen: `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_23/Aufgabe/`\n- Lösung vergleichen: `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_23/Loesung/`\n- Prüfe die Konsole auf Fehler und achte auf FPS, wenn du den Slider auf Maximum schiebst."""
         )
     )
 

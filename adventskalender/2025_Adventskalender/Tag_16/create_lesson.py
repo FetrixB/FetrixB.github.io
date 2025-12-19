@@ -301,7 +301,7 @@ Rotation. Orientiere dich an `Tag_16/Loesung/style.css` und kombiniere Schatten 
   3. Begrenze die Liste auf höchstens fünf Einträge (`while (logList.children.length > 5) ...`).
 - **Tipp:** Schau in `Tag_16/Loesung/script.js` nach, dort erledigt die gleiche Funktion den Job.
 
-Wenn du fertig bist, öffne `http://192.168.0.20:8000/2025_Adventskalender/Tag_16/Aufgabe/` und vergleiche
+Wenn du fertig bist, öffne `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_16/Aufgabe/` und vergleiche
 mit der Lösung auf dem gleichen Serverpfad."""
     )
 

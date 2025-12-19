@@ -291,8 +291,8 @@ Nach allen TODOs solltest du sehen:
     cells.append(
         nbf.v4.new_markdown_cell(
             """## 🌐 Teste deine Seite
-- Aufgabe öffnen: <http://192.168.0.20:8000/2025_Adventskalender/Tag_21/Aufgabe/>
-- Lösung vergleichen: <http://192.168.0.20:8000/2025_Adventskalender/Tag_21/Loesung/>
+- Aufgabe öffnen: <https://web.tb-cloudlab.org/2025_Adventskalender/Tag_21/Aufgabe/>
+- Lösung vergleichen: <https://web.tb-cloudlab.org/2025_Adventskalender/Tag_21/Loesung/>
 - Notebook-Datei liegt direkt unter `Tag_21/Lesson.ipynb` – alle Pfade in den Texten zeigen auf echte Dateien."""
         )
     )

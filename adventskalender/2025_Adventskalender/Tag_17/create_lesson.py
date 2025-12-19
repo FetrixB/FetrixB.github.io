@@ -232,7 +232,7 @@ def create_lesson():
                  reduziere die Kopienzahl, wenn `rarityBoost` größer als 1 ist.
 
             **Workflow-Tipp:** Löse TODO 3 zum Schluss. Du kannst das Verhalten direkt im Browser sehen, indem du das
-            HTML aus dem Aufgabe-Ordner unter `http://192.168.0.20:8000/2025_Adventskalender/Tag_17/Aufgabe/` öffnest.
+            HTML aus dem Aufgabe-Ordner unter `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_17/Aufgabe/` öffnest.
             """
         ),
         md_cell(
@@ -242,7 +242,7 @@ def create_lesson():
             - Beim Klick auf "✨ Geschenke erzeugen" erscheinen Karten mit Emoji, Titel und Beschreibung.
             - Die Legende erklärt sofort, welche Farbe zu welcher Seltenheit gehört.
             - Stellst du den Booster hoch, trudeln legendäre Items sichtbar häufiger ein.
-            - Vergleich mit `http://192.168.0.20:8000/2025_Adventskalender/Tag_17/Loesung/` zeigt identisches Verhalten.
+            - Vergleich mit `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_17/Loesung/` zeigt identisches Verhalten.
             """
         ),
         code_cell(

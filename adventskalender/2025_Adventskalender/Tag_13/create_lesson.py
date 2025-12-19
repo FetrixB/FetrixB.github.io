@@ -270,8 +270,8 @@ Wenn alle TODOs erledigt sind, solltest du sehen:
 """
 
     testing = """## 🌐 Testen & Vergleichen
-- **Aufgabe öffnen:** `http://192.168.0.20:8000/2025_Adventskalender/Tag_13/Aufgabe/`
-- **Musterlösung ansehen:** `http://192.168.0.20:8000/2025_Adventskalender/Tag_13/Loesung/`
+- **Aufgabe öffnen:** `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_13/Aufgabe/`
+- **Musterlösung ansehen:** `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_13/Loesung/`
 - Nutze die Browser-Konsole, um zu sehen, dass keine Fehler auftauchen, wenn du den Turbo spamst.
 """
 

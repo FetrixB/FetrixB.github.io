@@ -228,8 +228,8 @@ Nach allen TODOs solltest du sehen:
     testing = nbf.v4.new_markdown_cell(
         """## 🌐 Testen
 
-1. Aufgabe öffnen: `http://192.168.0.20:8000/2025_Adventskalender/Tag_12/Aufgabe/`
-2. Lösung vergleichen: `http://192.168.0.20:8000/2025_Adventskalender/Tag_12/Loesung/`
+1. Aufgabe öffnen: `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_12/Aufgabe/`
+2. Lösung vergleichen: `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_12/Loesung/`
 3. Prüfe Slider, Glow-Taste, Theme-Buttons und die Transparenz-Balken.
 4. Stelle sicher, dass auch mit `prefers-reduced-motion` alles ruhig bleibt – das haben wir bereits vorbereitet."""
     )

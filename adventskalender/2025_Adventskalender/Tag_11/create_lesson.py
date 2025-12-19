@@ -211,8 +211,8 @@ Wenn alle TODOs erledigt sind, solltest du sehen:
     testing = nbf.v4.new_markdown_cell(
         """## 🌐 Teste deine Version
 
-1. Aufgabe öffnen: `http://192.168.0.20:8000/2025_Adventskalender/Tag_11/Aufgabe/`
-2. Lösung vergleichen: `http://192.168.0.20:8000/2025_Adventskalender/Tag_11/Loesung/`
+1. Aufgabe öffnen: `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_11/Aufgabe/`
+2. Lösung vergleichen: `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_11/Loesung/`
 3. Prüfe Scroll, Slider, Button und Parallax-Galerie.
 4. Wenn alles passt, committen und den nächsten Tag genießen!
 

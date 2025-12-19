@@ -164,7 +164,7 @@ Damit steuerst du nicht nur den Text, sondern auch das CSS, weil `--wind-angle` 
 
     success_cell = nbf.v4.new_markdown_cell(
         """## 🏆 Erfolgskontrolle & Ausblick
-- Öffne `http://192.168.0.20:8000/2025_Adventskalender/Tag_08/Aufgabe/` und vergleiche mit `.../Loesung/`.
+- Öffne `https://web.tb-cloudlab.org/2025_Adventskalender/Tag_08/Aufgabe/` und vergleiche mit `.../Loesung/`.
 - Drehe am Slider: Flammen kippen sofort.
 - Klick auf "Holz nachlegen": Statusmeldungen wechseln zwischen drei Wärmeleveln.
 - Schneeschalter pausiert die Animation sichtbar.
