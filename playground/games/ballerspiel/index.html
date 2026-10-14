@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111512">
+  <title>DUEL — 1v1 Arena</title>
+  <link rel="stylesheet" href="style.ccs">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="../../index.html" aria-label="Zurück zu Playground"><span class="brand-mark">D</span><span>DUEL<span class="brand-dot">.</span></span></a>
+      <div class="top-note"><span class="live-dot"></span> ARENA SYSTEM ONLINE</div>
+      <span class="build-tag">1V1 · BUILD 01</span>
+    </header>
+
+    <section class="screen lobby-screen" id="lobbyScreen">
+      <div class="hero-copy">
+        <p class="eyebrow"><span>01</span> PRIVATE ARENA · LOCAL NETWORK</p>
+        <h1>Nur du.<br><em>Und dein Gegner.</em></h1>
+        <p class="hero-sub">Fordere jemanden in deinem WLAN heraus.<br>Ein Match. Eine Arena. Keine zweite Chance.</p>
+        <div class="best-of-picker">
+          <span class="field-label">MATCH-LÄNGE</span>
+          <div class="segmented" role="group" aria-label="Matchlänge">
+            <button data-rounds="3">BEST OF 3</button><button class="selected" data-rounds="5">BEST OF 5</button><button data-rounds="7">BEST OF 7</button>
+          </div>
+        </div>
+        <div class="lobby-actions">
+          <button class="primary-button" id="hostButton"><span>ARENA ERÖFFNEN</span><span class="button-arrow">↗</span></button>
+          <div class="join-row"><input id="joinCode" autocomplete="off" spellcheck="false" placeholder="SPIELERCODE EINGEBEN" maxlength="32" aria-label="Spielercode"><button class="secondary-button" id="joinButton">BEITRETEN <span>→</span></button></div>
+        </div>
+        <div class="connection-status" id="connectionStatus"><span class="status-icon">⌁</span><span>Bereit für dein Match</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-grid"></div><div class="art-ring ring-one"></div><div class="art-ring ring-two"></div>
+        <div class="arena-platform"><div class="platform-top"></div><div class="platform-side"></div><div class="platform-shadow"></div></div>
+        <div class="fighter fighter-blue"><span class="fighter-head"></span><span class="fighter-body"></span><span class="fighter-leg leg-a"></span><span class="fighter-leg leg-b"></span></div>
+        <div class="fighter fighter-red"><span class="fighter-head"></span><span class="fighter-body"></span><span class="fighter-leg leg-a"></span><span class="fighter-leg leg-b"></span></div>
+        <div class="art-label label-left">P1 <b>READY</b></div><div class="art-label label-right">P2 <b>READY</b></div>
+        <div class="art-crosshair">+</div><div class="art-coordinate">ARENA 01<br>52° 31' N — 13° 24' E</div>
+      </div>
+      <div class="lobby-footer"><span>WASD / PFEILE <i>BEWEGEN</i></span><span>MAUS <i>ZIELEN &amp; FEUERN</i></span><span>1 — 4 <i>WAFFE WECHSELN</i></span></div>
+    </section>
+
+    <section class="screen waiting-screen hidden" id="waitingScreen">
+      <div class="waiting-card"><div class="pulse-rings"><span>⌁</span></div><p class="eyebrow" id="waitingEyebrow">DEINE ARENA IST BEREIT</p><h2 id="waitingTitle">Warte auf<br><em>einen Herausforderer.</em></h2><p class="muted" id="waitingDescription">Teile diesen Code mit deinem Gegner. Sobald die Anfrage kommt, kannst du sie annehmen.</p>
+        <div class="code-box"><span id="hostCode">—</span><button id="copyCode" aria-label="Code kopieren">KOPIEREN ↗</button></div>
+        <div class="invite-state" id="inviteState"><span class="live-dot"></span> ARENA SUCHT SPIELER</div><p class="signal-note">MATCHDATEN DIREKT PER P2P · VERBINDUNGSAUFBAU BENÖTIGT INTERNET</p>
+        <div class="request-card hidden" id="requestCard"><div><span class="field-label">MATCHANFRAGE</span><b id="challengerName">Ein Spieler möchte antreten.</b></div><div class="request-buttons"><button class="decline-button" id="declineButton">ABLEHNEN</button><button class="accept-button" id="acceptButton">ANNEHMEN <span>→</span></button></div></div>
+        <button class="text-button" id="cancelHost">← ZURÜCK ZUR LOBBY</button>
+      </div>
+    </section>
+
+    <section class="game-screen hidden" id="gameScreen">
+      <div class="game-hud">
+        <div class="player-hud"><div class="avatar avatar-blue">P1</div><div class="health-info"><div class="player-name" id="selfName">DU <span>SPIELER 1</span></div><div class="health-track"><i id="selfHealth"></i></div></div><strong id="selfScore">0</strong></div>
+        <div class="match-center"><div class="round-label" id="roundLabel">BEST OF 5</div><div class="score-display"><span id="scoreA">0</span><b>:</b><span id="scoreB">0</span></div><div class="round-number" id="roundNumber">RUNDE 1</div></div>
+        <div class="player-hud opponent"><strong id="opponentScore">0</strong><div class="health-info"><div class="player-name" id="opponentName">GEGNER <span>SPIELER 2</span></div><div class="health-track"><i id="opponentHealth"></i></div></div><div class="avatar avatar-red">P2</div></div>
+      </div>
+      <div class="scene-wrap" id="sceneWrap"><div id="gameCanvas"></div><div class="crosshair" id="crosshair"></div><div class="game-toast hidden" id="gameToast"></div>
+        <div class="round-overlay hidden" id="roundOverlay"><p class="eyebrow" id="roundEyebrow">RUNDE GEWONNEN</p><h2 id="roundMessage">NICE SHOT.</h2><p id="roundSub">Nächste Runde startet gleich …</p></div>
+      </div>
+      <div class="game-bottom"><div class="weapon-bar" id="weaponBar" aria-label="Waffen"><button class="weapon-card selected" data-weapon="sniper"><span class="weapon-key">1</span><span class="weapon-icon">⌁</span><span class="weapon-copy"><b>SNIPER</b><small>REICHWEITE</small></span><span class="weapon-stat">92</span></button><button class="weapon-card" data-weapon="minigun"><span class="weapon-key">2</span><span class="weapon-icon">⟟</span><span class="weapon-copy"><b>MINIGUN</b><small>FEUERRATE</small></span><span class="weapon-stat">98</span></button><button class="weapon-card" data-weapon="bazooka"><span class="weapon-key">3</span><span class="weapon-icon">➤</span><span class="weapon-copy"><b>BAZOOKA</b><small>SCHADEN</small></span><span class="weapon-stat">99</span></button><button class="weapon-card" data-weapon="knife"><span class="weapon-key">4</span><span class="weapon-icon">╱</span><span class="weapon-copy"><b>KNIFE</b><small>KURZE DISTANZ</small></span><span class="weapon-stat">74</span></button></div><div class="control-hints"><span><kbd>W A S D</kbd> BEWEGEN</span><span><kbd>SHIFT</kbd> DASH</span><span><kbd>CLICK</kbd> FEUERN</span><button id="leaveMatch">MATCH VERLASSEN ↗</button></div></div>
+    </section>
+    <footer class="site-footer"><span>DUEL ARENA <b>© 2025</b></span><span>BUILT FOR THE FACE-OFF</span></footer>
+  </main>
+  <script type="module" src="skript.js"></script>
+</body>
+</html>

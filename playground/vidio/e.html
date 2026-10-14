@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YouTube Link Player</title>
+<style>
+    body {
+        margin: 0;
+        padding: 20px;
+        background: #111;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    main {
+        max-width: 900px;
+        margin: auto;
+    }
+    input {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 14px;
+        margin: 12px 0;
+        border: 1px solid #555;
+        border-radius: 8px;
+        background: #222;
+        color: white;
+    }
+    button {
+        padding: 12px 24px;
+        border: 0;
+        border-radius: 8px;
+        background: #1687ff;
+        color: white;
+        cursor: pointer;
+    }
+    iframe {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border: 0;
+        border-radius: 10px;
+        background: black;
+        margin-top: 20px;
+    }
+    #status {
+        color: #bbb;
+        overflow-wrap: anywhere;
+    }
+</style>
+</head>
+<body>
+<main>
+    <h1>YouTube Player</h1>
+    <input id="url" placeholder="Paste any YouTube video link..." type="url">
+    <button onclick="playVideo()">Play Video</button>
+    <p id="status">Enter a YouTube URL to begin.</p>
+    <iframe id="player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+</main>
+<script>
+function playVideo() {
+    const input = document.getElementById("url").value.trim();
+    const status = document.getElementById("status");
+    const player = document.getElementById("player");
+
+    try {
+        const url = new URL(input);
+        let id = "";
+
+        if (url.hostname === "youtu.be" || url.hostname === "www.youtu.be") {
+            id = url.pathname.split("/")[1];
+        } else if ([
+            "youtube.com", "www.youtube.com", "m.youtube.com",
+            "youtube-nocookie.com", "www.youtube-nocookie.com"
+        ].includes(url.hostname)) {
+            if (url.pathname === "/watch") {
+                id = url.searchParams.get("v") || "";
+            } else {
+                const match = url.pathname.match(/^\/(embed|shorts|live)\/([^/]+)/);
+                if (match) id = match[2];
+            }
+        }
+
+        if (!/^[a-zA-Z0-9_-]{11}$/.test(id)) {
+            throw new Error("That doesn't look like a valid YouTube video link.");
+        }
+
+        player.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=0";
+        status.textContent = "Video loaded. Press Play in the player.";
+    } catch (error) {
+        status.textContent = error.message || "Please enter a valid YouTube URL.";
+        player.src = "";
+    }
+}
+</script>
+</body>
+</html>
